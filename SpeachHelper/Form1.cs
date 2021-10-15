@@ -1,11 +1,11 @@
-﻿using System.Windows.Forms;
-
-using SpeachHelper.TesseractRecognize;
-using SpeachHelper.SpeachRecognition;
-using System.Drawing;
-using SpeachHelper.Locator;
-using Microsoft.Speech.Recognition;
+﻿using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
+
+using Microsoft.Speech.Recognition;
+
+using SpeachHelper.Locator;
+using SpeachHelper.SpeachRecognition;
 
 namespace SpeachHelper
 {
@@ -35,9 +35,8 @@ namespace SpeachHelper
         {
             var grammarConteiner = ServiceLocator.GetService<GrammarContainer>();
             grammarConteiner.AddAction(textBox1.Text, textBox2.Text);
-            recognizer.GrammarBuilder = new GrammarBuilder(new Choices(grammarConteiner.GetActions().Keys.ToArray()));
-            recognizer.LoadGrammar(recognizer.GrammarBuilder);
-            //переделать загрузку граматики
+            var updatedGrammer = new GrammarBuilder(new Choices(grammarConteiner.GetActions().Keys.ToArray()));
+            recognizer.LoadGrammar(updatedGrammer);
         }
     }
 }

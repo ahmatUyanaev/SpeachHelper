@@ -1,9 +1,10 @@
-﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Locator;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
+
+using Microsoft.Speech.Recognition;
+
+using SpeachHelper.Locator;
 
 namespace SpeachHelper.SpeachRecognition
 {
@@ -17,12 +18,8 @@ namespace SpeachHelper.SpeachRecognition
 
         public GrammarBuilder GrammarBuilder { get; set; }
 
-        
-
         public SpeachRecognizer()
         {
-           
-
             grammarContainer = ServiceLocator.GetService<GrammarContainer>();
 
             actions = grammarContainer.GetActions();
@@ -54,7 +51,6 @@ namespace SpeachHelper.SpeachRecognition
             //    double multiple = 1.25;
             //    var width = (int)(Screen.PrimaryScreen.Bounds.Width * multiple);
             //    var height = (int)(Screen.PrimaryScreen.Bounds.Height * multiple);
-
 
             //    Bitmap printscreen = new Bitmap(width, height);
 
@@ -94,7 +90,6 @@ namespace SpeachHelper.SpeachRecognition
         {
             speachRecognition.RecognizeAsync(RecognizeMode.Multiple);
         }
-
 
         private void Init()
         {

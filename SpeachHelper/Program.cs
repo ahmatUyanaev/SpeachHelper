@@ -1,9 +1,8 @@
-﻿using SpeachHelper.Locator;
-using SpeachHelper.SpeachRecognition;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+
+using SpeachHelper.Locator;
+using SpeachHelper.SpeachRecognition;
 
 namespace SpeachHelper
 {
