@@ -9,7 +9,7 @@ namespace SpeachHelper
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// The main entry point for the application.ц
         /// </summary>
         [STAThread]
         static void Main()
@@ -17,7 +17,7 @@ namespace SpeachHelper
             RegisterService();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainPage());
         }
 
         static void RegisterService()

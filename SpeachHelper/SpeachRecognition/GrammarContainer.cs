@@ -19,6 +19,7 @@ namespace SpeachHelper.SpeachRecognition
 
             dic.Add("Открой браузер", () => { Process.Start("https://yandex.ru/"); } );
             dic.Add("Открой вконтакте", () => { Process.Start("https://vk.com/axma_sila"); });
+            dic.Add("Закончить отладку", () => {  });
 
             return dic;
         }
