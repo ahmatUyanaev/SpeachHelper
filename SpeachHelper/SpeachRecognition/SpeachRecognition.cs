@@ -12,7 +12,7 @@ namespace SpeachHelper.SpeachRecognition
     {
         private  SpeechRecognitionEngine speachRecognition;
 
-        private  GrammarContainer grammarContainer;
+        private  EdgeWordActionContainer grammarContainer;
 
         private  Dictionary<string, Action> actions;
 
@@ -20,7 +20,7 @@ namespace SpeachHelper.SpeachRecognition
 
         public SpeachRecognizer()
         {
-            grammarContainer = ServiceLocator.GetService<GrammarContainer>();
+            grammarContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
 
             actions = grammarContainer.GetActions();
 

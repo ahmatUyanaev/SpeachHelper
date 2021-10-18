@@ -90,7 +90,6 @@ namespace SpeachHelper
         {
             InitializeComponent();
 
-            InputSimulater input = new InputSimulater();
 
             recognizer = ServiceLocator.GetService<SpeachRecognizer>();
 
@@ -102,8 +101,8 @@ namespace SpeachHelper
 
         private void addCommandBtnClick(object sender, System.EventArgs e)
         {
-            var grammarConteiner = ServiceLocator.GetService<GrammarContainer>();
-            grammarConteiner.AddAction(wordsTextBox.Text, actionTextBox.Text);
+            var grammarConteiner = ServiceLocator.GetService<EdgeWordActionContainer>();
+            grammarConteiner.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
             var updatedGrammer = new GrammarBuilder(new Choices(grammarConteiner.GetActions().Keys.ToArray()));
             recognizer.LoadGrammar(updatedGrammer);
         }

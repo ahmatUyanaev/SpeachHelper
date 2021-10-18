@@ -1,15 +1,20 @@
-﻿using System;
+﻿using SpeachHelper.InputSimulation;
+using SpeachHelper.InputSimulation.Contracts;
+using SpeachHelper.Locator;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace SpeachHelper.SpeachRecognition
 {
-    public class GrammarContainer
+    public class EdgeWordActionContainer
     {
         private static Dictionary<string, Action> actions;
+        private IBrowserInputSimulation edgeInputSimulation;
 
-        public GrammarContainer()
+        public EdgeWordActionContainer()
         {
+            edgeInputSimulation = ServiceLocator.GetService<EdgeInputSimulator>();
             actions = Mock();
         }
 
@@ -19,7 +24,7 @@ namespace SpeachHelper.SpeachRecognition
 
             dic.Add("Открой браузер", () => { Process.Start("https://yandex.ru/"); } );
             dic.Add("Открой вконтакте", () => { Process.Start("https://vk.com/axma_sila"); });
-            dic.Add("Закончить отладку", () => {  });
+            dic.Add("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate());
 
             return dic;
         }
@@ -29,10 +34,12 @@ namespace SpeachHelper.SpeachRecognition
             return actions;
         }
 
-        public void AddAction(string command, string openSite)
+        public void AddBrowserWebSiteAction(string command, string openedSite)
         {
-            actions.Add(command, () => { Process.Start(openSite); });
+            actions.Add(command, () => { Process.Start(openedSite); });
         }
+
+
 
     }
 }

@@ -49,7 +49,7 @@ namespace SpeachHelper
             this.mainWindowContainer.Location = new System.Drawing.Point(0, 0);
             this.mainWindowContainer.Name = "mainWindowContainer";
             this.mainWindowContainer.SelectedIndex = 0;
-            this.mainWindowContainer.Size = new System.Drawing.Size(800, 450);
+            this.mainWindowContainer.Size = new System.Drawing.Size(802, 480);
             this.mainWindowContainer.TabIndex = 3;
             // 
             // tabPage1
@@ -58,7 +58,7 @@ namespace SpeachHelper
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 421);
+            this.tabPage1.Size = new System.Drawing.Size(794, 451);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Команды";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@ namespace SpeachHelper
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 421);
+            this.tabPage2.Size = new System.Drawing.Size(794, 451);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Редактировать команды";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@ namespace SpeachHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(802, 480);
             this.Controls.Add(this.mainWindowContainer);
             this.Name = "MainPage";
             this.Text = "Form1";

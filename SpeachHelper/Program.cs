@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 using SpeachHelper.Locator;
 using SpeachHelper.SpeachRecognition;
+using SpeachHelper.InputSimulation;
 
 namespace SpeachHelper
 {
@@ -22,7 +23,8 @@ namespace SpeachHelper
 
         static void RegisterService()
         {
-            ServiceLocator.Register(new GrammarContainer());
+            ServiceLocator.Register(new EdgeInputSimulator());
+            ServiceLocator.Register(new EdgeWordActionContainer());
             ServiceLocator.Register(new SpeachRecognizer());
         }
     }

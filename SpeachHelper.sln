@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeachHelper", "SpeachHelper\SpeachHelper.csproj", "{D78D4630-9864-48C2-AB72-3693DB710327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeachHelper.UI", "SpeachHelper.UI\SpeachHelper.UI.csproj", "{BBFD6D3E-CBD5-45FB-B847-B413BAC40944}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeachHelper.UI", "SpeachHelper.UI\SpeachHelper.UI.csproj", "{BBFD6D3E-CBD5-45FB-B847-B413BAC40944}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeachHelper.InputSimulation", "SpeachHelper.InputSimulation\SpeachHelper.InputSimulation.csproj", "{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{BBFD6D3E-CBD5-45FB-B847-B413BAC40944}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BBFD6D3E-CBD5-45FB-B847-B413BAC40944}.Release|x64.ActiveCfg = Release|Any CPU
 		{BBFD6D3E-CBD5-45FB-B847-B413BAC40944}.Release|x64.Build.0 = Release|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Debug|x64.Build.0 = Debug|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Release|x64.ActiveCfg = Release|Any CPU
+		{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
