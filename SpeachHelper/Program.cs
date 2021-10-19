@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using SpeachHelper.Locator;
+using SpeachHelper.Common.DI;
 using SpeachHelper.SpeachRecognition;
-using SpeachHelper.InputSimulation;
+using SpeachHelper.InputSimulation.Implements;
+using SpeachHelper.InputSimulation.Contracts;
+using SpeachHelper.Common.WordActionContainers.Implements;
 
 namespace SpeachHelper
 {
@@ -24,6 +26,8 @@ namespace SpeachHelper
         static void RegisterService()
         {
             ServiceLocator.Register(new EdgeInputSimulator());
+            ServiceLocator.Register(new WindowsInputSimulator());
+            ServiceLocator.Register(new WindowsWordActionContainer());
             ServiceLocator.Register(new EdgeWordActionContainer());
             ServiceLocator.Register(new SpeachRecognizer());
         }

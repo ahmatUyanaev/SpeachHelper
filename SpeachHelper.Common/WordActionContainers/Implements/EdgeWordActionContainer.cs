@@ -1,13 +1,15 @@
 ﻿using SpeachHelper.InputSimulation;
 using SpeachHelper.InputSimulation.Contracts;
-using SpeachHelper.Locator;
+using SpeachHelper.Common.DI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using SpeachHelper.Common.WordActionContainers.Contacts;
+using SpeachHelper.InputSimulation.Implements;
 
-namespace SpeachHelper.SpeachRecognition
+namespace SpeachHelper.Common.WordActionContainers.Implements
 {
-    public class EdgeWordActionContainer
+    public class EdgeWordActionContainer : IWordActionContainer, IBrowserWordActionContainer
     {
         private static Dictionary<string, Action> actions;
         private IBrowserInputSimulation edgeInputSimulation;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SpeachHelper.Locator
+namespace SpeachHelper.Common.DI
 {
     public static class ServiceLocator
     {

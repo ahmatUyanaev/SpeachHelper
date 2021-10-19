@@ -3,7 +3,7 @@ using System;
 using WindowsInput;
 using WindowsInput.Native;
 
-namespace SpeachHelper.InputSimulation
+namespace SpeachHelper.InputSimulation.Implements
 {
     public class EdgeInputSimulator : IBrowserInputSimulation
     {

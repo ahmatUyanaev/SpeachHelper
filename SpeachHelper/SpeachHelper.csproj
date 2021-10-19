@@ -109,10 +109,8 @@
     <Compile Include="MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Locator\ServiceLocator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpeachRecognition\EdgeWordActionContainer.cs" />
     <Compile Include="SpeachRecognition\SpeachRecognition.cs" />
     <Compile Include="Tesseract\TesseractEngine.cs" />
     <EmbeddedResource Include="MainPage.resx">
@@ -143,6 +141,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SpeachHelper.Common\SpeachHelper.Common.csproj">
+      <Project>{86e98910-d08c-4b08-9afd-25eee1e74b97}</Project>
+      <Name>SpeachHelper.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpeachHelper.InputSimulation\SpeachHelper.InputSimulation.csproj">
       <Project>{0950e6e6-8fac-41bd-91af-e5454065ff6c}</Project>
       <Name>SpeachHelper.InputSimulation</Name>

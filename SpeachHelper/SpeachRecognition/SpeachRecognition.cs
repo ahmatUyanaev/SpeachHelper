@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Microsoft.Speech.Recognition;
-
-using SpeachHelper.Locator;
+using SpeachHelper.Common.WordActionContainers.Implements;
+using SpeachHelper.Common.DI;
 
 namespace SpeachHelper.SpeachRecognition
 {
@@ -12,27 +12,35 @@ namespace SpeachHelper.SpeachRecognition
     {
         private  SpeechRecognitionEngine speachRecognition;
 
-        private  EdgeWordActionContainer grammarContainer;
+        private  EdgeWordActionContainer edgeBrowserWordActionContainer;
 
-        private  Dictionary<string, Action> actions;
+        private WindowsWordActionContainer windowsWordActionContainer;
 
-        public GrammarBuilder GrammarBuilder { get; set; }
+        private  Dictionary<string, Action> edgeActions;
+        private Dictionary<string, Action> windowsActions;
+
+
+        public GrammarBuilder grammarBuilder { get; set; }
 
         public SpeachRecognizer()
         {
-            grammarContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
+            edgeBrowserWordActionContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
+            windowsWordActionContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
 
-            actions = grammarContainer.GetActions();
+            edgeActions = edgeBrowserWordActionContainer.GetActions();
+            windowsActions = windowsWordActionContainer.GetActions();
 
             Init();
 
-            GrammarBuilder = new GrammarBuilder();
+            grammarBuilder = new GrammarBuilder();
 
-            GrammarBuilder.Append(new Choices(actions.Keys.ToArray()));
+            var joinedActions = JoinActions();
+
+            grammarBuilder.Append(new Choices(joinedActions.ToArray()));
 
             speachRecognition.SpeechRecognized += SpeechRecognizer_SpeechRecognized;
 
-            speachRecognition.LoadGrammar(new Grammar(GrammarBuilder));
+            speachRecognition.LoadGrammar(new Grammar(grammarBuilder));
         }
 
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -40,7 +48,11 @@ namespace SpeachHelper.SpeachRecognition
             
             Action command;
             var text = e.Result.Text;
-            if (actions.TryGetValue(text, out command))
+            if (edgeActions.TryGetValue(text, out command))
+            {
+                command.Invoke();
+            }
+            else if (windowsActions.TryGetValue(text, out command))
             {
                 command.Invoke();
             }
@@ -96,6 +108,14 @@ namespace SpeachHelper.SpeachRecognition
             var ci = new System.Globalization.CultureInfo("ru-RU");
             speachRecognition = new SpeechRecognitionEngine(ci);
             speachRecognition.SetInputToDefaultAudioDevice();
+        }
+
+        public List<string> JoinActions()
+        {
+            var edgeKeys = edgeActions.Keys.ToList();
+            var windowsKeys = windowsActions.Keys.ToList();
+            edgeKeys.AddRange(windowsKeys);
+            return edgeKeys;
         }
 
     }
