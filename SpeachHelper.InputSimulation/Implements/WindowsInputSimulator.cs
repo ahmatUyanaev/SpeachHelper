@@ -1,5 +1,5 @@
-﻿using System;
-using SpeachHelper.InputSimulation.Contracts;
+﻿using SpeachHelper.InputSimulation.Contracts;
+using System;
 using WindowsInput;
 using WindowsInput.Native;
 

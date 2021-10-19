@@ -1,11 +1,9 @@
 ﻿using SpeachHelper.Common.DI;
+using SpeachHelper.Common.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SpeachHelper.Common.WordActionContainers.Contacts;
 
 namespace SpeachHelper.Common.WordActionContainers.Implements
 {
@@ -25,10 +23,8 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
         {
             var dic = new Dictionary<string, Action>();
 
-            dic.Add("Скопируй", () => { windowsInputSimulator.Copy(); });
-            dic.Add("Вставить", () => { windowsInputSimulator.Paste(); });
-
-
+            dic.Add("Скопируй", windowsInputSimulator.Copy());
+            dic.Add("Вставить", windowsInputSimulator.Paste());
 
             return dic;
         }

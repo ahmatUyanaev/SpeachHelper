@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-
-using Emgu.CV;
+﻿using Emgu.CV;
 using Emgu.CV.OCR;
 using Emgu.CV.Structure;
-
 using HtmlAgilityPack;
-
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace SpeachHelper.TesseractRecognize
@@ -16,7 +13,7 @@ namespace SpeachHelper.TesseractRecognize
     {
         public Dictionary<string, List<int>> GetTextAndCordinates(string path)
         {
-           Tesseract tesseract = new Tesseract(@"C:\Users\A-UYANAEV\Desktop\rusdata", "rus", OcrEngineMode.TesseractLstmCombined);
+            Tesseract tesseract = new Tesseract(@"C:\Users\A-UYANAEV\Desktop\rusdata", "rus", OcrEngineMode.TesseractLstmCombined);
 
             tesseract.SetImage(new Image<Bgr, byte>(path));
 
@@ -59,7 +56,7 @@ namespace SpeachHelper.TesseractRecognize
                                                                       //@"C:\OCRTest\tessdata" contains 
                                                                       //the language package, without this the method crash and app breaks
             ocr.Init(@"C:\OCRTest\tessdata", "eng", true);
-            return ocr.DoOCR(new Bitmap(path), Rectangle.Empty).ToDictionary(kvp => kvp.Text, kvp => new Point(kvp.Top, kvp.Left));   
+            return ocr.DoOCR(new Bitmap(path), Rectangle.Empty).ToDictionary(kvp => kvp.Text, kvp => new Point(kvp.Top, kvp.Left));
             //Select(t => new Text {text = t.Text, Left = t.Left, Top = t.Top });
         }
     }

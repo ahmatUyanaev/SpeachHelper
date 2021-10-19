@@ -1,22 +1,21 @@
-﻿using System;
+﻿using Microsoft.Speech.Recognition;
+using SpeachHelper.Common.DI;
+using SpeachHelper.Common.WordActionContainers.Implements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Microsoft.Speech.Recognition;
-using SpeachHelper.Common.WordActionContainers.Implements;
-using SpeachHelper.Common.DI;
 
 namespace SpeachHelper.SpeachRecognition
 {
     public class SpeachRecognizer
     {
-        private  SpeechRecognitionEngine speachRecognition;
+        private SpeechRecognitionEngine speachRecognition;
 
-        private  EdgeWordActionContainer edgeBrowserWordActionContainer;
+        private EdgeWordActionContainer edgeBrowserWordActionContainer;
 
         private WindowsWordActionContainer windowsWordActionContainer;
 
-        private  Dictionary<string, Action> edgeActions;
+        private Dictionary<string, Action> edgeActions;
         private Dictionary<string, Action> windowsActions;
 
 
@@ -45,7 +44,7 @@ namespace SpeachHelper.SpeachRecognition
 
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            
+
             Action command;
             var text = e.Result.Text;
             if (edgeActions.TryGetValue(text, out command))
@@ -89,7 +88,7 @@ namespace SpeachHelper.SpeachRecognition
             //}
             #endregion
 
-           // MessageBox.Show(e.Result.Text);
+            // MessageBox.Show(e.Result.Text);
         }
 
         public void LoadGrammar(GrammarBuilder newGrammar)

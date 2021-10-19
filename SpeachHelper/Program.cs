@@ -1,11 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-
-using SpeachHelper.Common.DI;
-using SpeachHelper.SpeachRecognition;
-using SpeachHelper.InputSimulation.Implements;
-using SpeachHelper.InputSimulation.Contracts;
+﻿using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Implements;
+using SpeachHelper.InputSimulation.Implements;
+using SpeachHelper.SpeachRecognition;
+using System;
+using System.Windows.Forms;
 
 namespace SpeachHelper
 {

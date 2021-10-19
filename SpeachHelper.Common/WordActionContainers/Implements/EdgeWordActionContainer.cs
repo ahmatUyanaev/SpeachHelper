@@ -1,11 +1,10 @@
-﻿using SpeachHelper.InputSimulation;
+﻿using SpeachHelper.Common.DI;
+using SpeachHelper.Common.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
-using SpeachHelper.Common.DI;
+using SpeachHelper.InputSimulation.Implements;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using SpeachHelper.Common.WordActionContainers.Contacts;
-using SpeachHelper.InputSimulation.Implements;
 
 namespace SpeachHelper.Common.WordActionContainers.Implements
 {
@@ -24,7 +23,7 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
         {
             var dic = new Dictionary<string, Action>();
 
-            dic.Add("Открой браузер", () => { Process.Start("https://yandex.ru/"); } );
+            dic.Add("Открой браузер", () => { Process.Start("https://yandex.ru/"); });
             dic.Add("Открой вконтакте", () => { Process.Start("https://vk.com/axma_sila"); });
             dic.Add("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate());
 
