@@ -26,6 +26,11 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
             dic.Add("Открой браузер", () => { Process.Start("https://yandex.ru/"); });
             dic.Add("Открой вконтакте", () => { Process.Start("https://vk.com/axma_sila"); });
             dic.Add("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate());
+            dic.Add("Закрой вкладку", edgeInputSimulation.CloseCurrentTab());
+            dic.Add("История посещений", edgeInputSimulation.WievHistory());
+            dic.Add("Верни закрытую вкладку", edgeInputSimulation.OpenLastClosedTab());
+            dic.Add("Вернись назад", edgeInputSimulation.ComeBack());
+            dic.Add("Вернись вперед", edgeInputSimulation.ComeForward());
 
             return dic;
         }

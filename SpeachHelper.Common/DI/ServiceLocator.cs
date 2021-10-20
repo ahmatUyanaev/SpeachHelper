@@ -5,7 +5,7 @@ namespace SpeachHelper.Common.DI
 {
     public static class ServiceLocator
     {
-        private readonly static Dictionary<Type, object> services = new Dictionary<Type, object>();
+        private static readonly Dictionary<Type, object> services = new Dictionary<Type, object>();
 
         public static T GetService<T>()
         {
