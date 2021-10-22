@@ -3,7 +3,6 @@ using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
     public class EdgeWordActionContainer : IWordActionContainer, IBrowserWordActionContainer
     {
         private IBrowserInputSimulation edgeInputSimulation;
-        private List<Command> commands; 
+        private List<Command> commands;
 
 
         public EdgeWordActionContainer()

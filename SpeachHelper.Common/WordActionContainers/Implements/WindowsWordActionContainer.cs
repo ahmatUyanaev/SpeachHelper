@@ -3,7 +3,6 @@ using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
-using System;
 using System.Collections.Generic;
 
 namespace SpeachHelper.Common.WordActionContainers.Implements

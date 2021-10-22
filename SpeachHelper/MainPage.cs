@@ -3,7 +3,6 @@ using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Implements;
 using SpeachHelper.SpeachRecognition;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace SpeachHelper
@@ -28,7 +27,7 @@ namespace SpeachHelper
         {
             var edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
             var newCommand = edgeContainer.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
-            var updatedGrammer = new GrammarBuilder(new Choices(new string[]{ newCommand.CommandName }));
+            var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
             recognizer.LoadGrammar(updatedGrammer);
         }
 

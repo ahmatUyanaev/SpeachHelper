@@ -29,7 +29,7 @@ namespace SpeachHelper.SpeachRecognition
             commands = edgeBrowserWordActionContainer.GetActions();
             commands.AddRange(windowsWordActionContainer.GetActions());
 
-            
+
 
             Init();
 
@@ -51,7 +51,7 @@ namespace SpeachHelper.SpeachRecognition
             {
                 command.Invoke();
             }
-           
+
             #region
             //if (text == "Снимок")
             //{
