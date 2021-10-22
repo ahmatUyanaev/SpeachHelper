@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandModel\Command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DI\ServiceLocator.cs" />
     <Compile Include="WordActionContainers\Implements\EdgeWordActionContainer.cs" />

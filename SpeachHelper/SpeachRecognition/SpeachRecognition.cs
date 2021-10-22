@@ -1,4 +1,5 @@
 ﻿using Microsoft.Speech.Recognition;
+using SpeachHelper.Common.CommandModel;
 using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Implements;
 using System;
@@ -15,9 +16,8 @@ namespace SpeachHelper.SpeachRecognition
 
         private WindowsWordActionContainer windowsWordActionContainer;
 
-        private Dictionary<string, Action> edgeActions;
-        private Dictionary<string, Action> windowsActions;
-
+        private Dictionary<string, Action> actions;
+        private List<Command> commands;
 
         public GrammarBuilder grammarBuilder { get; set; }
 
@@ -26,16 +26,16 @@ namespace SpeachHelper.SpeachRecognition
             edgeBrowserWordActionContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
             windowsWordActionContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
 
-            edgeActions = edgeBrowserWordActionContainer.GetActions();
-            windowsActions = windowsWordActionContainer.GetActions();
+            commands = edgeBrowserWordActionContainer.GetActions();
+            commands.AddRange(windowsWordActionContainer.GetActions());
+
+            
 
             Init();
 
             grammarBuilder = new GrammarBuilder();
 
-            var joinedActions = JoinActions();
-
-            grammarBuilder.Append(new Choices(joinedActions.ToArray()));
+            grammarBuilder.Append(new Choices(commands.Select(c => c.CommandName).ToArray()));
 
             speachRecognition.SpeechRecognized += SpeechRecognizer_SpeechRecognized;
 
@@ -47,15 +47,11 @@ namespace SpeachHelper.SpeachRecognition
 
             Action command;
             var text = e.Result.Text;
-            if (edgeActions.TryGetValue(text, out command))
+            if (actions.TryGetValue(text, out command))
             {
                 command.Invoke();
             }
-            else if (windowsActions.TryGetValue(text, out command))
-            {
-                command.Invoke();
-            }
-
+           
             #region
             //if (text == "Снимок")
             //{
@@ -93,8 +89,8 @@ namespace SpeachHelper.SpeachRecognition
 
         public void LoadGrammar(GrammarBuilder newGrammar)
         {
-            speachRecognition.UnloadAllGrammars();
             speachRecognition.LoadGrammarAsync(new Grammar(newGrammar));
+            UpdateActions();
         }
 
         public void RecognizeAsync()
@@ -109,12 +105,9 @@ namespace SpeachHelper.SpeachRecognition
             speachRecognition.SetInputToDefaultAudioDevice();
         }
 
-        public List<string> JoinActions()
+        private void UpdateActions()
         {
-            var edgeKeys = edgeActions.Keys.ToList();
-            var windowsKeys = windowsActions.Keys.ToList();
-            edgeKeys.AddRange(windowsKeys);
-            return edgeKeys;
+            actions = commands.ToDictionary(x => x.CommandName, y => y.Action);
         }
 
     }

@@ -1,51 +1,49 @@
-﻿using SpeachHelper.Common.DI;
+﻿using SpeachHelper.Common.CommandModel;
+using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-
+using System.Linq;
 namespace SpeachHelper.Common.WordActionContainers.Implements
 {
     public class EdgeWordActionContainer : IWordActionContainer, IBrowserWordActionContainer
     {
-        private static Dictionary<string, Action> actions;
         private IBrowserInputSimulation edgeInputSimulation;
+        private List<Command> commands; 
+
 
         public EdgeWordActionContainer()
         {
             edgeInputSimulation = ServiceLocator.GetService<EdgeInputSimulator>();
-            actions = Mock();
+            FillMock();
         }
 
-        private Dictionary<string, Action> Mock()
+        private void FillMock()
         {
-            var dic = new Dictionary<string, Action>();
+            commands = new List<Command>();
 
-            dic.Add("Открой браузер", () => { Process.Start("https://yandex.ru/"); });
-            dic.Add("Открой вконтакте", () => { Process.Start("https://vk.com/axma_sila"); });
-            dic.Add("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate());
-            dic.Add("Закрой вкладку", edgeInputSimulation.CloseCurrentTab());
-            dic.Add("История посещений", edgeInputSimulation.WievHistory());
-            dic.Add("Верни закрытую вкладку", edgeInputSimulation.OpenLastClosedTab());
-            dic.Add("Вернись назад", edgeInputSimulation.ComeBack());
-            dic.Add("Вернись вперед", edgeInputSimulation.ComeForward());
-
-            return dic;
+            commands.Add(new Command("Открой браузер", () => Process.Start("https://yandex.ru/")));
+            commands.Add(new Command("Открой вконтакте", () => Process.Start("https://vk.com/axma_sila")));
+            commands.Add(new Command("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate()));
+            commands.Add(new Command("Закрой вкладку", edgeInputSimulation.CloseCurrentTab()));
+            commands.Add(new Command("История посещений", edgeInputSimulation.WievHistory()));
+            commands.Add(new Command("Верни закрытую вкладку", edgeInputSimulation.OpenLastClosedTab()));
+            commands.Add(new Command("Вернись назад", edgeInputSimulation.ComeBack()));
+            commands.Add(new Command("Вернись вперед", edgeInputSimulation.ComeForward()));
         }
 
-        public Dictionary<string, Action> GetActions()
+        public List<Command> GetActions()
         {
-            return actions;
+            return commands;
         }
 
-        public void AddBrowserWebSiteAction(string command, string openedSite)
+        public Command AddBrowserWebSiteAction(string command, string openedSite)
         {
-            actions.Add(command, () => { Process.Start(openedSite); });
+            commands.Add(new Command(command, () => Process.Start(openedSite)));
+            return commands.Last();
         }
-
-
-
     }
 }

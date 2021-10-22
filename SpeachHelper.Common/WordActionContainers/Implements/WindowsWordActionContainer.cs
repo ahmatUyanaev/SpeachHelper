@@ -1,4 +1,5 @@
-﻿using SpeachHelper.Common.DI;
+﻿using SpeachHelper.Common.CommandModel;
+using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
@@ -9,29 +10,24 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
 {
     public class WindowsWordActionContainer : IWordActionContainer
     {
-        private static Dictionary<string, Action> actions;
-
         private IWindowsInputSimulator windowsInputSimulator;
-
+        private List<Command> commands;
         public WindowsWordActionContainer()
         {
             windowsInputSimulator = ServiceLocator.GetService<WindowsInputSimulator>();
-            actions = Mock();
+            FillMock();
         }
 
-        private Dictionary<string, Action> Mock()
+        private void FillMock()
         {
-            var dic = new Dictionary<string, Action>();
-
-            dic.Add("Скопируй", windowsInputSimulator.Copy());
-            dic.Add("Вставить", windowsInputSimulator.Paste());
-
-            return dic;
+            commands = new List<Command>();
+            commands.Add(new Command("Скопируй", windowsInputSimulator.Copy()));
+            commands.Add(new Command("Вставить", windowsInputSimulator.Paste()));
         }
 
-        public Dictionary<string, Action> GetActions()
+        public List<Command> GetActions()
         {
-            return actions;
+            return commands;
         }
     }
 }
