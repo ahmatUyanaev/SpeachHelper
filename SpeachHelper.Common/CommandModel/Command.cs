@@ -13,6 +13,7 @@ namespace SpeachHelper.Common.CommandModel
             CommandName = command;
             Action = action;
         }
+
         public string CommandName { get; set; }
 
         public Action Action { get; set; }

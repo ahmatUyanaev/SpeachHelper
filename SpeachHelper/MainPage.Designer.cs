@@ -36,15 +36,19 @@ namespace SpeachHelper
             this.actionTextBox = new System.Windows.Forms.TextBox();
             this.wordsTextBox = new System.Windows.Forms.TextBox();
             this.addCommandBtn = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.commandsBox = new System.Windows.Forms.ListBox();
             this.mainWindowContainer.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainWindowContainer
             // 
             this.mainWindowContainer.Controls.Add(this.tabPage1);
             this.mainWindowContainer.Controls.Add(this.tabPage2);
+            this.mainWindowContainer.Controls.Add(this.tabPage3);
             this.mainWindowContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainWindowContainer.Location = new System.Drawing.Point(0, 0);
             this.mainWindowContainer.Name = "mainWindowContainer";
@@ -109,6 +113,26 @@ namespace SpeachHelper
             this.addCommandBtn.UseVisualStyleBackColor = true;
             this.addCommandBtn.Click += new System.EventHandler(this.addCommandBtnClick);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.commandsBox);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(794, 451);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // commandsBox
+            // 
+            this.commandsBox.FormattingEnabled = true;
+            this.commandsBox.ItemHeight = 16;
+            this.commandsBox.Location = new System.Drawing.Point(376, 129);
+            this.commandsBox.Name = "commandsBox";
+            this.commandsBox.Size = new System.Drawing.Size(302, 196);
+            this.commandsBox.TabIndex = 0;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -122,6 +146,7 @@ namespace SpeachHelper
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,6 +159,8 @@ namespace SpeachHelper
         private System.Windows.Forms.TextBox wordsTextBox;
         private System.Windows.Forms.Button addCommandBtn;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ListBox commandsBox;
     }
 }
 

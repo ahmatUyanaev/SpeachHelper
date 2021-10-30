@@ -6,5 +6,6 @@ namespace SpeachHelper.InputSimulation.Contracts
     {
         Action Copy();
         Action Paste();
+        Action ChangeLanguage();
     }
 }

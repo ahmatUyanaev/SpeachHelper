@@ -13,6 +13,12 @@ namespace SpeachHelper.InputSimulation.Implements
         {
             inputSimulator = new InputSimulator();
         }
+
+        public Action ChangeLanguage()
+        {
+            return () =>  inputSimulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKeyCode.MENU); 
+        }
+
         public Action Copy()
         {
             return () => { inputSimulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_C); };

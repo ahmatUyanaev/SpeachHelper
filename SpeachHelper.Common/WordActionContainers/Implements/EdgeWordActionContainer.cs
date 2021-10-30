@@ -29,7 +29,7 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
             commands.Add(new Command("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate()));
             commands.Add(new Command("Закрой вкладку", edgeInputSimulation.CloseCurrentTab()));
             commands.Add(new Command("История посещений", edgeInputSimulation.WievHistory()));
-            commands.Add(new Command("Верни закрытую вкладку", edgeInputSimulation.OpenLastClosedTab()));
+            commands.Add(new Command("Открой закрытую вкладку", edgeInputSimulation.OpenLastClosedTab()));
             commands.Add(new Command("Вернись назад", edgeInputSimulation.ComeBack()));
             commands.Add(new Command("Вернись вперед", edgeInputSimulation.ComeForward()));
         }

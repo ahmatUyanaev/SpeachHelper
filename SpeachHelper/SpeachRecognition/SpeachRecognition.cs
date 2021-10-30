@@ -29,7 +29,7 @@ namespace SpeachHelper.SpeachRecognition
             commands = edgeBrowserWordActionContainer.GetActions();
             commands.AddRange(windowsWordActionContainer.GetActions());
 
-
+            actions = commands.ToDictionary(x => x.CommandName, y => y.Action);
 
             Init();
 
@@ -44,7 +44,6 @@ namespace SpeachHelper.SpeachRecognition
 
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-
             Action command;
             var text = e.Result.Text;
             if (actions.TryGetValue(text, out command))
