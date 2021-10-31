@@ -4,6 +4,7 @@ using SpeachHelper.Common.WordActionContainers.Implements;
 using SpeachHelper.SpeachRecognition;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace SpeachHelper
 {
@@ -13,12 +14,22 @@ namespace SpeachHelper
         public static Bitmap BM = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 
         private SpeachRecognizer recognizer;
+        private WindowsWordActionContainer windowsContainer;
+        private EdgeWordActionContainer edgeContainer;
 
         public MainPage()
         {
             InitializeComponent();
 
             recognizer = ServiceLocator.GetService<SpeachRecognizer>();
+            edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
+            windowsContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
+
+            var commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
+            foreach (var name in commandNames)
+            {
+                commandsBox.Items.Add(name);
+            }
 
             recognizer.RecognizeAsync();
         }
@@ -36,6 +47,55 @@ namespace SpeachHelper
 
         }
 
-        
+        private void commandsBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+           //commandsBox.SelectedItem;
+        }
+
+        private void allRadioButton_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (allRadioButton.Checked)
+            {
+                commandsBox.Items.Clear();
+
+                var commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
+                commandNames.AddRange(windowsContainer.GetActions().Select(c => c.CommandName));
+
+                foreach (var name in commandNames)
+                {
+                    commandsBox.Items.Add(name);
+                }
+            }
+        }
+
+        private void browserRadioButton_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (browserRadioButton.Checked)
+            {
+                commandsBox.Items.Clear();
+
+                var commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
+
+                foreach (var name in commandNames)
+                {
+                    commandsBox.Items.Add(name);
+                }
+            }
+        }
+
+        private void windowsRadioButton_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (windowsRadioButton.Checked)
+            {
+                commandsBox.Items.Clear();
+
+                var commandNames = windowsContainer.GetActions().Select(c => c.CommandName);
+
+                foreach (var name in commandNames)
+                {
+                    commandsBox.Items.Add(name);
+                }
+            }
+        }
     }
 }
