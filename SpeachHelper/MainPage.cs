@@ -107,5 +107,32 @@ namespace SpeachHelper
                 }
             }
         }
+
+        private void trey_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                // Восстановить отображение окна    
+                WindowState = FormWindowState.Normal;
+                // Активировать форму и дать ей фокус
+                this.Activate();
+                // Отображение значков в области панели задач
+                this.ShowInTaskbar = true;
+                // Значок в области уведомлений скрыт
+                trey.Visible = false;
+            }
+        }
+
+        private void MainPage_SizeChanged(object sender, System.EventArgs e)
+        {
+            // Определяем, выбрана ли кнопка сворачивания
+            if (WindowState == FormWindowState.Minimized)
+            {
+                // Скрыть значок в области панели задач
+                this.ShowInTaskbar = false;
+                // Значок отображается в области уведомлений
+                trey.Visible = true;
+            }
+        }
     }
 }

@@ -29,7 +29,14 @@ namespace SpeachHelper
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.allRadioButton = new System.Windows.Forms.RadioButton();
+            this.browserRadioButton = new System.Windows.Forms.RadioButton();
+            this.windowsRadioButton = new System.Windows.Forms.RadioButton();
+            this.actionLabel = new System.Windows.Forms.Label();
+            this.wordLabel = new System.Windows.Forms.Label();
             this.commandsBox = new System.Windows.Forms.ListBox();
             this.actionTextBox = new System.Windows.Forms.TextBox();
             this.wordsTextBox = new System.Windows.Forms.TextBox();
@@ -37,11 +44,7 @@ namespace SpeachHelper
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
-            this.wordLabel = new System.Windows.Forms.Label();
-            this.actionLabel = new System.Windows.Forms.Label();
-            this.windowsRadioButton = new System.Windows.Forms.RadioButton();
-            this.browserRadioButton = new System.Windows.Forms.RadioButton();
-            this.allRadioButton = new System.Windows.Forms.RadioButton();
+            this.trey = new System.Windows.Forms.NotifyIcon(this.components);
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
@@ -65,6 +68,59 @@ namespace SpeachHelper
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Редактировать команды";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // allRadioButton
+            // 
+            this.allRadioButton.AutoSize = true;
+            this.allRadioButton.Checked = true;
+            this.allRadioButton.Location = new System.Drawing.Point(320, 113);
+            this.allRadioButton.Name = "allRadioButton";
+            this.allRadioButton.Size = new System.Drawing.Size(44, 21);
+            this.allRadioButton.TabIndex = 8;
+            this.allRadioButton.TabStop = true;
+            this.allRadioButton.Text = "All";
+            this.allRadioButton.UseVisualStyleBackColor = true;
+            this.allRadioButton.CheckedChanged += new System.EventHandler(this.allRadioButton_CheckedChanged);
+            // 
+            // browserRadioButton
+            // 
+            this.browserRadioButton.AutoSize = true;
+            this.browserRadioButton.Location = new System.Drawing.Point(320, 86);
+            this.browserRadioButton.Name = "browserRadioButton";
+            this.browserRadioButton.Size = new System.Drawing.Size(80, 21);
+            this.browserRadioButton.TabIndex = 7;
+            this.browserRadioButton.Text = "Browser";
+            this.browserRadioButton.UseVisualStyleBackColor = true;
+            this.browserRadioButton.CheckedChanged += new System.EventHandler(this.browserRadioButton_CheckedChanged);
+            // 
+            // windowsRadioButton
+            // 
+            this.windowsRadioButton.AutoSize = true;
+            this.windowsRadioButton.Location = new System.Drawing.Point(320, 59);
+            this.windowsRadioButton.Name = "windowsRadioButton";
+            this.windowsRadioButton.Size = new System.Drawing.Size(85, 21);
+            this.windowsRadioButton.TabIndex = 6;
+            this.windowsRadioButton.Text = "Windows";
+            this.windowsRadioButton.UseVisualStyleBackColor = true;
+            this.windowsRadioButton.CheckedChanged += new System.EventHandler(this.windowsRadioButton_CheckedChanged);
+            // 
+            // actionLabel
+            // 
+            this.actionLabel.AutoSize = true;
+            this.actionLabel.Location = new System.Drawing.Point(523, 106);
+            this.actionLabel.Name = "actionLabel";
+            this.actionLabel.Size = new System.Drawing.Size(47, 17);
+            this.actionLabel.TabIndex = 5;
+            this.actionLabel.Text = "Action";
+            // 
+            // wordLabel
+            // 
+            this.wordLabel.AutoSize = true;
+            this.wordLabel.Location = new System.Drawing.Point(523, 39);
+            this.wordLabel.Name = "wordLabel";
+            this.wordLabel.Size = new System.Drawing.Size(42, 17);
+            this.wordLabel.TabIndex = 4;
+            this.wordLabel.Text = "Word";
             // 
             // commandsBox
             // 
@@ -131,58 +187,12 @@ namespace SpeachHelper
             this.mainWindowContainer.Size = new System.Drawing.Size(802, 480);
             this.mainWindowContainer.TabIndex = 3;
             // 
-            // wordLabel
+            // trey
             // 
-            this.wordLabel.AutoSize = true;
-            this.wordLabel.Location = new System.Drawing.Point(523, 39);
-            this.wordLabel.Name = "wordLabel";
-            this.wordLabel.Size = new System.Drawing.Size(42, 17);
-            this.wordLabel.TabIndex = 4;
-            this.wordLabel.Text = "Word";
-            // 
-            // actionLabel
-            // 
-            this.actionLabel.AutoSize = true;
-            this.actionLabel.Location = new System.Drawing.Point(523, 106);
-            this.actionLabel.Name = "actionLabel";
-            this.actionLabel.Size = new System.Drawing.Size(47, 17);
-            this.actionLabel.TabIndex = 5;
-            this.actionLabel.Text = "Action";
-            // 
-            // windowsRadioButton
-            // 
-            this.windowsRadioButton.AutoSize = true;
-            this.windowsRadioButton.Location = new System.Drawing.Point(320, 59);
-            this.windowsRadioButton.Name = "windowsRadioButton";
-            this.windowsRadioButton.Size = new System.Drawing.Size(85, 21);
-            this.windowsRadioButton.TabIndex = 6;
-            this.windowsRadioButton.Text = "Windows";
-            this.windowsRadioButton.UseVisualStyleBackColor = true;
-            this.windowsRadioButton.CheckedChanged += new System.EventHandler(this.windowsRadioButton_CheckedChanged);
-            // 
-            // browserRadioButton
-            // 
-            this.browserRadioButton.AutoSize = true;
-            this.browserRadioButton.Location = new System.Drawing.Point(320, 86);
-            this.browserRadioButton.Name = "browserRadioButton";
-            this.browserRadioButton.Size = new System.Drawing.Size(80, 21);
-            this.browserRadioButton.TabIndex = 7;
-            this.browserRadioButton.Text = "Browser";
-            this.browserRadioButton.UseVisualStyleBackColor = true;
-            this.browserRadioButton.CheckedChanged += new System.EventHandler(this.browserRadioButton_CheckedChanged);
-            // 
-            // allRadioButton
-            // 
-            this.allRadioButton.AutoSize = true;
-            this.allRadioButton.Checked = true;
-            this.allRadioButton.Location = new System.Drawing.Point(320, 113);
-            this.allRadioButton.Name = "allRadioButton";
-            this.allRadioButton.Size = new System.Drawing.Size(44, 21);
-            this.allRadioButton.TabIndex = 8;
-            this.allRadioButton.TabStop = true;
-            this.allRadioButton.Text = "All";
-            this.allRadioButton.UseVisualStyleBackColor = true;
-            this.allRadioButton.CheckedChanged += new System.EventHandler(this.allRadioButton_CheckedChanged);
+            this.trey.Icon = ((System.Drawing.Icon)(resources.GetObject("trey.Icon")));
+            this.trey.Text = "Speach";
+            this.trey.Visible = true;
+            this.trey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trey_MouseDoubleClick);
             // 
             // MainPage
             // 
@@ -192,6 +202,7 @@ namespace SpeachHelper
             this.Controls.Add(this.mainWindowContainer);
             this.Name = "MainPage";
             this.Text = "Form1";
+            this.SizeChanged += new System.EventHandler(this.MainPage_SizeChanged);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -215,6 +226,7 @@ namespace SpeachHelper
         private System.Windows.Forms.Label actionLabel;
         private System.Windows.Forms.Label wordLabel;
         private System.Windows.Forms.RadioButton allRadioButton;
+        private System.Windows.Forms.NotifyIcon trey;
     }
 }
 
