@@ -16,7 +16,7 @@ namespace SpeachHelper.InputSimulation.Implements
 
         public Action ChangeLanguage()
         {
-            return () =>  inputSimulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKeyCode.MENU); 
+            return () => inputSimulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKeyCode.MENU);
         }
 
         public Action Copy()

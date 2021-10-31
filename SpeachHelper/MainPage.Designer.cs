@@ -192,7 +192,6 @@ namespace SpeachHelper
             this.Controls.Add(this.mainWindowContainer);
             this.Name = "MainPage";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MainPage_Load);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -203,7 +202,6 @@ namespace SpeachHelper
 
         #endregion
 
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox commandsBox;
         private System.Windows.Forms.TextBox actionTextBox;

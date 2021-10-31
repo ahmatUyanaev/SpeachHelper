@@ -13,7 +13,6 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
         private IBrowserInputSimulation edgeInputSimulation;
         private List<Command> commands;
 
-
         public EdgeWordActionContainer()
         {
             edgeInputSimulation = ServiceLocator.GetService<EdgeInputSimulator>();
@@ -24,8 +23,8 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
         {
             commands = new List<Command>();
 
-            commands.Add(new Command("Открой браузер", () => Process.Start("https://yandex.ru/")));
-            commands.Add(new Command("Открой вконтакте", () => Process.Start("https://vk.com/axma_sila")));
+            commands.Add(new Command("Открой браузер", () => Process.Start("https://yandex.ru/"), "https://yandex.ru/"));
+            commands.Add(new Command("Открой вконтакте", () => Process.Start("https://vk.com/axma_sila"), "https://vk.com/axma_sila"));
             commands.Add(new Command("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate()));
             commands.Add(new Command("Закрой вкладку", edgeInputSimulation.CloseCurrentTab()));
             commands.Add(new Command("История посещений", edgeInputSimulation.WievHistory()));

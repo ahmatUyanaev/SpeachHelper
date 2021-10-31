@@ -23,7 +23,6 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
             commands.Add(new Command("Скопируй", windowsInputSimulator.Copy()));
             commands.Add(new Command("Вставить", windowsInputSimulator.Paste()));
             commands.Add(new Command("Переключи язык", windowsInputSimulator.ChangeLanguage()));
-
         }
 
         public List<Command> GetActions()

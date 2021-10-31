@@ -37,19 +37,29 @@ namespace SpeachHelper
         private void addCommandBtnClick(object sender, System.EventArgs e)
         {
             var edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
+
+            if (edgeContainer.GetActions().Select(a=>a.CommandName).Contains(wordsTextBox.Text))
+            {
+                MessageBox.Show("такая команда уже есть");
+                return;
+            }
+            
             var newCommand = edgeContainer.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
             var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
             recognizer.LoadGrammar(updatedGrammer);
         }
 
-        private void MainPage_Load(object sender, System.EventArgs e)
-        {
-
-        }
-
         private void commandsBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-           //commandsBox.SelectedItem;
+            var dic = edgeContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
+            var selectedItem = commandsBox.SelectedItem as string;
+            string argument;
+
+            if (dic.TryGetValue(selectedItem, out argument))
+            {
+                wordsTextBox.Text = selectedItem;
+                actionTextBox.Text = argument;
+            }
         }
 
         private void allRadioButton_CheckedChanged(object sender, System.EventArgs e)
@@ -74,7 +84,7 @@ namespace SpeachHelper
             {
                 commandsBox.Items.Clear();
 
-                var commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
+                var commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
 
                 foreach (var name in commandNames)
                 {
