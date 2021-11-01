@@ -1,4 +1,4 @@
-﻿using SpeachHelper.Common.CommandModel;
+﻿using SpeachHelper.Common.Entitys;
 using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
@@ -27,7 +27,7 @@ namespace SpeachHelper.Common.WordActionContainers.Implements
             commands.Add(new Command("Открой вконтакте", () => Process.Start("https://vk.com/axma_sila"), "https://vk.com/axma_sila"));
             commands.Add(new Command("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate()));
             commands.Add(new Command("Закрой вкладку", edgeInputSimulation.CloseCurrentTab()));
-            commands.Add(new Command("История посещений", edgeInputSimulation.WievHistory()));
+            commands.Add(new Command("История", edgeInputSimulation.WievHistory()));
             commands.Add(new Command("Открой закрытую вкладку", edgeInputSimulation.OpenLastClosedTab()));
             commands.Add(new Command("Вернись назад", edgeInputSimulation.ComeBack()));
             commands.Add(new Command("Вернись вперед", edgeInputSimulation.ComeForward()));

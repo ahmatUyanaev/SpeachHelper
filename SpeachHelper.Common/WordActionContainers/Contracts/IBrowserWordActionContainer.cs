@@ -1,4 +1,4 @@
-﻿using SpeachHelper.Common.CommandModel;
+﻿using SpeachHelper.Common.Entitys;
 
 namespace SpeachHelper.Common.WordActionContainers.Contacts
 {

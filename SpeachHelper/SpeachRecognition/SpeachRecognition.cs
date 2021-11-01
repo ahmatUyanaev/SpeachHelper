@@ -1,5 +1,5 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Common.CommandModel;
+using SpeachHelper.Common.Entitys;
 using SpeachHelper.Common.DI;
 using SpeachHelper.Common.WordActionContainers.Implements;
 using System;
@@ -44,11 +44,10 @@ namespace SpeachHelper.SpeachRecognition
 
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            Action command;
             var text = e.Result.Text;
-            if (actions.TryGetValue(text, out command))
+            if (actions.TryGetValue(text, out Action action ))
             {
-                command.Invoke();
+                action.Invoke();
             }
 
             #region

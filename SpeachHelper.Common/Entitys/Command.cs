@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpeachHelper.Common.CommandModel
+namespace SpeachHelper.Common.Entitys
 {
     public class Command
     {
