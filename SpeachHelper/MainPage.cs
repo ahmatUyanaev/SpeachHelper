@@ -1,7 +1,7 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Common.DI;
-using SpeachHelper.Common.WordActionContainers.Implements;
-using SpeachHelper.SpeachRecognition;
+using SpeachHelper.Application.DI;
+using SpeachHelper.Application.WordActionContainers.Implements;
+using SpeachHelper.Application.SpeachRecognition;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
@@ -31,6 +31,15 @@ namespace SpeachHelper
                 commandsBox.Items.Add(name);
             }
 
+            TreeNode tovarNode = new TreeNode("Browser");
+          
+            foreach (var name in commandNames)
+            {
+                tovarNode.Nodes.Add(new TreeNode(name));
+            }
+           
+            treeView1.Nodes.Add(tovarNode);
+           
             recognizer.RecognizeAsync();
         }
 
@@ -43,7 +52,7 @@ namespace SpeachHelper
                 MessageBox.Show("такая команда уже есть");
                 return;
             }
-            
+            //TODO перенести логику в отдельный сервис
             var newCommand = edgeContainer.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
             var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
             recognizer.LoadGrammar(updatedGrammer);

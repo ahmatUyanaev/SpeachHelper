@@ -1,12 +1,12 @@
-﻿using SpeachHelper.Common.Entitys;
-using SpeachHelper.Common.DI;
-using SpeachHelper.Common.WordActionContainers.Contacts;
+﻿using SpeachHelper.Application.Entitys;
+using SpeachHelper.Application.DI;
+using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-namespace SpeachHelper.Common.WordActionContainers.Implements
+namespace SpeachHelper.Application.WordActionContainers.Implements
 {
     public class EdgeWordActionContainer : IWordActionContainer, IBrowserWordActionContainer
     {

@@ -1,7 +1,7 @@
-﻿using SpeachHelper.Common.Entitys;
+﻿using SpeachHelper.Application.Entitys;
 using System.Collections.Generic;
 
-namespace SpeachHelper.Common.WordActionContainers.Contacts
+namespace SpeachHelper.Application.WordActionContainers.Contacts
 {
     public interface IWordActionContainer
     {

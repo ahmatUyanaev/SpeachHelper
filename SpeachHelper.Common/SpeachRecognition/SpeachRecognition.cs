@@ -1,12 +1,12 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Common.Entitys;
-using SpeachHelper.Common.DI;
-using SpeachHelper.Common.WordActionContainers.Implements;
+using SpeachHelper.Application.Entitys;
+using SpeachHelper.Application.DI;
+using SpeachHelper.Application.WordActionContainers.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SpeachHelper.SpeachRecognition
+namespace SpeachHelper.Application.SpeachRecognition
 {
     public class SpeachRecognizer
     {

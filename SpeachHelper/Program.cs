@@ -1,7 +1,7 @@
-﻿using SpeachHelper.Common.DI;
-using SpeachHelper.Common.WordActionContainers.Implements;
+﻿using SpeachHelper.Application.DI;
+using SpeachHelper.Application.WordActionContainers.Implements;
 using SpeachHelper.InputSimulation.Implements;
-using SpeachHelper.SpeachRecognition;
+using SpeachHelper.Application.SpeachRecognition;
 using System;
 using System.Windows.Forms;
 
@@ -16,9 +16,9 @@ namespace SpeachHelper
         static void Main()
         {
             RegisterService();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainPage());
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+            System.Windows.Forms.Application.Run(new MainPage());
         }
 
         static void RegisterService()

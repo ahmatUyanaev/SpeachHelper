@@ -1,6 +1,6 @@
-﻿using SpeachHelper.Common.Entitys;
+﻿using SpeachHelper.Application.Entitys;
 
-namespace SpeachHelper.Common.WordActionContainers.Contacts
+namespace SpeachHelper.Application.WordActionContainers.Contacts
 {
     public interface IBrowserWordActionContainer
     {

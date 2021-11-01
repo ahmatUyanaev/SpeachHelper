@@ -42,9 +42,9 @@ namespace SpeachHelper
             this.wordsTextBox = new System.Windows.Forms.TextBox();
             this.addCommandBtn = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
             this.trey = new System.Windows.Forms.NotifyIcon(this.components);
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
@@ -124,11 +124,12 @@ namespace SpeachHelper
             // 
             // commandsBox
             // 
+            this.commandsBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.commandsBox.FormattingEnabled = true;
             this.commandsBox.ItemHeight = 16;
-            this.commandsBox.Location = new System.Drawing.Point(-4, 9);
+            this.commandsBox.Location = new System.Drawing.Point(3, 3);
             this.commandsBox.Name = "commandsBox";
-            this.commandsBox.Size = new System.Drawing.Size(318, 420);
+            this.commandsBox.Size = new System.Drawing.Size(311, 445);
             this.commandsBox.TabIndex = 3;
             this.commandsBox.SelectedIndexChanged += new System.EventHandler(this.commandsBox_SelectedIndexChanged);
             // 
@@ -158,7 +159,7 @@ namespace SpeachHelper
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.listView1);
+            this.tabPage1.Controls.Add(this.treeView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -166,15 +167,6 @@ namespace SpeachHelper
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Команды";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(56, 47);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(536, 307);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // mainWindowContainer
             // 
@@ -193,6 +185,14 @@ namespace SpeachHelper
             this.trey.Text = "Speach";
             this.trey.Visible = true;
             this.trey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trey_MouseDoubleClick);
+            // 
+            // treeView1
+            // 
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeView1.Location = new System.Drawing.Point(3, 3);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(150, 445);
+            this.treeView1.TabIndex = 0;
             // 
             // MainPage
             // 
@@ -219,7 +219,6 @@ namespace SpeachHelper
         private System.Windows.Forms.TextBox wordsTextBox;
         private System.Windows.Forms.Button addCommandBtn;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TabControl mainWindowContainer;
         private System.Windows.Forms.RadioButton browserRadioButton;
         private System.Windows.Forms.RadioButton windowsRadioButton;
@@ -227,6 +226,7 @@ namespace SpeachHelper
         private System.Windows.Forms.Label wordLabel;
         private System.Windows.Forms.RadioButton allRadioButton;
         private System.Windows.Forms.NotifyIcon trey;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 
