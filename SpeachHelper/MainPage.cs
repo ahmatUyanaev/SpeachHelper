@@ -11,8 +11,6 @@ namespace SpeachHelper
     public partial class MainPage : Form
     {
 
-        public static Bitmap BM = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-
         private SpeachRecognizer recognizer;
         private WindowsWordActionContainer windowsContainer;
         private EdgeWordActionContainer edgeContainer;
@@ -121,25 +119,18 @@ namespace SpeachHelper
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                // Восстановить отображение окна    
                 WindowState = FormWindowState.Normal;
-                // Активировать форму и дать ей фокус
                 this.Activate();
-                // Отображение значков в области панели задач
                 this.ShowInTaskbar = true;
-                // Значок в области уведомлений скрыт
                 trey.Visible = false;
             }
         }
 
         private void MainPage_SizeChanged(object sender, System.EventArgs e)
         {
-            // Определяем, выбрана ли кнопка сворачивания
             if (WindowState == FormWindowState.Minimized)
             {
-                // Скрыть значок в области панели задач
                 this.ShowInTaskbar = false;
-                // Значок отображается в области уведомлений
                 trey.Visible = true;
             }
         }
