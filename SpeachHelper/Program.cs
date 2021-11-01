@@ -1,9 +1,8 @@
 ﻿using SpeachHelper.Application.DI;
+using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using SpeachHelper.InputSimulation.Implements;
-using SpeachHelper.Application.SpeachRecognition;
 using System;
-using System.Windows.Forms;
 
 namespace SpeachHelper
 {

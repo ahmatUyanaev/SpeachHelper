@@ -1,6 +1,6 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Application.Entitys;
 using SpeachHelper.Application.DI;
+using SpeachHelper.Application.Entitys;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using System;
 using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace SpeachHelper.Application.SpeachRecognition
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             var text = e.Result.Text;
-            if (actions.TryGetValue(text, out Action action ))
+            if (actions.TryGetValue(text, out Action action))
             {
                 action.Invoke();
             }

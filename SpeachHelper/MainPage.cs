@@ -1,10 +1,10 @@
 ﻿using Microsoft.Speech.Recognition;
 using SpeachHelper.Application.DI;
-using SpeachHelper.Application.WordActionContainers.Implements;
 using SpeachHelper.Application.SpeachRecognition;
+using SpeachHelper.Application.WordActionContainers.Implements;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace SpeachHelper
 {
@@ -32,14 +32,14 @@ namespace SpeachHelper
             }
 
             TreeNode tovarNode = new TreeNode("Browser");
-          
+
             foreach (var name in commandNames)
             {
                 tovarNode.Nodes.Add(new TreeNode(name));
             }
-           
+
             treeView1.Nodes.Add(tovarNode);
-           
+
             recognizer.RecognizeAsync();
         }
 
@@ -47,7 +47,7 @@ namespace SpeachHelper
         {
             var edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
 
-            if (edgeContainer.GetActions().Select(a=>a.CommandName).Contains(wordsTextBox.Text))
+            if (edgeContainer.GetActions().Select(a => a.CommandName).Contains(wordsTextBox.Text))
             {
                 MessageBox.Show("такая команда уже есть");
                 return;
