@@ -4,18 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86E98910-D08C-4B08-9AFD-25EEE1E74B97}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpeachHelper.Common</RootNamespace>
-    <AssemblyName>SpeachHelper.Common</AssemblyName>
+    <ProjectGuid>{E97F30C6-BD1B-4F1A-8E33-F2EBAC96DAA7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleApp1</RootNamespace>
+    <AssemblyName>ConsoleApp1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,6 +26,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,10 +37,6 @@
   <ItemGroup>
     <Reference Include="IronOcr, Version=2021.11.0.0, Culture=neutral, PublicKeyToken=c2cbcea5ea3f6d8d, processorArchitecture=MSIL">
       <HintPath>..\packages\IronOcr.2021.11.0\lib\net40\IronOcr.dll</HintPath>
-    </Reference>
-    <Reference Include="microsoft.speech, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\microsoft.speech.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -52,26 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OCR\OcrEngine.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DI\ServiceLocator.cs" />
-    <Compile Include="SpeachRecognition\SpeachRecognition.cs" />
-    <Compile Include="WordActionContainers\Implements\EdgeWordActionContainer.cs" />
-    <Compile Include="WordActionContainers\Contracts\IBrowserWordActionContainer.cs" />
-    <Compile Include="WordActionContainers\Contracts\IWordActionContainer.cs" />
-    <Compile Include="WordActionContainers\Implements\WindowsWordActionContainer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpeachHelper.Domain\SpeachHelper.Domain.csproj">
-      <Project>{6a3fcb7c-296e-41e3-b2be-385d3a6ba8d8}</Project>
-      <Name>SpeachHelper.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpeachHelper.InputSimulation\SpeachHelper.InputSimulation.csproj">
-      <Project>{0950E6E6-8FAC-41BD-91AF-E5454065FF6C}</Project>
-      <Name>SpeachHelper.InputSimulation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
