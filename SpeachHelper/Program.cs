@@ -1,6 +1,5 @@
-﻿using SpeachHelper.Application.DI;
-using SpeachHelper.Application.SpeachRecognition;
-using SpeachHelper.Application.WordActionContainers.Implements;
+﻿using Ninject;
+using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using System;
 
@@ -14,6 +13,7 @@ namespace SpeachHelper
         [STAThread]
         static void Main()
         {
+
             RegisterService();
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
@@ -22,11 +22,12 @@ namespace SpeachHelper
 
         static void RegisterService()
         {
-            ServiceLocator.Register(new EdgeInputSimulator());
-            ServiceLocator.Register(new WindowsInputSimulator());
-            ServiceLocator.Register(new WindowsWordActionContainer());
-            ServiceLocator.Register(new EdgeWordActionContainer());
-            ServiceLocator.Register(new SpeachRecognizer());
+            IKernel ninjectKernel = new StandardKernel();
+            ninjectKernel.Bind<IBrowserInputSimulation>().To<EdgeInputSimulator>();
+            ninjectKernel.Bind<IWindowsInputSimulator>().To<WindowsInputSimulator>();
+            ninjectKernel.Bind<IWordActionContainer>().To<WindowsWordActionContainer>();
+            ninjectKernel.Bind<IWordActionContainer>().To<EdgeWordActionContainer>();
+            ninjectKernel.Bind<ISpeachRecognizer>().To<SpeachRecognizer>();
         }
     }
 }

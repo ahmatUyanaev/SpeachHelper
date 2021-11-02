@@ -1,8 +1,4 @@
-﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Application.DI;
-using SpeachHelper.Application.SpeachRecognition;
-using SpeachHelper.Application.WordActionContainers.Implements;
-using System.Drawing;
+﻿using Ninject;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -10,18 +6,21 @@ namespace SpeachHelper
 {
     public partial class MainPage : Form
     {
+        private IKernel ninjectKernel;
 
-        private SpeachRecognizer recognizer;
-        private WindowsWordActionContainer windowsContainer;
-        private EdgeWordActionContainer edgeContainer;
+        private ISpeachRecognizer recognizer;
+        private IWordActionContainer windowsContainer;
+        private IWordActionContainer edgeContainer;
 
         public MainPage()
         {
             InitializeComponent();
 
-            recognizer = ServiceLocator.GetService<SpeachRecognizer>();
-            edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
-            windowsContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
+            ninjectKernel = new StandardKernel();
+
+            edgeContainer = ninjectKernel.Get<EdgeWordActionContainer>();
+            recognizer = ninjectKernel.Get<SpeachRecognizer>();
+            windowsContainer = ninjectKernel.Get<WindowsWordActionContainer>();
 
             var commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
             foreach (var name in commandNames)
@@ -43,7 +42,6 @@ namespace SpeachHelper
 
         private void addCommandBtnClick(object sender, System.EventArgs e)
         {
-            var edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
 
             if (edgeContainer.GetActions().Select(a => a.CommandName).Contains(wordsTextBox.Text))
             {
@@ -51,9 +49,9 @@ namespace SpeachHelper
                 return;
             }
             //TODO перенести логику в отдельный сервис
-            var newCommand = edgeContainer.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
-            var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
-            recognizer.LoadGrammar(updatedGrammer);
+            //var newCommand = edgeContainer.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
+            //var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
+            //recognizer.LoadGrammar(updatedGrammer);
         }
 
         private void commandsBox_SelectedIndexChanged(object sender, System.EventArgs e)

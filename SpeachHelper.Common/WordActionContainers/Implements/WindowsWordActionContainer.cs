@@ -1,4 +1,4 @@
-﻿using SpeachHelper.Application.DI;
+﻿using Ninject;
 using SpeachHelper.Application.Entitys;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
@@ -9,11 +9,16 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
 {
     public class WindowsWordActionContainer : IWordActionContainer
     {
+        private IKernel ninjectKernel;
+
         private IWindowsInputSimulator windowsInputSimulator;
         private List<Command> commands;
+
         public WindowsWordActionContainer()
         {
-            windowsInputSimulator = ServiceLocator.GetService<WindowsInputSimulator>();
+            ninjectKernel = new StandardKernel();
+
+            windowsInputSimulator = ninjectKernel.Get<WindowsInputSimulator>();
             FillMock();
         }
 

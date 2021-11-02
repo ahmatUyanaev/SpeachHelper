@@ -1,4 +1,4 @@
-﻿using SpeachHelper.Application.DI;
+﻿using Ninject;
 using SpeachHelper.Application.Entitys;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
@@ -10,12 +10,16 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
 {
     public class EdgeWordActionContainer : IWordActionContainer, IBrowserWordActionContainer
     {
+        private IKernel ninjectKernel;
+
         private IBrowserInputSimulation edgeInputSimulation;
         private List<Command> commands;
 
         public EdgeWordActionContainer()
         {
-            edgeInputSimulation = ServiceLocator.GetService<EdgeInputSimulator>();
+            ninjectKernel = new StandardKernel();
+
+            edgeInputSimulation = ninjectKernel.Get<EdgeInputSimulator>();
             FillMock();
         }
 

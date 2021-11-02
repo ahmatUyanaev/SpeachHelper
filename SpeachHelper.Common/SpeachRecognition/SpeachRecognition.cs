@@ -1,5 +1,5 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Application.DI;
+using Ninject;
 using SpeachHelper.Application.Entitys;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace SpeachHelper.Application.SpeachRecognition
 {
-    public class SpeachRecognizer
+    public class SpeachRecognizer : ISpeachRecognizer
     {
         private SpeechRecognitionEngine speachRecognition;
 
@@ -23,8 +23,10 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         public SpeachRecognizer()
         {
-            edgeBrowserWordActionContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
-            windowsWordActionContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
+            IKernel ninjectKernel = new StandardKernel();
+            ninjectKernel.Get<EdgeWordActionContainer>();
+            edgeBrowserWordActionContainer = ninjectKernel.Get<EdgeWordActionContainer>(); ;
+            windowsWordActionContainer = ninjectKernel.Get<WindowsWordActionContainer>();
 
             commands = edgeBrowserWordActionContainer.GetActions();
             commands.AddRange(windowsWordActionContainer.GetActions());
