@@ -64,9 +64,6 @@
       <HintPath>..\..\..\..\Downloads\microsoft.speech.dll</HintPath>
     </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -147,6 +144,10 @@
     <ProjectReference Include="..\SpeachHelper.InputSimulation\SpeachHelper.InputSimulation.csproj">
       <Project>{0950e6e6-8fac-41bd-91af-e5454065ff6c}</Project>
       <Name>SpeachHelper.InputSimulation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpeachHelper.Persistence\SpeachHelper.Persistence.csproj">
+      <Project>{D64B5EC5-2540-463C-A8DF-7A9F0F4B2833}</Project>
+      <Name>SpeachHelper.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

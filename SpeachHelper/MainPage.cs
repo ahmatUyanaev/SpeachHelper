@@ -1,5 +1,5 @@
 ﻿using Microsoft.Speech.Recognition;
-using Ninject;
+using SpeachHelper.Application.DI;
 using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
@@ -10,8 +10,6 @@ namespace SpeachHelper
 {
     public partial class MainPage : Form
     {
-        private IKernel ninjectKernel;
-
         private ISpeachRecognizer recognizer;
         private IWordActionContainer windowsContainer;
         private IWordActionContainer edgeContainer;
@@ -20,21 +18,20 @@ namespace SpeachHelper
         {
             InitializeComponent();
 
-            ninjectKernel = new StandardKernel();
 
-            edgeContainer = ninjectKernel.Get<EdgeWordActionContainer>();
-            recognizer = ninjectKernel.Get<SpeachRecognizer>();
-            windowsContainer = ninjectKernel.Get<WindowsWordActionContainer>();
+            edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
+            recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
+            windowsContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
 
-            var commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
-            foreach (var name in commandNames)
+            System.Collections.Generic.IEnumerable<string> commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
+            foreach (string name in commandNames)
             {
                 commandsBox.Items.Add(name);
             }
 
             TreeNode tovarNode = new TreeNode("Browser");
 
-            foreach (var name in commandNames)
+            foreach (string name in commandNames)
             {
                 tovarNode.Nodes.Add(new TreeNode(name));
             }
@@ -53,15 +50,15 @@ namespace SpeachHelper
                 return;
             }
             //TODO перенести логику в отдельный сервис
-            var newCommand = ((EdgeWordActionContainer)edgeContainer).AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
-            var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
+            Application.Entitys.Command newCommand = ((EdgeWordActionContainer)edgeContainer).AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
+            GrammarBuilder updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
             recognizer.LoadGrammar(updatedGrammer);
         }
 
         private void commandsBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            var dic = edgeContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
-            var selectedItem = commandsBox.SelectedItem as string;
+            System.Collections.Generic.Dictionary<string, string> dic = edgeContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
+            string selectedItem = commandsBox.SelectedItem as string;
 
             if (dic.TryGetValue(selectedItem, out string argument))
             {
@@ -76,10 +73,10 @@ namespace SpeachHelper
             {
                 commandsBox.Items.Clear();
 
-                var commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
+                System.Collections.Generic.List<string> commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
                 commandNames.AddRange(windowsContainer.GetActions().Select(c => c.CommandName));
 
-                foreach (var name in commandNames)
+                foreach (string name in commandNames)
                 {
                     commandsBox.Items.Add(name);
                 }
@@ -92,9 +89,9 @@ namespace SpeachHelper
             {
                 commandsBox.Items.Clear();
 
-                var commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
+                System.Collections.Generic.IEnumerable<string> commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
 
-                foreach (var name in commandNames)
+                foreach (string name in commandNames)
                 {
                     commandsBox.Items.Add(name);
                 }
@@ -107,9 +104,9 @@ namespace SpeachHelper
             {
                 commandsBox.Items.Clear();
 
-                var commandNames = windowsContainer.GetActions().Select(c => c.CommandName);
+                System.Collections.Generic.IEnumerable<string> commandNames = windowsContainer.GetActions().Select(c => c.CommandName);
 
-                foreach (var name in commandNames)
+                foreach (string name in commandNames)
                 {
                     commandsBox.Items.Add(name);
                 }
@@ -121,8 +118,8 @@ namespace SpeachHelper
             if (WindowState == FormWindowState.Minimized)
             {
                 WindowState = FormWindowState.Normal;
-                this.Activate();
-                this.ShowInTaskbar = true;
+                Activate();
+                ShowInTaskbar = true;
                 trey.Visible = false;
             }
         }
@@ -131,7 +128,7 @@ namespace SpeachHelper
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                this.ShowInTaskbar = false;
+                ShowInTaskbar = false;
                 trey.Visible = true;
             }
         }

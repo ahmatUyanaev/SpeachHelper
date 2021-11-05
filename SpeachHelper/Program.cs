@@ -1,38 +1,35 @@
-﻿using Ninject;
+﻿using SpeachHelper.Application.DI;
 using SpeachHelper.Application.SpeachRecognition;
-using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
+using SpeachHelper.Persistance.Session;
 using System;
 
 namespace SpeachHelper
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.ц
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-
             RegisterService();
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
             System.Windows.Forms.Application.Run(new MainPage());
         }
 
-        static void RegisterService()
+        private static void RegisterService()
         {
-            using (IKernel ninjectKernel = new StandardKernel())
-            {
-                ninjectKernel.Bind<IBrowserInputSimulation>().To<EdgeInputSimulator>();
-                ninjectKernel.Bind<IWindowsInputSimulator>().To<WindowsInputSimulator>();
-                ninjectKernel.Bind<IWordActionContainer>().To<WindowsWordActionContainer>();
-                ninjectKernel.Bind<IWordActionContainer>().To<EdgeWordActionContainer>();
-                ninjectKernel.Bind<ISpeachRecognizer>().To<SpeachRecognizer>();
-            }
+            ServiceLocator.Register<ISessionFactory>(new SessionFactory());
+            ServiceLocator.Register<IBrowserInputSimulation>(new EdgeInputSimulator());
+            ServiceLocator.Register<IWindowsInputSimulator>(new WindowsInputSimulator());
+            ServiceLocator.Register(new WindowsWordActionContainer());
+            ServiceLocator.Register(new EdgeWordActionContainer());
+            ServiceLocator.Register<ISpeachRecognizer>(new SpeachRecognizer());
         }
     }
 }

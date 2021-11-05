@@ -1,5 +1,5 @@
 ﻿using Microsoft.Speech.Recognition;
-using Ninject;
+using SpeachHelper.Application.DI;
 using SpeachHelper.Application.Entitys;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
@@ -24,12 +24,10 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         public SpeachRecognizer()
         {
-            using (IKernel ninjectKernel = new StandardKernel())
-            {
-                ninjectKernel.Get<EdgeWordActionContainer>();
-                edgeBrowserWordActionContainer = ninjectKernel.Get<EdgeWordActionContainer>(); ;
-                windowsWordActionContainer = ninjectKernel.Get<WindowsWordActionContainer>();
-            }
+
+            edgeBrowserWordActionContainer = ServiceLocator.GetService<EdgeWordActionContainer>(); ;
+            windowsWordActionContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
+
 
             commands = edgeBrowserWordActionContainer.GetActions();
             commands.AddRange(windowsWordActionContainer.GetActions());
@@ -49,7 +47,7 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            var text = e.Result.Text;
+            string text = e.Result.Text;
             if (actions.TryGetValue(text, out Action action))
             {
                 action.Invoke();
@@ -103,7 +101,7 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         private void Init()
         {
-            var ci = new System.Globalization.CultureInfo("ru-RU");
+            System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("ru-RU");
             speachRecognition = new SpeechRecognitionEngine(ci);
             speachRecognition.SetInputToDefaultAudioDevice();
         }
