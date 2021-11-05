@@ -1,10 +1,10 @@
-﻿using SpeachHelper.Application.SpeachRecognition;
+﻿using Ninject;
+using SpeachHelper.Application.SpeachRecognition;
+using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
+using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using System;
-using Ninject;
-using SpeachHelper.InputSimulation.Contracts;
-using SpeachHelper.Application.WordActionContainers.Contacts;
 
 namespace SpeachHelper
 {

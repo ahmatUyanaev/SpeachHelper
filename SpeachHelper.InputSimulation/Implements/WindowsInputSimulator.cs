@@ -22,7 +22,7 @@ namespace SpeachHelper.InputSimulation.Implements
 
         public Action ChangeLanguage()
         {
-            test(16,11);
+            test(16, 11);
             return () => inputSimulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKeyCode.MENU);
         }
 

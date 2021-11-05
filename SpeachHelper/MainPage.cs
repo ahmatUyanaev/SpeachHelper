@@ -3,8 +3,6 @@ using Ninject;
 using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
-using SpeachHelper.InputSimulation.Contracts;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
