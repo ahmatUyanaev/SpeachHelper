@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace SpeachHelper.Application.SpeachRecognition
 {
-    public class SpeachRecognizer : ISpeachRecognizer
+    public class SpeachRecognizer : ISpeachRecognizer, IDisposable
     {
         private SpeechRecognitionEngine speachRecognition;
 
@@ -24,10 +24,12 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         public SpeachRecognizer()
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Get<EdgeWordActionContainer>();
-            edgeBrowserWordActionContainer = ninjectKernel.Get<EdgeWordActionContainer>(); ;
-            windowsWordActionContainer = ninjectKernel.Get<WindowsWordActionContainer>();
+            using (IKernel ninjectKernel = new StandardKernel())
+            {
+                ninjectKernel.Get<EdgeWordActionContainer>();
+                edgeBrowserWordActionContainer = ninjectKernel.Get<EdgeWordActionContainer>(); ;
+                windowsWordActionContainer = ninjectKernel.Get<WindowsWordActionContainer>();
+            }
 
             commands = edgeBrowserWordActionContainer.GetActions();
             commands.AddRange(windowsWordActionContainer.GetActions());
@@ -111,5 +113,9 @@ namespace SpeachHelper.Application.SpeachRecognition
             actions = commands.ToDictionary(x => x.CommandName, y => y.Action);
         }
 
+        public void Dispose()
+        {
+            speachRecognition.Dispose();
+        }
     }
 }

@@ -25,12 +25,14 @@ namespace SpeachHelper
 
         static void RegisterService()
         {
-            IKernel ninjectKernel = new StandardKernel();
-            ninjectKernel.Bind<IBrowserInputSimulation>().To<EdgeInputSimulator>();
-            ninjectKernel.Bind<IWindowsInputSimulator>().To<WindowsInputSimulator>();
-            ninjectKernel.Bind<IWordActionContainer>().To<WindowsWordActionContainer>();
-            ninjectKernel.Bind<IWordActionContainer>().To<EdgeWordActionContainer>();
-            ninjectKernel.Bind<ISpeachRecognizer>().To<SpeachRecognizer>();
+            using (IKernel ninjectKernel = new StandardKernel())
+            {
+                ninjectKernel.Bind<IBrowserInputSimulation>().To<EdgeInputSimulator>();
+                ninjectKernel.Bind<IWindowsInputSimulator>().To<WindowsInputSimulator>();
+                ninjectKernel.Bind<IWordActionContainer>().To<WindowsWordActionContainer>();
+                ninjectKernel.Bind<IWordActionContainer>().To<EdgeWordActionContainer>();
+                ninjectKernel.Bind<ISpeachRecognizer>().To<SpeachRecognizer>();
+            }
         }
     }
 }
