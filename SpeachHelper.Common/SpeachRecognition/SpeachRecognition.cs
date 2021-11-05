@@ -1,6 +1,7 @@
 ﻿using Microsoft.Speech.Recognition;
 using Ninject;
 using SpeachHelper.Application.Entitys;
+using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ namespace SpeachHelper.Application.SpeachRecognition
     {
         private SpeechRecognitionEngine speachRecognition;
 
-        private EdgeWordActionContainer edgeBrowserWordActionContainer;
+        private IWordActionContainer edgeBrowserWordActionContainer;
 
-        private WindowsWordActionContainer windowsWordActionContainer;
+        private IWordActionContainer windowsWordActionContainer;
 
         private Dictionary<string, Action> actions;
         private List<Command> commands;

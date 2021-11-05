@@ -55,18 +55,17 @@ namespace SpeachHelper
                 return;
             }
             //TODO перенести логику в отдельный сервис
-            //var newCommand = edgeContainer.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
-            //var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
-            //recognizer.LoadGrammar(updatedGrammer);
+            var newCommand = ((EdgeWordActionContainer)edgeContainer).AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
+            var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
+            recognizer.LoadGrammar(updatedGrammer);
         }
 
         private void commandsBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             var dic = edgeContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
             var selectedItem = commandsBox.SelectedItem as string;
-            string argument;
 
-            if (dic.TryGetValue(selectedItem, out argument))
+            if (dic.TryGetValue(selectedItem, out string argument))
             {
                 wordsTextBox.Text = selectedItem;
                 actionTextBox.Text = argument;

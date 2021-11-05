@@ -18,8 +18,8 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
         public EdgeWordActionContainer()
         {
             ninjectKernel = new StandardKernel();
-
             edgeInputSimulation = ninjectKernel.Get<EdgeInputSimulator>();
+
             FillMock();
         }
 
