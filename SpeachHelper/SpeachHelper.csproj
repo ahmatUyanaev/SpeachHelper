@@ -133,8 +133,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpeachHelper.Common\SpeachHelper.Application.csproj">
-      <Project>{86e98910-d08c-4b08-9afd-25eee1e74b97}</Project>
+    <ProjectReference Include="..\SpeachHelper.Application\SpeachHelper.Application.csproj">
+      <Project>{737E8213-B8BD-4272-9FB6-5A89469EE7E2}</Project>
       <Name>SpeachHelper.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\SpeachHelper.Domain\SpeachHelper.Domain.csproj">

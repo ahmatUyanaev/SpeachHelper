@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86E98910-D08C-4B08-9AFD-25EEE1E74B97}</ProjectGuid>
+    <ProjectGuid>{737E8213-B8BD-4272-9FB6-5A89469EE7E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SpeachHelper.Application</RootNamespace>
