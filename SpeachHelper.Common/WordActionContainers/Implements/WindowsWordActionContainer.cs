@@ -1,5 +1,5 @@
-﻿using SpeachHelper.Application.DI;
-using SpeachHelper.Application.Entitys;
+﻿using SpeachHelper.Domain.DI;
+using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using System.Collections.Generic;

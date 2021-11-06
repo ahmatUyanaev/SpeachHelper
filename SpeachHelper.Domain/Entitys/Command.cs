@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpeachHelper.Application.Entitys
+namespace SpeachHelper.Domain.Entitys
 {
     public class Command
     {

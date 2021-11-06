@@ -1,10 +1,11 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Application.DI;
+using SpeachHelper.Domain.DI;
 using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using System.Linq;
 using System.Windows.Forms;
+using SpeachHelper.Persistence.Repository.Implements;
 
 namespace SpeachHelper
 {
@@ -18,12 +19,15 @@ namespace SpeachHelper
         {
             InitializeComponent();
 
+            var commandsRepository = ServiceLocator.GetService<CommandsRepository>();
+
+            var commands = commandsRepository.GetCommandsAsync().Result;
 
             edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
             windowsContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
 
-            System.Collections.Generic.IEnumerable<string> commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
+            var commandNames = edgeContainer.GetActions().Select(c => c.CommandName);
             foreach (string name in commandNames)
             {
                 commandsBox.Items.Add(name);
@@ -50,7 +54,7 @@ namespace SpeachHelper
                 return;
             }
             //TODO перенести логику в отдельный сервис
-            Application.Entitys.Command newCommand = ((EdgeWordActionContainer)edgeContainer).AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
+            var newCommand = ((EdgeWordActionContainer)edgeContainer).AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
             GrammarBuilder updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
             recognizer.LoadGrammar(updatedGrammer);
         }

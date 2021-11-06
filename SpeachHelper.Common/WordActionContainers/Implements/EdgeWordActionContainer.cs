@@ -1,5 +1,5 @@
-﻿using SpeachHelper.Application.DI;
-using SpeachHelper.Application.Entitys;
+﻿using SpeachHelper.Domain.DI;
+using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.Persistance.Session;
@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 namespace SpeachHelper.Application.WordActionContainers.Implements
 {
-    public class EdgeWordActionContainer : IWordActionContainer, IBrowserWordActionContainer
+    public class EdgeWordActionContainer :  IBrowserWordActionContainer
     {
 
         private IBrowserInputSimulation edgeInputSimulation;
@@ -18,7 +18,6 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
         public EdgeWordActionContainer()
         {
             edgeInputSimulation = ServiceLocator.GetService<IBrowserInputSimulation>();
-
             FillMock();
         }
 
@@ -35,14 +34,7 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
             commands.Add(new Command("Вернись назад", edgeInputSimulation.ComeBack()));
             commands.Add(new Command("Вернись вперед", edgeInputSimulation.ComeForward()));
 
-            ConcurrentBag<Command> ts = new ConcurrentBag<Command>();
-
-            foreach (Command item in commands)
-            {
-                ts.Add(item);
-            }
-
-            DBQuery(ts);
+          //DBQuery(commands);
         }
 
         public List<Command> GetActions()
@@ -56,7 +48,7 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
             return commands.Last();
         }
 
-        public async void DBQuery(ConcurrentBag<Command> commands)
+        public async void DBQuery(List<Command> commands)
         {
 
             ISession session = ServiceLocator.GetService<ISessionFactory>().CreateSession();

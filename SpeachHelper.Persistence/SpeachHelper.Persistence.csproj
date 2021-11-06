@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\Contracts\ICommandsRepository.cs" />
+    <Compile Include="Repository\Implements\CommandsRepository.cs" />
     <Compile Include="Session\ISession.cs" />
     <Compile Include="Session\ISessionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpeachHelper.Domain\SpeachHelper.Domain.csproj">
+      <Project>{6a3fcb7c-296e-41e3-b2be-385d3a6ba8d8}</Project>
+      <Name>SpeachHelper.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

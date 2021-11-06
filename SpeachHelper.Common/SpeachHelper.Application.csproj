@@ -52,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DI\ServiceLocator.cs" />
     <Compile Include="OCR\OcrEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpeachRecognition\ISpeachRecognizer.cs" />
