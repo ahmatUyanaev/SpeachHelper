@@ -1,17 +1,16 @@
-﻿using SpeachHelper.Domain.DI;
+﻿using SpeachHelper.Application.WordActionContainers.Contacts;
+using SpeachHelper.Domain.DI;
 using SpeachHelper.Domain.Entitys;
-using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.Persistance.Session;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+
 namespace SpeachHelper.Application.WordActionContainers.Implements
 {
-    public class EdgeWordActionContainer :  IBrowserWordActionContainer
+    public class EdgeWordActionContainer : IBrowserWordActionContainer
     {
-
         private IBrowserInputSimulation edgeInputSimulation;
         private List<Command> commands;
 
@@ -34,7 +33,7 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
             commands.Add(new Command("Вернись назад", edgeInputSimulation.ComeBack()));
             commands.Add(new Command("Вернись вперед", edgeInputSimulation.ComeForward()));
 
-          //DBQuery(commands);
+            //DBQuery(commands);
         }
 
         public List<Command> GetActions()
@@ -50,7 +49,6 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
 
         public async void DBQuery(List<Command> commands)
         {
-
             ISession session = ServiceLocator.GetService<ISessionFactory>().CreateSession();
 
             foreach (Command command in commands)

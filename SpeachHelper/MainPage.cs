@@ -1,11 +1,11 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Domain.DI;
 using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
+using SpeachHelper.Domain.DI;
+using SpeachHelper.Persistence.Repository.Implements;
 using System.Linq;
 using System.Windows.Forms;
-using SpeachHelper.Persistence.Repository.Implements;
 
 namespace SpeachHelper
 {
@@ -47,7 +47,6 @@ namespace SpeachHelper
 
         private void addCommandBtnClick(object sender, System.EventArgs e)
         {
-
             if (edgeContainer.GetActions().Select(a => a.CommandName).Contains(wordsTextBox.Text))
             {
                 MessageBox.Show("такая команда уже есть");

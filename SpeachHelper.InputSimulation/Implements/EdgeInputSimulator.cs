@@ -36,7 +36,6 @@ namespace SpeachHelper.InputSimulation.Implements
                 inputSimulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL,
                     new[] { VirtualKeyCode.SHIFT, VirtualKeyCode.VK_T });
             };
-
         }
 
         public Action OpenNewTabSimulate()

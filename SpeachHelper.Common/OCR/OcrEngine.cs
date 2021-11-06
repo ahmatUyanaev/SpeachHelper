@@ -7,7 +7,6 @@ namespace SpeachHelper.Common.OCR
     {
         public OcrEngine()
         {
-
             var Ocr = new IronTesseract();
             Ocr.Language = OcrLanguage.Russian;
 
@@ -16,8 +15,6 @@ namespace SpeachHelper.Common.OCR
                 var Result = Ocr.Read(Input);
                 Console.WriteLine(Result.Text);
             }
-
-
         }
     }
 }

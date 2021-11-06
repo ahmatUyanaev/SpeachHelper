@@ -6,13 +6,14 @@ namespace SpeachHelper.Domain.Entitys
     {
         public Command()
         {
-
         }
+
         public Command(string command, Action action)
         {
             CommandName = command;
             Action = action;
         }
+
         public Command(string command, Action action, string argument)
         {
             CommandName = command;

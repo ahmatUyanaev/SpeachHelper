@@ -1,6 +1,6 @@
-﻿using SpeachHelper.Domain.DI;
+﻿using SpeachHelper.Application.WordActionContainers.Contacts;
+using SpeachHelper.Domain.DI;
 using SpeachHelper.Domain.Entitys;
-using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.InputSimulation.Contracts;
 using System.Collections.Generic;
 
@@ -8,7 +8,6 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
 {
     public class WindowsWordActionContainer : IWordActionContainer
     {
-
         private IWindowsInputSimulator windowsInputSimulator;
         private List<Command> commands;
 

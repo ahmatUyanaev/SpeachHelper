@@ -15,6 +15,5 @@ namespace SpeachHelper.InputSimulation.Contracts
         Action ComeBack();
 
         Action ComeForward();
-
     }
 }

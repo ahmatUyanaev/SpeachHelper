@@ -1,8 +1,8 @@
 ﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Domain.DI;
-using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
+using SpeachHelper.Domain.DI;
+using SpeachHelper.Domain.Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +24,8 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         public SpeachRecognizer()
         {
-
             edgeBrowserWordActionContainer = ServiceLocator.GetService<EdgeWordActionContainer>(); ;
             windowsWordActionContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
-
 
             commands = edgeBrowserWordActionContainer.GetActions();
             commands.AddRange(windowsWordActionContainer.GetActions());

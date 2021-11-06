@@ -1,13 +1,12 @@
-﻿using SpeachHelper.Domain.DI;
-using SpeachHelper.Application.SpeachRecognition;
+﻿using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Implements;
+using SpeachHelper.Domain.DI;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using SpeachHelper.Persistance.Session;
-using System;
-using SpeachHelper.Persistence.Repository;
-using SpeachHelper.Persistence.Repository.Implements;
 using SpeachHelper.Persistence.Repository.Contracts;
+using SpeachHelper.Persistence.Repository.Implements;
+using System;
 
 namespace SpeachHelper
 {
@@ -33,7 +32,7 @@ namespace SpeachHelper
             ServiceLocator.Register(new WindowsWordActionContainer());
             ServiceLocator.Register(new EdgeWordActionContainer());
             ServiceLocator.Register<ISpeachRecognizer>(new SpeachRecognizer());
-            ServiceLocator.Register<ICommandsRepository>(new CommandsRepository()); 
+            ServiceLocator.Register<ICommandsRepository>(new CommandsRepository());
         }
     }
 }

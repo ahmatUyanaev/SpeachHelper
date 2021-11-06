@@ -9,7 +9,6 @@ namespace SpeachHelper.Persistance.Session
     {
         private IDbConnection connection;
 
-
         public Session(IDbConnection connection)
         {
             this.connection = connection;
