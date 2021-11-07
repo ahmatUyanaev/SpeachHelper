@@ -3,8 +3,11 @@ using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using SpeachHelper.Domain.DI;
+using SpeachHelper.Persistence.Repository.Contracts;
 using SpeachHelper.Persistence.Repository.Implements;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpeachHelper
@@ -13,17 +16,17 @@ namespace SpeachHelper
     {
         private ISpeachRecognizer recognizer;
         private IWordActionContainer windowsContainer;
-        private IWordActionContainer edgeContainer;
+        private IBrowserWordActionContainer edgeContainer;
 
         public MainPage()
         {
             InitializeComponent();
 
-            var commandsRepository = ServiceLocator.GetService<CommandsRepository>();
+            var commandsRepository = ServiceLocator.GetService<ICommandsRepository>();
 
-            var commands = commandsRepository.GetCommandsAsync().Result;
+            //var commands = Task.Run(async() => await commandsRepository.GetCommandsAsync());
 
-            edgeContainer = ServiceLocator.GetService<EdgeWordActionContainer>();
+            edgeContainer = ServiceLocator.GetService<IBrowserWordActionContainer>();
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
             windowsContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
 
@@ -41,7 +44,6 @@ namespace SpeachHelper
             }
 
             treeView1.Nodes.Add(tovarNode);
-
             recognizer.RecognizeAsync();
         }
 
@@ -53,15 +55,15 @@ namespace SpeachHelper
                 return;
             }
             //TODO перенести логику в отдельный сервис
-            var newCommand = ((EdgeWordActionContainer)edgeContainer).AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
-            GrammarBuilder updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
+            var newCommand = edgeContainer.AddBrowserWebSiteAction(wordsTextBox.Text, actionTextBox.Text);
+            var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
             recognizer.LoadGrammar(updatedGrammer);
         }
 
         private void commandsBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            System.Collections.Generic.Dictionary<string, string> dic = edgeContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
-            string selectedItem = commandsBox.SelectedItem as string;
+            var dic = edgeContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
+            var selectedItem = commandsBox.SelectedItem as string;
 
             if (dic.TryGetValue(selectedItem, out string argument))
             {
@@ -76,7 +78,7 @@ namespace SpeachHelper
             {
                 commandsBox.Items.Clear();
 
-                System.Collections.Generic.List<string> commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
+                var commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
                 commandNames.AddRange(windowsContainer.GetActions().Select(c => c.CommandName));
 
                 foreach (string name in commandNames)
@@ -116,6 +118,7 @@ namespace SpeachHelper
             }
         }
 
+        #region trey
         private void trey_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
@@ -135,5 +138,6 @@ namespace SpeachHelper
                 trey.Visible = true;
             }
         }
+        #endregion
     }
 }

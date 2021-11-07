@@ -13,7 +13,7 @@ namespace SpeachHelper.Application.SpeachRecognition
     {
         private SpeechRecognitionEngine speachRecognition;
 
-        private IWordActionContainer edgeBrowserWordActionContainer;
+        private IBrowserWordActionContainer edgeBrowserWordActionContainer;
 
         private IWordActionContainer windowsWordActionContainer;
 
@@ -24,7 +24,7 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         public SpeachRecognizer()
         {
-            edgeBrowserWordActionContainer = ServiceLocator.GetService<EdgeWordActionContainer>(); ;
+            edgeBrowserWordActionContainer = ServiceLocator.GetService<IBrowserWordActionContainer>(); ;
             windowsWordActionContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
 
             commands = edgeBrowserWordActionContainer.GetActions();
