@@ -1,7 +1,7 @@
 ﻿using IronOcr;
 using System;
 
-namespace SpeachHelper.Common.OCR
+namespace SpeachHelper.Application.OCR
 {
     public class OcrEngine
     {
