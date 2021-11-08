@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpeachHelper.Domain.Enums;
+using System;
 
 namespace SpeachHelper.Domain.Entitys
 {
@@ -21,10 +22,12 @@ namespace SpeachHelper.Domain.Entitys
             Argument = argument;
         }
 
-        public string CommandName { get; set; }
+        public string CommandName { get; private set; }
 
-        public Action Action { get; set; }
+        public Action Action { get; private set; }
 
-        public string Argument { get; set; }
+        public string Argument { get; private set; }
+
+        public CommandType Type { get; private set; }
     }
 }
