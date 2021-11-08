@@ -44,9 +44,7 @@ namespace SpeachHelper
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
             this.trey = new System.Windows.Forms.NotifyIcon(this.components);
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPage2.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,7 +78,6 @@ namespace SpeachHelper
             this.allRadioButton.TabStop = true;
             this.allRadioButton.Text = "All";
             this.allRadioButton.UseVisualStyleBackColor = true;
-            this.allRadioButton.CheckedChanged += new System.EventHandler(this.allRadioButton_CheckedChanged);
             // 
             // browserRadioButton
             // 
@@ -91,7 +88,6 @@ namespace SpeachHelper
             this.browserRadioButton.TabIndex = 7;
             this.browserRadioButton.Text = "Browser";
             this.browserRadioButton.UseVisualStyleBackColor = true;
-            this.browserRadioButton.CheckedChanged += new System.EventHandler(this.browserRadioButton_CheckedChanged);
             // 
             // windowsRadioButton
             // 
@@ -102,7 +98,6 @@ namespace SpeachHelper
             this.windowsRadioButton.TabIndex = 6;
             this.windowsRadioButton.Text = "Windows";
             this.windowsRadioButton.UseVisualStyleBackColor = true;
-            this.windowsRadioButton.CheckedChanged += new System.EventHandler(this.windowsRadioButton_CheckedChanged);
             // 
             // actionLabel
             // 
@@ -131,7 +126,6 @@ namespace SpeachHelper
             this.commandsBox.Name = "commandsBox";
             this.commandsBox.Size = new System.Drawing.Size(311, 445);
             this.commandsBox.TabIndex = 3;
-            this.commandsBox.SelectedIndexChanged += new System.EventHandler(this.commandsBox_SelectedIndexChanged);
             // 
             // actionTextBox
             // 
@@ -155,11 +149,9 @@ namespace SpeachHelper
             this.addCommandBtn.TabIndex = 0;
             this.addCommandBtn.Text = "Добавить команду";
             this.addCommandBtn.UseVisualStyleBackColor = true;
-            this.addCommandBtn.Click += new System.EventHandler(this.addCommandBtnClick);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.treeView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -186,14 +178,6 @@ namespace SpeachHelper
             this.trey.Visible = true;
             this.trey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trey_MouseDoubleClick);
             // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeView1.Location = new System.Drawing.Point(3, 3);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(150, 445);
-            this.treeView1.TabIndex = 0;
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -205,7 +189,6 @@ namespace SpeachHelper
             this.SizeChanged += new System.EventHandler(this.MainPage_SizeChanged);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
             this.mainWindowContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -226,7 +209,6 @@ namespace SpeachHelper
         private System.Windows.Forms.Label wordLabel;
         private System.Windows.Forms.RadioButton allRadioButton;
         private System.Windows.Forms.NotifyIcon trey;
-        private System.Windows.Forms.TreeView treeView1;
     }
 }
 
