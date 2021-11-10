@@ -1,6 +1,5 @@
 ﻿using SpeachHelper.InputSimulation.Contracts;
 using System;
-using System.Linq;
 using WindowsInput;
 using WindowsInput.Native;
 
@@ -18,10 +17,7 @@ namespace SpeachHelper.InputSimulation.Implements
         public void test(int codeOne, int codeTwo)
         {
             // test how can save custome actions in db
-            VirtualKeyCode valOne = (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), "16");
-            
-            var valuesAsArray = Enum.GetValues(typeof(VirtualKeyCode)).Cast<VirtualKeyCode>().ToList().Select(x => x.ToString());
-
+            VirtualKeyCode valOne = (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), codeOne.ToString());
         }
 
         public Action ChangeLanguage()

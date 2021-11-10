@@ -1,5 +1,5 @@
-﻿using SpeachHelper.Infrastructure.DI;
-using SpeachHelper.Infrastructure.Entitys;
+﻿using SpeachHelper.Domain.DI;
+using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Persistance.Session;
 using SpeachHelper.Persistence.Repository.Contracts;
 using System.Collections.Generic;

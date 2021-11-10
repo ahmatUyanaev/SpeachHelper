@@ -1,4 +1,4 @@
-﻿using SpeachHelper.Infrastructure.Entitys;
+﻿using SpeachHelper.Domain.Entitys;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

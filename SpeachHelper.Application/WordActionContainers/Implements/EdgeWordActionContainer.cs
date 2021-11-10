@@ -1,6 +1,6 @@
 ﻿using SpeachHelper.Application.WordActionContainers.Contacts;
-using SpeachHelper.Infrastructure.DI;
-using SpeachHelper.Infrastructure.Entitys;
+using SpeachHelper.Domain.DI;
+using SpeachHelper.Domain.Entitys;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.Persistance.Session;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
             commands.Add(new Command("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate()));
             commands.Add(new Command("Закрой вкладку", edgeInputSimulation.CloseCurrentTab()));
             commands.Add(new Command("История", edgeInputSimulation.WievHistory()));
-            commands.Add(new Command("Верний вкладку", edgeInputSimulation.OpenLastClosedTab()));
+            commands.Add(new Command("Открой закрытую вкладку", edgeInputSimulation.OpenLastClosedTab()));
             commands.Add(new Command("Вернись назад", edgeInputSimulation.ComeBack()));
             commands.Add(new Command("Вернись вперед", edgeInputSimulation.ComeForward()));
 

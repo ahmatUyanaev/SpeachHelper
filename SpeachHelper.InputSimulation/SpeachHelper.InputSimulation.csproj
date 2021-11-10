@@ -48,7 +48,6 @@
     <Compile Include="Contracts\IWindowsInputSimulator.cs" />
     <Compile Include="Implements\EdgeInputSimulator.cs" />
     <Compile Include="Implements\WindowsInputSimulator.cs" />
-    <Compile Include="KeyBoard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

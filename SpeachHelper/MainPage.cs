@@ -1,6 +1,5 @@
 ﻿using SpeachHelper.Application.SpeachRecognition;
-using SpeachHelper.Infrastructure.DI;
-using SpeachHelper.InputSimulation;
+using SpeachHelper.Domain.DI;
 using SpeachHelper.Presentation;
 using System.Windows.Forms;
 using View = SpeachHelper.Presentation.View;
@@ -11,23 +10,15 @@ namespace SpeachHelper
     {
         private ISpeachRecognizer recognizer;
         private IView view;
-        private KeyBoard keyBoard;
+
         public MainPage()
         {
             InitializeComponent();
-            keyBoard = new KeyBoard();
-            foreach (var item in keyBoard.GetAllKeyBoardButtons())
-            {
-                keys.Items.Add(item);
-            }
+
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
 
             view = new View();
 
-            keys.SelectedIndexChanged += (o, s) =>
-            {
-                keyBoard.MapToInputSimulator(keys.SelectedItem.ToString());
-            };
             addCommandBtn.Click += (o, s) =>
             {
                 view.Init(wordsTextBox: wordsTextBox.Text, actionTextBox: actionTextBox.Text);

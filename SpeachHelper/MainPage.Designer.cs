@@ -44,16 +44,12 @@ namespace SpeachHelper
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
             this.trey = new System.Windows.Forms.NotifyIcon(this.components);
-            this.pathOrHotheyBtn = new System.Windows.Forms.RadioButton();
-            this.keys = new System.Windows.Forms.ComboBox();
             this.tabPage2.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.keys);
-            this.tabPage2.Controls.Add(this.pathOrHotheyBtn);
             this.tabPage2.Controls.Add(this.allRadioButton);
             this.tabPage2.Controls.Add(this.browserRadioButton);
             this.tabPage2.Controls.Add(this.windowsRadioButton);
@@ -106,7 +102,7 @@ namespace SpeachHelper
             // actionLabel
             // 
             this.actionLabel.AutoSize = true;
-            this.actionLabel.Location = new System.Drawing.Point(523, 150);
+            this.actionLabel.Location = new System.Drawing.Point(523, 106);
             this.actionLabel.Name = "actionLabel";
             this.actionLabel.Size = new System.Drawing.Size(47, 17);
             this.actionLabel.TabIndex = 5;
@@ -133,7 +129,7 @@ namespace SpeachHelper
             // 
             // actionTextBox
             // 
-            this.actionTextBox.Location = new System.Drawing.Point(526, 184);
+            this.actionTextBox.Location = new System.Drawing.Point(526, 126);
             this.actionTextBox.Name = "actionTextBox";
             this.actionTextBox.Size = new System.Drawing.Size(228, 22);
             this.actionTextBox.TabIndex = 2;
@@ -182,26 +178,6 @@ namespace SpeachHelper
             this.trey.Visible = true;
             this.trey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trey_MouseDoubleClick);
             // 
-            // pathOrHotheyBtn
-            // 
-            this.pathOrHotheyBtn.AutoSize = true;
-            this.pathOrHotheyBtn.Location = new System.Drawing.Point(598, 150);
-            this.pathOrHotheyBtn.Name = "pathOrHotheyBtn";
-            this.pathOrHotheyBtn.Size = new System.Drawing.Size(118, 21);
-            this.pathOrHotheyBtn.TabIndex = 9;
-            this.pathOrHotheyBtn.TabStop = true;
-            this.pathOrHotheyBtn.Text = "pathOrHothey";
-            this.pathOrHotheyBtn.UseVisualStyleBackColor = true;
-            // 
-            // keys
-            // 
-            this.keys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.keys.FormattingEnabled = true;
-            this.keys.Location = new System.Drawing.Point(339, 229);
-            this.keys.Name = "keys";
-            this.keys.Size = new System.Drawing.Size(165, 24);
-            this.keys.TabIndex = 10;
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -233,8 +209,6 @@ namespace SpeachHelper
         private System.Windows.Forms.Label wordLabel;
         private System.Windows.Forms.RadioButton allRadioButton;
         private System.Windows.Forms.NotifyIcon trey;
-        private System.Windows.Forms.RadioButton pathOrHotheyBtn;
-        private System.Windows.Forms.ComboBox keys;
     }
 }
 
