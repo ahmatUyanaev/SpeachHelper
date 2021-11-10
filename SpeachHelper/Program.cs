@@ -1,7 +1,7 @@
 ﻿using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
-using SpeachHelper.Domain.DI;
+using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using SpeachHelper.Persistance.Session;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpeachHelper.Domain.Enums
+namespace SpeachHelper.Infrastructure.Enums
 {
     public enum CommandType
     {

@@ -1,7 +1,7 @@
-﻿using SpeachHelper.Domain.Enums;
+﻿using SpeachHelper.Infrastructure.Enums;
 using System;
 
-namespace SpeachHelper.Domain.Entitys
+namespace SpeachHelper.Infrastructure.Entitys
 {
     public class Command
     {

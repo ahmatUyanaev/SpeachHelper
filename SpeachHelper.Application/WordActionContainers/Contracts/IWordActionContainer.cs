@@ -1,4 +1,4 @@
-﻿using SpeachHelper.Domain.Entitys;
+﻿using SpeachHelper.Infrastructure.Entitys;
 using System.Collections.Generic;
 
 namespace SpeachHelper.Application.WordActionContainers.Contacts

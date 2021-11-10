@@ -2,7 +2,7 @@
 using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
-using SpeachHelper.Domain.DI;
+using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Persistence.Repository.Contracts;
 using System.Collections.Generic;
 using System.Linq;
