@@ -1,4 +1,4 @@
-﻿using SpeachHelper.Domain.DI;
+﻿using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Persistance.Session;
 using SpeachHelper.Persistence.Repository.Contracts;

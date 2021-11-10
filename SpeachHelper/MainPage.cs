@@ -1,5 +1,5 @@
 ﻿using SpeachHelper.Application.SpeachRecognition;
-using SpeachHelper.Domain.DI;
+using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Presentation;
 using System.Windows.Forms;
 using View = SpeachHelper.Presentation.View;

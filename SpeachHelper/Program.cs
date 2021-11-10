@@ -1,7 +1,7 @@
 ﻿using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
-using SpeachHelper.Domain.DI;
+using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.InputSimulation.Implements;
 using SpeachHelper.Persistance.Session;
@@ -14,7 +14,7 @@ namespace SpeachHelper
     internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.ц
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         private static void Main()

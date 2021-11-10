@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D64B5EC5-2540-463C-A8DF-7A9F0F4B2833}</ProjectGuid>
+    <ProjectGuid>{891BD5EF-7588-4440-BAF7-743892B2413E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpeachHelper.Persistence</RootNamespace>
-    <AssemblyName>SpeachHelper.Persistence</AssemblyName>
+    <RootNamespace>SpeachHelper.Infrastructure</RootNamespace>
+    <AssemblyName>SpeachHelper.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,26 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repository\Contracts\ICommandsRepository.cs" />
-    <Compile Include="Repository\Implements\CommandsRepository.cs" />
-    <Compile Include="Session\ISession.cs" />
-    <Compile Include="Session\ISessionFactory.cs" />
+    <Compile Include="DI\ServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Session\Session.cs" />
-    <Compile Include="Session\SessionFactory.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SpeachHelper.Domain\SpeachHelper.Domain.csproj">
-      <Project>{6a3fcb7c-296e-41e3-b2be-385d3a6ba8d8}</Project>
-      <Name>SpeachHelper.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpeachHelper.Infrastructure\SpeachHelper.Infrastructure.csproj">
-      <Project>{891bd5ef-7588-4440-baf7-743892b2413e}</Project>
-      <Name>SpeachHelper.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

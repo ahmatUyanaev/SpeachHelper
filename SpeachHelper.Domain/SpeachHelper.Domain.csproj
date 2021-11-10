@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DI\ServiceLocator.cs" />
     <Compile Include="Entitys\Command.cs" />
     <Compile Include="Enums\CommandType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

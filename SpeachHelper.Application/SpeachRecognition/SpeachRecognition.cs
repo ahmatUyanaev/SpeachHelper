@@ -1,7 +1,7 @@
 ﻿using Microsoft.Speech.Recognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
-using SpeachHelper.Domain.DI;
+using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Domain.Entitys;
 using System;
 using System.Collections.Generic;

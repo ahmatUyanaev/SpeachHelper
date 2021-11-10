@@ -143,6 +143,10 @@
       <Project>{6a3fcb7c-296e-41e3-b2be-385d3a6ba8d8}</Project>
       <Name>SpeachHelper.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SpeachHelper.Infrastructure\SpeachHelper.Infrastructure.csproj">
+      <Project>{891bd5ef-7588-4440-baf7-743892b2413e}</Project>
+      <Name>SpeachHelper.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpeachHelper.InputSimulation\SpeachHelper.InputSimulation.csproj">
       <Project>{0950e6e6-8fac-41bd-91af-e5454065ff6c}</Project>
       <Name>SpeachHelper.InputSimulation</Name>
