@@ -31,8 +31,7 @@ namespace SpeachHelper
             ServiceLocator.Register<ICommandsRepository>(new CommandsRepository());
             ServiceLocator.Register<IBrowserInputSimulation>(new EdgeInputSimulator());
             ServiceLocator.Register<IWindowsInputSimulator>(new WindowsInputSimulator());
-            ServiceLocator.Register(new WindowsWordActionContainer());
-            ServiceLocator.Register<IBrowserWordActionContainer>(new EdgeWordActionContainer());
+            ServiceLocator.Register<IWordActionContainer>(new WordActionContainer());
             ServiceLocator.Register<ISpeachRecognizer>(new SpeachRecognizer());
         }
     }

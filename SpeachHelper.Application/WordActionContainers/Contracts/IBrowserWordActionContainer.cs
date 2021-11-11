@@ -2,7 +2,7 @@
 
 namespace SpeachHelper.Application.WordActionContainers.Contacts
 {
-    public interface IBrowserWordActionContainer : IWordActionContainer
+    public interface IBrowserWordActionContainer
     {
         Command AddBrowserWebSiteAction(string command, string openedSite);
     }

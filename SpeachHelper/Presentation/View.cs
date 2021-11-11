@@ -14,9 +14,8 @@ namespace SpeachHelper.Presentation
     public class View : IView
     {
         private ISpeachRecognizer recognizer;
-        private IWordActionContainer windowsContainer;
         private ICommandsRepository commandsRepository;
-        private IBrowserWordActionContainer edgeContainer;
+        private IWordActionContainer wordActionContainer;
 
         public List<string> filtredCommandNames { get; set; }
 
@@ -26,9 +25,8 @@ namespace SpeachHelper.Presentation
         public View()
         {
             commandsRepository = ServiceLocator.GetService<ICommandsRepository>();
-            edgeContainer = ServiceLocator.GetService<IBrowserWordActionContainer>();
+            wordActionContainer = ServiceLocator.GetService<IWordActionContainer>();
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
-            windowsContainer = ServiceLocator.GetService<WindowsWordActionContainer>();
         }
 
         public void Init(string wordsTextBox = null, string actionTextBox = null, object selectedItem = null)
@@ -46,14 +44,14 @@ namespace SpeachHelper.Presentation
                 return;
             }
 
-            if (edgeContainer.GetActions().Select(a => a.CommandName).Contains(WordsTextBox))
+            if (wordActionContainer.GetActions().Select(a => a.CommandName).Contains(WordsTextBox))
             {
                 MessageBox.Show("такая команда уже есть");
                 return;
             }
             //TODO перенести логику в отдельный сервис
 
-            var newCommand = edgeContainer.AddBrowserWebSiteAction(WordsTextBox, ActionTextBox);
+            var newCommand = ((IBrowserWordActionContainer)wordActionContainer).AddBrowserWebSiteAction(WordsTextBox, ActionTextBox);
             Task.Run(() => commandsRepository.AddCommandAsync(newCommand));
             var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
             recognizer.LoadGrammar(updatedGrammer);
@@ -61,7 +59,7 @@ namespace SpeachHelper.Presentation
 
         public void SelectedItemChange()
         {
-            var dic = edgeContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
+            var dic = wordActionContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
             var item = selectedItem as string;
 
             if (dic.TryGetValue(item, out string argument))
@@ -73,19 +71,8 @@ namespace SpeachHelper.Presentation
 
         public List<string> GetAllCommandNames()
         {
-            var commandNames = edgeContainer.GetActions().Select(c => c.CommandName).ToList();
-            commandNames.AddRange(windowsContainer.GetActions().Select(c => c.CommandName));
+            var commandNames = wordActionContainer.GetActions().Select(c => c.CommandName).ToList();
             return commandNames;
-        }
-
-        public List<string> GetBrowserCommandNames()
-        {
-            return edgeContainer.GetActions().Select(c => c.CommandName).ToList();
-        }
-
-        public List<string> GetWindowsCommandNames()
-        {
-            return windowsContainer.GetActions().Select(c => c.CommandName).ToList();
         }
     }
 }

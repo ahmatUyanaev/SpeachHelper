@@ -33,45 +33,6 @@ namespace SpeachHelper
                 actionTextBox.Text = view.ActionTextBox;
             };
 
-            allRadioButton.CheckedChanged += (o, s) =>
-            {
-                if (allRadioButton.Checked)
-                {
-                    commandsBox.Items.Clear();
-
-                    foreach (string name in view.GetAllCommandNames())
-                    {
-                        commandsBox.Items.Add(name);
-                    }
-                }
-            };
-
-            browserRadioButton.CheckedChanged += (o, s) =>
-            {
-                if (browserRadioButton.Checked)
-                {
-                    commandsBox.Items.Clear();
-
-                    foreach (string name in view.GetBrowserCommandNames())
-                    {
-                        commandsBox.Items.Add(name);
-                    }
-                }
-            };
-
-            windowsRadioButton.CheckedChanged += (o, s) =>
-            {
-                if (windowsRadioButton.Checked)
-                {
-                    commandsBox.Items.Clear();
-
-                    foreach (string name in view.GetWindowsCommandNames())
-                    {
-                        commandsBox.Items.Add(name);
-                    }
-                }
-            };
-
             foreach (string name in view.GetAllCommandNames())
             {
                 commandsBox.Items.Add(name);

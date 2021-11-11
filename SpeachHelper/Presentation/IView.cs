@@ -15,9 +15,5 @@ namespace SpeachHelper.Presentation
         void SelectedItemChange();
 
         List<string> GetAllCommandNames();
-
-        List<string> GetBrowserCommandNames();
-
-        List<string> GetWindowsCommandNames();
     }
 }

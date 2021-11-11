@@ -34,9 +34,6 @@ namespace SpeachHelper
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.keys = new System.Windows.Forms.ComboBox();
             this.pathOrHotheyBtn = new System.Windows.Forms.RadioButton();
-            this.allRadioButton = new System.Windows.Forms.RadioButton();
-            this.browserRadioButton = new System.Windows.Forms.RadioButton();
-            this.windowsRadioButton = new System.Windows.Forms.RadioButton();
             this.actionLabel = new System.Windows.Forms.Label();
             this.wordLabel = new System.Windows.Forms.Label();
             this.commandsBox = new System.Windows.Forms.ListBox();
@@ -54,9 +51,6 @@ namespace SpeachHelper
             // 
             this.tabPage2.Controls.Add(this.keys);
             this.tabPage2.Controls.Add(this.pathOrHotheyBtn);
-            this.tabPage2.Controls.Add(this.allRadioButton);
-            this.tabPage2.Controls.Add(this.browserRadioButton);
-            this.tabPage2.Controls.Add(this.windowsRadioButton);
             this.tabPage2.Controls.Add(this.actionLabel);
             this.tabPage2.Controls.Add(this.wordLabel);
             this.tabPage2.Controls.Add(this.commandsBox);
@@ -90,38 +84,6 @@ namespace SpeachHelper
             this.pathOrHotheyBtn.TabStop = true;
             this.pathOrHotheyBtn.Text = "pathOrHothey";
             this.pathOrHotheyBtn.UseVisualStyleBackColor = true;
-            // 
-            // allRadioButton
-            // 
-            this.allRadioButton.AutoSize = true;
-            this.allRadioButton.Checked = true;
-            this.allRadioButton.Location = new System.Drawing.Point(320, 113);
-            this.allRadioButton.Name = "allRadioButton";
-            this.allRadioButton.Size = new System.Drawing.Size(44, 21);
-            this.allRadioButton.TabIndex = 8;
-            this.allRadioButton.TabStop = true;
-            this.allRadioButton.Text = "All";
-            this.allRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // browserRadioButton
-            // 
-            this.browserRadioButton.AutoSize = true;
-            this.browserRadioButton.Location = new System.Drawing.Point(320, 86);
-            this.browserRadioButton.Name = "browserRadioButton";
-            this.browserRadioButton.Size = new System.Drawing.Size(80, 21);
-            this.browserRadioButton.TabIndex = 7;
-            this.browserRadioButton.Text = "Browser";
-            this.browserRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // windowsRadioButton
-            // 
-            this.windowsRadioButton.AutoSize = true;
-            this.windowsRadioButton.Location = new System.Drawing.Point(320, 59);
-            this.windowsRadioButton.Name = "windowsRadioButton";
-            this.windowsRadioButton.Size = new System.Drawing.Size(85, 21);
-            this.windowsRadioButton.TabIndex = 6;
-            this.windowsRadioButton.Text = "Windows";
-            this.windowsRadioButton.UseVisualStyleBackColor = true;
             // 
             // actionLabel
             // 
@@ -227,11 +189,8 @@ namespace SpeachHelper
         private System.Windows.Forms.Button editCommandBtn;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl mainWindowContainer;
-        private System.Windows.Forms.RadioButton browserRadioButton;
-        private System.Windows.Forms.RadioButton windowsRadioButton;
         private System.Windows.Forms.Label actionLabel;
         private System.Windows.Forms.Label wordLabel;
-        private System.Windows.Forms.RadioButton allRadioButton;
         private System.Windows.Forms.NotifyIcon trey;
         private System.Windows.Forms.RadioButton pathOrHotheyBtn;
         private System.Windows.Forms.ComboBox keys;

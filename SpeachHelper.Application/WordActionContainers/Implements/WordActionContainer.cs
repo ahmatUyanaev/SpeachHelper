@@ -11,14 +11,12 @@ using System.Threading.Tasks;
 
 namespace SpeachHelper.Application.WordActionContainers.Implements
 {
-    public class EdgeWordActionContainer : IBrowserWordActionContainer
+    public class WordActionContainer : IBrowserWordActionContainer, IWordActionContainer
     {
-        private IBrowserInputSimulation edgeInputSimulation;
         private List<Command> commands;
         private ICommandsRepository commandsRepository;
-        public EdgeWordActionContainer()
+        public WordActionContainer()
         {
-            edgeInputSimulation = ServiceLocator.GetService<IBrowserInputSimulation>();
             commandsRepository = ServiceLocator.GetService<ICommandsRepository>();
         }
 
@@ -52,6 +50,10 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
                 if (command.CommandType == Domain.Enums.CommandType.Hotkey)
                 {
                     command.Action = KeyBoard.MapToInputSimulator(command.Argument);
+                }
+                if (command.CommandType == Domain.Enums.CommandType.BrowserSite)
+                {
+                    command.Action = () => { Process.Start(command.Argument); };
                 }
             }
         }

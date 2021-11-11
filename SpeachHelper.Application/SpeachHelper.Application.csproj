@@ -57,10 +57,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpeachRecognition\ISpeachRecognizer.cs" />
     <Compile Include="SpeachRecognition\SpeachRecognition.cs" />
-    <Compile Include="WordActionContainers\Implements\EdgeWordActionContainer.cs" />
+    <Compile Include="WordActionContainers\Implements\WordActionContainer.cs" />
     <Compile Include="WordActionContainers\Contracts\IBrowserWordActionContainer.cs" />
     <Compile Include="WordActionContainers\Contracts\IWordActionContainer.cs" />
-    <Compile Include="WordActionContainers\Implements\WindowsWordActionContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpeachHelper.Domain\SpeachHelper.Domain.csproj">
