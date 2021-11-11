@@ -28,12 +28,12 @@ namespace SpeachHelper
         private static void RegisterService()
         {
             ServiceLocator.Register<ISessionFactory>(new SessionFactory());
+            ServiceLocator.Register<ICommandsRepository>(new CommandsRepository());
             ServiceLocator.Register<IBrowserInputSimulation>(new EdgeInputSimulator());
             ServiceLocator.Register<IWindowsInputSimulator>(new WindowsInputSimulator());
             ServiceLocator.Register(new WindowsWordActionContainer());
             ServiceLocator.Register<IBrowserWordActionContainer>(new EdgeWordActionContainer());
             ServiceLocator.Register<ISpeachRecognizer>(new SpeachRecognizer());
-            ServiceLocator.Register<ICommandsRepository>(new CommandsRepository());
         }
     }
 }

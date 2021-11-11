@@ -19,10 +19,10 @@ namespace SpeachHelper
 
             view = new View();
 
-            addCommandBtn.Click += (o, s) =>
+            editCommandBtn.Click += (o, s) =>
             {
                 view.Init(wordsTextBox: wordsTextBox.Text, actionTextBox: actionTextBox.Text);
-                view.AddCommand();
+                view.EditCommand();
             };
 
             commandsBox.SelectedIndexChanged += (o, s) =>

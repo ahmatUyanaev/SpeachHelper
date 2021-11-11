@@ -1,22 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WindowsInput;
 using WindowsInput.Native;
 
 namespace SpeachHelper.InputSimulation
 {
-    public class KeyBoard
+    public static class KeyBoard
     {
-        public List<string> GetAllKeyBoardButtons()
+        private static InputSimulator inputSimulator = new InputSimulator();
+
+        public static List<string> GetAllKeyBoardButtons()
         {
             return Enum.GetValues(typeof(VirtualKeyCode)).Cast<VirtualKeyCode>().Select(x => x.ToString()).ToList();
         }
 
-        public VirtualKeyCode MapToInputSimulator(string key)
+        public static Action MapToInputSimulator(string argument)
         {
-            return (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), key);
+            var keys = argument.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
+
+            var listOfKeys = new List<VirtualKeyCode>();
+
+            foreach (var key in keys)
+            {
+                listOfKeys.Add((VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), key));
+            }
+
+            if (listOfKeys.Count == 2)
+            {
+                return () => { inputSimulator.Keyboard.ModifiedKeyStroke(listOfKeys[0], listOfKeys[1]); };
+            }
+            else if (listOfKeys.Count == 3)
+            {
+                return () =>
+                {
+                    inputSimulator.Keyboard.ModifiedKeyStroke(listOfKeys[0],
+                        new[] { listOfKeys[1], listOfKeys[2] });
+                };
+            }
+
+            return () => { };
         }
     }
 }

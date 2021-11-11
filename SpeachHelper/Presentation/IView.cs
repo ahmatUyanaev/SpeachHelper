@@ -10,7 +10,7 @@ namespace SpeachHelper.Presentation
 
         void Init(string wordsTextBox = null, string actionTextBox = null, object selectedItem = null);
 
-        void AddCommand();
+        void EditCommand();
 
         void SelectedItemChange();
 

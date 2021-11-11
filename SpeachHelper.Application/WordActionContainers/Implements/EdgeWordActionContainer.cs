@@ -1,11 +1,13 @@
 ﻿using SpeachHelper.Application.WordActionContainers.Contacts;
-using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Domain.Entitys;
+using SpeachHelper.Infrastructure.DI;
+using SpeachHelper.InputSimulation;
 using SpeachHelper.InputSimulation.Contracts;
-using SpeachHelper.Persistance.Session;
+using SpeachHelper.Persistence.Repository.Contracts;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SpeachHelper.Application.WordActionContainers.Implements
 {
@@ -13,31 +15,27 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
     {
         private IBrowserInputSimulation edgeInputSimulation;
         private List<Command> commands;
-
+        private ICommandsRepository commandsRepository;
         public EdgeWordActionContainer()
         {
             edgeInputSimulation = ServiceLocator.GetService<IBrowserInputSimulation>();
-            FillMock();
+            commandsRepository = ServiceLocator.GetService<ICommandsRepository>();
         }
 
-        private void FillMock()
+        private async Task<List<Command>> GetCommandsAsync()
         {
-            commands = new List<Command>();
-
-            commands.Add(new Command("Открой браузер", () => Process.Start("https://yandex.ru/"), "https://yandex.ru/"));
-            commands.Add(new Command("Открой вконтакте", () => Process.Start("https://vk.com/axma_sila"), "https://vk.com/axma_sila"));
-            commands.Add(new Command("Новая вкладка", edgeInputSimulation.OpenNewTabSimulate()));
-            commands.Add(new Command("Закрой вкладку", edgeInputSimulation.CloseCurrentTab()));
-            commands.Add(new Command("История", edgeInputSimulation.WievHistory()));
-            commands.Add(new Command("Открой закрытую вкладку", edgeInputSimulation.OpenLastClosedTab()));
-            commands.Add(new Command("Вернись назад", edgeInputSimulation.ComeBack()));
-            commands.Add(new Command("Вернись вперед", edgeInputSimulation.ComeForward()));
-
-            //DBQuery(commands);
+            return await commandsRepository.GetCommandsAsync();
         }
 
         public List<Command> GetActions()
         {
+            if (commands == null)
+            {
+                commands = GetCommandsAsync().Result;
+                MapArgument(commands);
+                return commands;
+            }
+
             return commands;
         }
 
@@ -47,25 +45,14 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
             return commands.Last();
         }
 
-        public async void DBQuery(List<Command> commands)
+        public void MapArgument(List<Command> commands)
         {
-            ISession session = ServiceLocator.GetService<ISessionFactory>().CreateSession();
-
-            foreach (Command command in commands)
+            foreach (var command in commands)
             {
-                var parametrs = new
+                if (command.CommandType == Domain.Enums.CommandType.Hotkey)
                 {
-                    commandName = command.CommandName,
-                    argument = command.Argument,
-                };
-
-                string insert = @"
-INSERT INTO Commands
-    (CommandName, Argument)
-VALUES
-    (@commandName, @argument)
-";
-                await session.ExecuteAsync(insert, parametrs);
+                    command.Action = KeyBoard.MapToInputSimulator(command.Argument);
+                }
             }
         }
     }

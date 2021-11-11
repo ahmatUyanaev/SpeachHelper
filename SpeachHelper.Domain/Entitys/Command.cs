@@ -24,10 +24,10 @@ namespace SpeachHelper.Domain.Entitys
 
         public string CommandName { get; private set; }
 
-        public Action Action { get; private set; }
+        public Action Action { get; set; }
 
         public string Argument { get; private set; }
 
-        public CommandType Type { get; private set; }
+        public CommandType CommandType { get; private set; }
     }
 }

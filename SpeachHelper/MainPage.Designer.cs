@@ -32,6 +32,8 @@ namespace SpeachHelper
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.keys = new System.Windows.Forms.ComboBox();
+            this.pathOrHotheyBtn = new System.Windows.Forms.RadioButton();
             this.allRadioButton = new System.Windows.Forms.RadioButton();
             this.browserRadioButton = new System.Windows.Forms.RadioButton();
             this.windowsRadioButton = new System.Windows.Forms.RadioButton();
@@ -40,12 +42,10 @@ namespace SpeachHelper
             this.commandsBox = new System.Windows.Forms.ListBox();
             this.actionTextBox = new System.Windows.Forms.TextBox();
             this.wordsTextBox = new System.Windows.Forms.TextBox();
-            this.addCommandBtn = new System.Windows.Forms.Button();
+            this.editCommandBtn = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
             this.trey = new System.Windows.Forms.NotifyIcon(this.components);
-            this.pathOrHotheyBtn = new System.Windows.Forms.RadioButton();
-            this.keys = new System.Windows.Forms.ComboBox();
             this.tabPage2.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +62,7 @@ namespace SpeachHelper
             this.tabPage2.Controls.Add(this.commandsBox);
             this.tabPage2.Controls.Add(this.actionTextBox);
             this.tabPage2.Controls.Add(this.wordsTextBox);
-            this.tabPage2.Controls.Add(this.addCommandBtn);
+            this.tabPage2.Controls.Add(this.editCommandBtn);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -70,6 +70,26 @@ namespace SpeachHelper
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Редактировать команды";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // keys
+            // 
+            this.keys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.keys.FormattingEnabled = true;
+            this.keys.Location = new System.Drawing.Point(388, 254);
+            this.keys.Name = "keys";
+            this.keys.Size = new System.Drawing.Size(165, 24);
+            this.keys.TabIndex = 10;
+            // 
+            // pathOrHotheyBtn
+            // 
+            this.pathOrHotheyBtn.AutoSize = true;
+            this.pathOrHotheyBtn.Location = new System.Drawing.Point(598, 150);
+            this.pathOrHotheyBtn.Name = "pathOrHotheyBtn";
+            this.pathOrHotheyBtn.Size = new System.Drawing.Size(118, 21);
+            this.pathOrHotheyBtn.TabIndex = 9;
+            this.pathOrHotheyBtn.TabStop = true;
+            this.pathOrHotheyBtn.Text = "pathOrHothey";
+            this.pathOrHotheyBtn.UseVisualStyleBackColor = true;
             // 
             // allRadioButton
             // 
@@ -145,14 +165,14 @@ namespace SpeachHelper
             this.wordsTextBox.Size = new System.Drawing.Size(228, 22);
             this.wordsTextBox.TabIndex = 1;
             // 
-            // addCommandBtn
+            // editCommandBtn
             // 
-            this.addCommandBtn.Location = new System.Drawing.Point(598, 356);
-            this.addCommandBtn.Name = "addCommandBtn";
-            this.addCommandBtn.Size = new System.Drawing.Size(156, 40);
-            this.addCommandBtn.TabIndex = 0;
-            this.addCommandBtn.Text = "Добавить команду";
-            this.addCommandBtn.UseVisualStyleBackColor = true;
+            this.editCommandBtn.Location = new System.Drawing.Point(598, 403);
+            this.editCommandBtn.Name = "editCommandBtn";
+            this.editCommandBtn.Size = new System.Drawing.Size(188, 40);
+            this.editCommandBtn.TabIndex = 0;
+            this.editCommandBtn.Text = "Редактировать команду";
+            this.editCommandBtn.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -182,26 +202,6 @@ namespace SpeachHelper
             this.trey.Visible = true;
             this.trey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trey_MouseDoubleClick);
             // 
-            // pathOrHotheyBtn
-            // 
-            this.pathOrHotheyBtn.AutoSize = true;
-            this.pathOrHotheyBtn.Location = new System.Drawing.Point(598, 150);
-            this.pathOrHotheyBtn.Name = "pathOrHotheyBtn";
-            this.pathOrHotheyBtn.Size = new System.Drawing.Size(118, 21);
-            this.pathOrHotheyBtn.TabIndex = 9;
-            this.pathOrHotheyBtn.TabStop = true;
-            this.pathOrHotheyBtn.Text = "pathOrHothey";
-            this.pathOrHotheyBtn.UseVisualStyleBackColor = true;
-            // 
-            // keys
-            // 
-            this.keys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.keys.FormattingEnabled = true;
-            this.keys.Location = new System.Drawing.Point(339, 229);
-            this.keys.Name = "keys";
-            this.keys.Size = new System.Drawing.Size(165, 24);
-            this.keys.TabIndex = 10;
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,7 +224,7 @@ namespace SpeachHelper
         private System.Windows.Forms.ListBox commandsBox;
         private System.Windows.Forms.TextBox actionTextBox;
         private System.Windows.Forms.TextBox wordsTextBox;
-        private System.Windows.Forms.Button addCommandBtn;
+        private System.Windows.Forms.Button editCommandBtn;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl mainWindowContainer;
         private System.Windows.Forms.RadioButton browserRadioButton;

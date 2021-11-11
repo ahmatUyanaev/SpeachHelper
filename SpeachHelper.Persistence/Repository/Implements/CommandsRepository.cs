@@ -1,8 +1,9 @@
-﻿using SpeachHelper.Infrastructure.DI;
-using SpeachHelper.Domain.Entitys;
+﻿using SpeachHelper.Domain.Entitys;
+using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Persistance.Session;
 using SpeachHelper.Persistence.Repository.Contracts;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SpeachHelper.Persistence.Repository.Implements
@@ -36,12 +37,13 @@ VALUES
             }
         }
 
-        public async Task<IEnumerable<Command>> GetCommandsAsync()
+        public async Task<List<Command>> GetCommandsAsync()
         {
             using (var session = sessionFactory.CreateSession())
             {
                 var query = "SELECT * FROM Commands";
-                return await session.QueryAsync<Command>(query);
+                var result = await session.QueryAsync<Command>(query);
+                return result.ToList();
             }
         }
     }

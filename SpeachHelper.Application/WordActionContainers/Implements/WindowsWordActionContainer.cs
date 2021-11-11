@@ -1,6 +1,6 @@
 ﻿using SpeachHelper.Application.WordActionContainers.Contacts;
-using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Domain.Entitys;
+using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.InputSimulation.Contracts;
 using System.Collections.Generic;
 

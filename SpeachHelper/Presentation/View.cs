@@ -38,7 +38,7 @@ namespace SpeachHelper.Presentation
             this.selectedItem = selectedItem;
         }
 
-        public void AddCommand()
+        public void EditCommand()
         {
             if (string.IsNullOrEmpty(WordsTextBox) || string.IsNullOrEmpty(ActionTextBox))
             {
@@ -52,6 +52,7 @@ namespace SpeachHelper.Presentation
                 return;
             }
             //TODO перенести логику в отдельный сервис
+
             var newCommand = edgeContainer.AddBrowserWebSiteAction(WordsTextBox, ActionTextBox);
             Task.Run(() => commandsRepository.AddCommandAsync(newCommand));
             var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));

@@ -6,7 +6,7 @@ namespace SpeachHelper.Persistence.Repository.Contracts
 {
     public interface ICommandsRepository
     {
-        Task<IEnumerable<Command>> GetCommandsAsync();
+        Task<List<Command>> GetCommandsAsync();
 
         Task<int> AddCommandAsync(Command command);
     }
