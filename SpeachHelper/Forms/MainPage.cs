@@ -1,4 +1,5 @@
 ﻿using SpeachHelper.Application.SpeachRecognition;
+using SpeachHelper.Forms;
 using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Presentation;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace SpeachHelper
             editCommandBtn.Click += (o, s) =>
             {
                 view.Init(wordsTextBox: wordsTextBox.Text, actionTextBox: actionTextBox.Text);
-                view.EditCommand();
+                view.EditCommand((string)commandsBox.SelectedItem);
             };
 
             commandsBox.SelectedIndexChanged += (o, s) =>
@@ -31,6 +32,11 @@ namespace SpeachHelper
                 view.SelectedItemChange();
                 wordsTextBox.Text = view.WordsTextBox;
                 actionTextBox.Text = view.ActionTextBox;
+            };
+
+            deleteCommandBtn.Click += (o, s) =>
+            {
+                view.DeleteCommand((string)commandsBox.SelectedItem);
             };
 
             foreach (string name in view.GetAllCommandNames())
@@ -62,5 +68,21 @@ namespace SpeachHelper
             }
         }
         #endregion
+
+        private void addCommandBtn_Click(object sender, System.EventArgs e)
+        {
+            var addCommandForm = new AddCommandForm();
+            addCommandForm.Show();
+        }
+
+        private void editCommandBtn_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void deleteCommandBtn_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

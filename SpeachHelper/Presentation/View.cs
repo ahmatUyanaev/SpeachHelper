@@ -1,13 +1,10 @@
-﻿using Microsoft.Speech.Recognition;
-using SpeachHelper.Application.SpeachRecognition;
+﻿using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
-using SpeachHelper.Application.WordActionContainers.Implements;
+using SpeachHelper.Forms;
 using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Persistence.Repository.Contracts;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SpeachHelper.Presentation
 {
@@ -22,6 +19,7 @@ namespace SpeachHelper.Presentation
         public string WordsTextBox { get; set; }
         public string ActionTextBox { get; set; }
         private object selectedItem;
+
         public View()
         {
             commandsRepository = ServiceLocator.GetService<ICommandsRepository>();
@@ -36,25 +34,26 @@ namespace SpeachHelper.Presentation
             this.selectedItem = selectedItem;
         }
 
-        public void EditCommand()
+        public void EditCommand(string commandName)
         {
-            if (string.IsNullOrEmpty(WordsTextBox) || string.IsNullOrEmpty(ActionTextBox))
-            {
-                MessageBox.Show("ERROR");
-                return;
-            }
+            //if (string.IsNullOrEmpty(WordsTextBox) || string.IsNullOrEmpty(ActionTextBox))
+            //{
+            //    MessageBox.Show("ERROR");
+            //    return;
+            //}
 
-            if (wordActionContainer.GetActions().Select(a => a.CommandName).Contains(WordsTextBox))
-            {
-                MessageBox.Show("такая команда уже есть");
-                return;
-            }
+            //if (wordActionContainer.GetActions().Select(a => a.CommandName).Contains(WordsTextBox))
+            //{
+            //    MessageBox.Show("такая команда уже есть");
+            //    return;
+            //}
             //TODO перенести логику в отдельный сервис
 
-            var newCommand = ((IBrowserWordActionContainer)wordActionContainer).AddBrowserWebSiteAction(WordsTextBox, ActionTextBox);
-            Task.Run(() => commandsRepository.AddCommandAsync(newCommand));
-            var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
-            recognizer.LoadGrammar(updatedGrammer);
+            var commandId = GetCommandIdByName(commandName);
+            var addCommandForm = new EditCommandForm(commandId);
+            addCommandForm.Show();
+            //var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
+            //recognizer.LoadGrammar(updatedGrammer);
         }
 
         public void SelectedItemChange()
@@ -73,6 +72,22 @@ namespace SpeachHelper.Presentation
         {
             var commandNames = wordActionContainer.GetActions().Select(c => c.CommandName).ToList();
             return commandNames;
+        }
+
+        public void AddCommand()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeleteCommand(string commandName)
+        {
+            var commandId = GetCommandIdByName(commandName);
+            commandsRepository.DeleteCommandAsync(commandId);
+        }
+
+        private int GetCommandIdByName(string commandName)
+        {
+            return wordActionContainer.GetActions().Where(c => c.CommandName == commandName).FirstOrDefault().ID;
         }
     }
 }

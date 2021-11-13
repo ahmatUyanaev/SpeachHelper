@@ -2,7 +2,6 @@
 using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.InputSimulation;
-using SpeachHelper.InputSimulation.Contracts;
 using SpeachHelper.Persistence.Repository.Contracts;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -43,13 +42,13 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
             return commands.Last();
         }
 
-        public void MapArgument(List<Command> commands)
+        private void MapArgument(List<Command> commands)
         {
             foreach (var command in commands)
             {
                 if (command.CommandType == Domain.Enums.CommandType.Hotkey)
                 {
-                    command.Action = KeyBoard.MapToInputSimulator(command.Argument);
+                    command.Action = HotKey.MapToInputSimulator(command.Argument);
                 }
                 if (command.CommandType == Domain.Enums.CommandType.BrowserSite)
                 {

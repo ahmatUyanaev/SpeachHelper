@@ -14,13 +14,13 @@ namespace SpeachHelper.Domain.Entitys
             CommandName = command;
             Action = action;
         }
-
-        public Command(string command, Action action, string argument)
+        public Command(string command, string argument)
         {
             CommandName = command;
-            Action = action;
             Argument = argument;
         }
+
+        public int ID { get; private set; }
 
         public string CommandName { get; private set; }
 

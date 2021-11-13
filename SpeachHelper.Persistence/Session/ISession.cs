@@ -8,6 +8,10 @@ namespace SpeachHelper.Persistance.Session
     {
         Task<IEnumerable<T>> QueryAsync<T>(string query);
 
+        T QueryFirst<T>(string query);
+
+        Task<T> QueryFirstAsync<T>(string query);
+
         Task<IEnumerable<T>> QueryAsync<T>(string query, object parametrs);
 
         Task<int> ExecuteAsync(string query, object parametrs);

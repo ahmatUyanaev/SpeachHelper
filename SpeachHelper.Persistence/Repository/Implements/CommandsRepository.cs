@@ -46,5 +46,53 @@ VALUES
                 return result.ToList();
             }
         }
+
+        public async Task DeleteCommandAsync(int commandId)
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                var query = $@"
+DELETE FROM Commands
+WHERE ID = {commandId}";
+
+                await session.ExecuteAsync(query, null);
+            }
+        }
+
+        public async Task EditCommandAsync(int commandId, Command newCommand)
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                var query = $@"
+UPDATE Commands
+SET CommandName = {newCommand.CommandName}, Argument = {newCommand.Argument}
+WHERE ID = {commandId} ";
+
+                await session.ExecuteAsync(query, null);
+            }
+        }
+
+        public async Task<Command> GetCommandByIdAsync(int commandId)
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                var query = $@"
+SELECT * FROM Commands
+WHERE ID = {commandId}";
+                var res = await session.QueryFirstAsync<Command>(query);
+                return res;
+            }
+        }
+
+        public Command GetCommandById(int commandId)
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                var query = $@"
+SELECT * FROM Commands
+WHERE ID = {commandId}";
+                return session.QueryFirst<Command>(query);
+            }
+        }
     }
 }

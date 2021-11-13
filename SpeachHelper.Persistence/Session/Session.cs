@@ -19,6 +19,16 @@ namespace SpeachHelper.Persistance.Session
             return connection.QueryAsync<T>(query);
         }
 
+        public async Task<T> QueryFirstAsync<T>(string query)
+        {
+            return await connection.QueryFirstAsync<T>(query);
+        }
+
+        public T QueryFirst<T>(string query)
+        {
+            return connection.QueryFirst<T>(query);
+        }
+
         public Task<IEnumerable<T>> QueryAsync<T>(string query, object parametrs)
         {
             return connection.QueryAsync<T>(query, parametrs);

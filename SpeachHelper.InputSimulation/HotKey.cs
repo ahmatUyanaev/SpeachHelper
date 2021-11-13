@@ -6,7 +6,7 @@ using WindowsInput.Native;
 
 namespace SpeachHelper.InputSimulation
 {
-    public static class KeyBoard
+    public static class HotKey
     {
         private static InputSimulator inputSimulator = new InputSimulator();
 
