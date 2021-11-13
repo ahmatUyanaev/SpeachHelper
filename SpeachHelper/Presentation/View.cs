@@ -76,7 +76,8 @@ namespace SpeachHelper.Presentation
 
         public void AddCommand()
         {
-            throw new System.NotImplementedException();
+            var addCommandForm = new AddCommandForm();
+            addCommandForm.Show();
         }
 
         public void DeleteCommand(string commandName)

@@ -31,7 +31,9 @@ namespace SpeachHelper
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
+            this.trey = new System.Windows.Forms.NotifyIcon(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.deleteCommandBtn = new System.Windows.Forms.Button();
             this.addCommandBtn = new System.Windows.Forms.Button();
             this.keys = new System.Windows.Forms.ComboBox();
             this.pathOrHotheyBtn = new System.Windows.Forms.RadioButton();
@@ -41,13 +43,17 @@ namespace SpeachHelper
             this.actionTextBox = new System.Windows.Forms.TextBox();
             this.wordsTextBox = new System.Windows.Forms.TextBox();
             this.editCommandBtn = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
-            this.trey = new System.Windows.Forms.NotifyIcon(this.components);
-            this.deleteCommandBtn = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // trey
+            // 
+            this.trey.Icon = ((System.Drawing.Icon)(resources.GetObject("trey.Icon")));
+            this.trey.Text = "Speach";
+            this.trey.Visible = true;
+            this.trey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trey_MouseDoubleClick);
             // 
             // tabPage2
             // 
@@ -69,6 +75,15 @@ namespace SpeachHelper
             this.tabPage2.Text = "Редактировать команды";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // deleteCommandBtn
+            // 
+            this.deleteCommandBtn.Location = new System.Drawing.Point(503, 403);
+            this.deleteCommandBtn.Name = "deleteCommandBtn";
+            this.deleteCommandBtn.Size = new System.Drawing.Size(132, 40);
+            this.deleteCommandBtn.TabIndex = 12;
+            this.deleteCommandBtn.Text = "Удалить";
+            this.deleteCommandBtn.UseVisualStyleBackColor = true;
+            // 
             // addCommandBtn
             // 
             this.addCommandBtn.Location = new System.Drawing.Point(641, 403);
@@ -77,7 +92,6 @@ namespace SpeachHelper
             this.addCommandBtn.TabIndex = 11;
             this.addCommandBtn.Text = "Добавить  команду";
             this.addCommandBtn.UseVisualStyleBackColor = true;
-            this.addCommandBtn.Click += new System.EventHandler(this.addCommandBtn_Click);
             // 
             // keys
             // 
@@ -149,21 +163,9 @@ namespace SpeachHelper
             this.editCommandBtn.TabIndex = 0;
             this.editCommandBtn.Text = "Редактировать команду";
             this.editCommandBtn.UseVisualStyleBackColor = true;
-            this.editCommandBtn.Click += new System.EventHandler(this.editCommandBtn_Click);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(794, 451);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Команды";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // mainWindowContainer
             // 
-            this.mainWindowContainer.Controls.Add(this.tabPage1);
             this.mainWindowContainer.Controls.Add(this.tabPage2);
             this.mainWindowContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainWindowContainer.Location = new System.Drawing.Point(0, 0);
@@ -171,23 +173,6 @@ namespace SpeachHelper
             this.mainWindowContainer.SelectedIndex = 0;
             this.mainWindowContainer.Size = new System.Drawing.Size(802, 480);
             this.mainWindowContainer.TabIndex = 3;
-            // 
-            // trey
-            // 
-            this.trey.Icon = ((System.Drawing.Icon)(resources.GetObject("trey.Icon")));
-            this.trey.Text = "Speach";
-            this.trey.Visible = true;
-            this.trey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trey_MouseDoubleClick);
-            // 
-            // deleteCommandBtn
-            // 
-            this.deleteCommandBtn.Location = new System.Drawing.Point(503, 403);
-            this.deleteCommandBtn.Name = "deleteCommandBtn";
-            this.deleteCommandBtn.Size = new System.Drawing.Size(132, 40);
-            this.deleteCommandBtn.TabIndex = 12;
-            this.deleteCommandBtn.Text = "Удалить";
-            this.deleteCommandBtn.UseVisualStyleBackColor = true;
-            this.deleteCommandBtn.Click += new System.EventHandler(this.deleteCommandBtn_Click);
             // 
             // MainPage
             // 
@@ -206,21 +191,19 @@ namespace SpeachHelper
         }
 
         #endregion
-
+        private System.Windows.Forms.NotifyIcon trey;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button deleteCommandBtn;
+        private System.Windows.Forms.Button addCommandBtn;
+        private System.Windows.Forms.ComboBox keys;
+        private System.Windows.Forms.RadioButton pathOrHotheyBtn;
+        private System.Windows.Forms.Label actionLabel;
+        private System.Windows.Forms.Label wordLabel;
         private System.Windows.Forms.ListBox commandsBox;
         private System.Windows.Forms.TextBox actionTextBox;
         private System.Windows.Forms.TextBox wordsTextBox;
         private System.Windows.Forms.Button editCommandBtn;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl mainWindowContainer;
-        private System.Windows.Forms.Label actionLabel;
-        private System.Windows.Forms.Label wordLabel;
-        private System.Windows.Forms.NotifyIcon trey;
-        private System.Windows.Forms.RadioButton pathOrHotheyBtn;
-        private System.Windows.Forms.ComboBox keys;
-        private System.Windows.Forms.Button addCommandBtn;
-        private System.Windows.Forms.Button deleteCommandBtn;
     }
 }
 

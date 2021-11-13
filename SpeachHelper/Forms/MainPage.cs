@@ -20,6 +20,10 @@ namespace SpeachHelper
 
             view = new View();
 
+            addCommandBtn.Click += (o, s) =>
+            {
+                view.AddCommand();
+            };
             editCommandBtn.Click += (o, s) =>
             {
                 view.Init(wordsTextBox: wordsTextBox.Text, actionTextBox: actionTextBox.Text);
@@ -68,21 +72,5 @@ namespace SpeachHelper
             }
         }
         #endregion
-
-        private void addCommandBtn_Click(object sender, System.EventArgs e)
-        {
-            var addCommandForm = new AddCommandForm();
-            addCommandForm.Show();
-        }
-
-        private void editCommandBtn_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void deleteCommandBtn_Click(object sender, System.EventArgs e)
-        {
-
-        }
     }
 }
