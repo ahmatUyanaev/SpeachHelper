@@ -29,7 +29,6 @@ namespace SpeachHelper.Forms
 
         private void editCommandBtn_Click(object sender, EventArgs e)
         {
-
             if (!CheckOfNull())
             {
                 commandsRepository.EditCommandAsync(commandId, new Command(commandName.Text, argumentName.Text));

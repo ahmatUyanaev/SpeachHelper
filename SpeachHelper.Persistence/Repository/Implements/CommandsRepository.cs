@@ -65,7 +65,7 @@ WHERE ID = {commandId}";
             {
                 var query = $@"
 UPDATE Commands
-SET CommandName = {newCommand.CommandName}, Argument = {newCommand.Argument}
+SET CommandName = '{newCommand.CommandName}', Argument = '{newCommand.Argument}'
 WHERE ID = {commandId} ";
 
                 await session.ExecuteAsync(query, null);
