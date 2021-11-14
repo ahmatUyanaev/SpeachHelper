@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SpeachHelper.Presentation
 {
@@ -19,5 +20,7 @@ namespace SpeachHelper.Presentation
         void SelectedItemChange();
 
         List<string> GetAllCommandNames();
+
+        void FillCombobox(ListBox listBox);
     }
 }

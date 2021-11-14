@@ -1,18 +1,20 @@
-﻿using SpeachHelper.Application.SpeachRecognition;
+﻿using SpeachHelper.Application.BizRules;
+using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Forms;
 using SpeachHelper.Infrastructure.DI;
-using SpeachHelper.Persistence.Repository.Contracts;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace SpeachHelper.Presentation
 {
     public class View : IView
     {
         private ISpeachRecognizer recognizer;
-        private ICommandsRepository commandsRepository;
+        private ICommandsBizRules commandsBizRules;
         private IWordActionContainer wordActionContainer;
+        private MainPage mainPage;
 
         public List<string> filtredCommandNames { get; set; }
 
@@ -20,9 +22,10 @@ namespace SpeachHelper.Presentation
         public string ActionTextBox { get; set; }
         private object selectedItem;
 
-        public View()
+        public View(MainPage mainPage)
         {
-            commandsRepository = ServiceLocator.GetService<ICommandsRepository>();
+            this.mainPage = mainPage;
+            commandsBizRules = ServiceLocator.GetService<ICommandsBizRules>();
             wordActionContainer = ServiceLocator.GetService<IWordActionContainer>();
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
         }
@@ -36,30 +39,20 @@ namespace SpeachHelper.Presentation
 
         public void EditCommand(string commandName)
         {
-            //if (string.IsNullOrEmpty(WordsTextBox) || string.IsNullOrEmpty(ActionTextBox))
-            //{
-            //    MessageBox.Show("ERROR");
-            //    return;
-            //}
-
-            //if (wordActionContainer.GetActions().Select(a => a.CommandName).Contains(WordsTextBox))
-            //{
-            //    MessageBox.Show("такая команда уже есть");
-            //    return;
-            //}
-            //TODO перенести логику в отдельный сервис
-
             var commandId = GetCommandIdByName(commandName);
             var addCommandForm = new EditCommandForm(commandId);
             addCommandForm.Show();
-            //var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand.CommandName }));
-            //recognizer.LoadGrammar(updatedGrammer);
+            recognizer.LoadGrammar(commandName);
         }
 
         public void SelectedItemChange()
         {
             var dic = wordActionContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
-            var item = selectedItem as string;
+
+            if (!(selectedItem is string item))
+            {
+                return;
+            }
 
             if (dic.TryGetValue(item, out string argument))
             {
@@ -70,25 +63,33 @@ namespace SpeachHelper.Presentation
 
         public List<string> GetAllCommandNames()
         {
-            var commandNames = wordActionContainer.GetActions().Select(c => c.CommandName).ToList();
-            return commandNames;
+            return commandsBizRules.GetCommands().Select(c => c.CommandName).ToList();
         }
 
         public void AddCommand()
         {
-            var addCommandForm = new AddCommandForm();
+            var addCommandForm = new AddCommandForm(mainPage);
             addCommandForm.Show();
         }
 
         public void DeleteCommand(string commandName)
         {
             var commandId = GetCommandIdByName(commandName);
-            commandsRepository.DeleteCommandAsync(commandId);
+            commandsBizRules.DeleteCommandAsync(commandId);
         }
 
         private int GetCommandIdByName(string commandName)
         {
-            return wordActionContainer.GetActions().Where(c => c.CommandName == commandName).FirstOrDefault().ID;
+            return commandsBizRules.GetCommands().Where(c => c.CommandName == commandName).FirstOrDefault().ID;
+        }
+
+        public void FillCombobox(ListBox ListBox)
+        {
+            ListBox.Items.Clear();
+            foreach (string name in GetAllCommandNames())
+            {
+                ListBox.Items.Add(name);
+            }
         }
     }
 }

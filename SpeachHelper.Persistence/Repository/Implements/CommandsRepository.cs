@@ -94,5 +94,14 @@ WHERE ID = {commandId}";
                 return session.QueryFirst<Command>(query);
             }
         }
+
+        public IEnumerable<Command> GetCommands()
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                var query = "SELECT * FROM Commands";
+                return session.Query<Command>(query);
+            }
+        }
     }
 }

@@ -1,11 +1,9 @@
-﻿using Microsoft.Speech.Recognition;
-
-namespace SpeachHelper.Application.SpeachRecognition
+﻿namespace SpeachHelper.Application.SpeachRecognition
 {
     public interface ISpeachRecognizer
     {
         void RecognizeAsync();
 
-        void LoadGrammar(GrammarBuilder newGrammar);
+        void LoadGrammar(string newCommand);
     }
 }

@@ -1,4 +1,5 @@
-﻿using SpeachHelper.Application.SpeachRecognition;
+﻿using SpeachHelper.Application.BizRules;
+using SpeachHelper.Application.SpeachRecognition;
 using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Application.WordActionContainers.Implements;
 using SpeachHelper.Infrastructure.DI;
@@ -33,6 +34,7 @@ namespace SpeachHelper
             ServiceLocator.Register<IWindowsInputSimulator>(new WindowsInputSimulator());
             ServiceLocator.Register<IWordActionContainer>(new WordActionContainer());
             ServiceLocator.Register<ISpeachRecognizer>(new SpeachRecognizer());
+            ServiceLocator.Register<ICommandsBizRules>(new CommandsBizRules());
         }
     }
 }

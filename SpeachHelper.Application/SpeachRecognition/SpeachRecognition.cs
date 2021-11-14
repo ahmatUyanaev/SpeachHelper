@@ -28,14 +28,6 @@ namespace SpeachHelper.Application.SpeachRecognition
             actions = commands.ToDictionary(x => x.CommandName, y => y.Action);
 
             Init();
-
-            grammarBuilder = new GrammarBuilder();
-
-            grammarBuilder.Append(new Choices(commands.Select(c => c.CommandName).ToArray()));
-
-            speachRecognition.SpeechRecognized += SpeechRecognizer_SpeechRecognized;
-
-            speachRecognition.LoadGrammar(new Grammar(grammarBuilder));
         }
 
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -81,9 +73,10 @@ namespace SpeachHelper.Application.SpeachRecognition
             // MessageBox.Show(e.Result.Text);
         }
 
-        public void LoadGrammar(GrammarBuilder newGrammar)
+        public void LoadGrammar(string newCommand)
         {
-            speachRecognition.LoadGrammarAsync(new Grammar(newGrammar));
+            var updatedGrammer = new GrammarBuilder(new Choices(new string[] { newCommand }));
+            speachRecognition.LoadGrammarAsync(new Grammar(updatedGrammer));
             UpdateActions();
         }
 
@@ -97,11 +90,19 @@ namespace SpeachHelper.Application.SpeachRecognition
             System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("ru-RU");
             speachRecognition = new SpeechRecognitionEngine(ci);
             speachRecognition.SetInputToDefaultAudioDevice();
+
+            grammarBuilder = new GrammarBuilder();
+
+            grammarBuilder.Append(new Choices(commands.Select(c => c.CommandName).ToArray()));
+
+            speachRecognition.SpeechRecognized += SpeechRecognizer_SpeechRecognized;
+
+            speachRecognition.LoadGrammar(new Grammar(grammarBuilder));
         }
 
         private void UpdateActions()
         {
-            actions = commands.ToDictionary(x => x.CommandName, y => y.Action);
+            actions = wordActionContainer.GetActions().ToDictionary(x => x.CommandName, y => y.Action);
         }
 
         public void Dispose()

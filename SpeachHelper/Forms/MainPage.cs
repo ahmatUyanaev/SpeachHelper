@@ -1,5 +1,4 @@
 ﻿using SpeachHelper.Application.SpeachRecognition;
-using SpeachHelper.Forms;
 using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Presentation;
 using System.Windows.Forms;
@@ -18,7 +17,7 @@ namespace SpeachHelper
 
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
 
-            view = new View();
+            view = new View(this);
 
             addCommandBtn.Click += (o, s) =>
             {
@@ -26,7 +25,6 @@ namespace SpeachHelper
             };
             editCommandBtn.Click += (o, s) =>
             {
-                view.Init(wordsTextBox: wordsTextBox.Text, actionTextBox: actionTextBox.Text);
                 view.EditCommand((string)commandsBox.SelectedItem);
             };
 
@@ -34,21 +32,28 @@ namespace SpeachHelper
             {
                 view.Init(selectedItem: commandsBox.SelectedItem);
                 view.SelectedItemChange();
-                wordsTextBox.Text = view.WordsTextBox;
-                actionTextBox.Text = view.ActionTextBox;
+                wordLabel.Text = "Имя команды: " + view.WordsTextBox;
+                actionLabel.Text = "Действие: " + view.ActionTextBox;
             };
 
             deleteCommandBtn.Click += (o, s) =>
             {
                 view.DeleteCommand((string)commandsBox.SelectedItem);
+                FillCombobox();
             };
 
+            FillCombobox();
+
+            recognizer.RecognizeAsync();
+        }
+
+        public void FillCombobox()
+        {
+            commandsBox.Items.Clear();
             foreach (string name in view.GetAllCommandNames())
             {
                 commandsBox.Items.Add(name);
             }
-
-            recognizer.RecognizeAsync();
         }
 
         #region trey

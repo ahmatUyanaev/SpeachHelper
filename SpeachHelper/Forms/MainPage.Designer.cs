@@ -35,13 +35,9 @@ namespace SpeachHelper
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.deleteCommandBtn = new System.Windows.Forms.Button();
             this.addCommandBtn = new System.Windows.Forms.Button();
-            this.keys = new System.Windows.Forms.ComboBox();
-            this.pathOrHotheyBtn = new System.Windows.Forms.RadioButton();
             this.actionLabel = new System.Windows.Forms.Label();
             this.wordLabel = new System.Windows.Forms.Label();
             this.commandsBox = new System.Windows.Forms.ListBox();
-            this.actionTextBox = new System.Windows.Forms.TextBox();
-            this.wordsTextBox = new System.Windows.Forms.TextBox();
             this.editCommandBtn = new System.Windows.Forms.Button();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
             this.tabPage2.SuspendLayout();
@@ -57,15 +53,12 @@ namespace SpeachHelper
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.deleteCommandBtn);
             this.tabPage2.Controls.Add(this.addCommandBtn);
-            this.tabPage2.Controls.Add(this.keys);
-            this.tabPage2.Controls.Add(this.pathOrHotheyBtn);
             this.tabPage2.Controls.Add(this.actionLabel);
             this.tabPage2.Controls.Add(this.wordLabel);
             this.tabPage2.Controls.Add(this.commandsBox);
-            this.tabPage2.Controls.Add(this.actionTextBox);
-            this.tabPage2.Controls.Add(this.wordsTextBox);
             this.tabPage2.Controls.Add(this.editCommandBtn);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
@@ -73,7 +66,6 @@ namespace SpeachHelper
             this.tabPage2.Size = new System.Drawing.Size(794, 451);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Команды";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // deleteCommandBtn
             // 
@@ -93,30 +85,10 @@ namespace SpeachHelper
             this.addCommandBtn.Text = "Добавить  команду";
             this.addCommandBtn.UseVisualStyleBackColor = true;
             // 
-            // keys
-            // 
-            this.keys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.keys.FormattingEnabled = true;
-            this.keys.Location = new System.Drawing.Point(388, 254);
-            this.keys.Name = "keys";
-            this.keys.Size = new System.Drawing.Size(165, 24);
-            this.keys.TabIndex = 10;
-            // 
-            // pathOrHotheyBtn
-            // 
-            this.pathOrHotheyBtn.AutoSize = true;
-            this.pathOrHotheyBtn.Location = new System.Drawing.Point(598, 150);
-            this.pathOrHotheyBtn.Name = "pathOrHotheyBtn";
-            this.pathOrHotheyBtn.Size = new System.Drawing.Size(118, 21);
-            this.pathOrHotheyBtn.TabIndex = 9;
-            this.pathOrHotheyBtn.TabStop = true;
-            this.pathOrHotheyBtn.Text = "pathOrHothey";
-            this.pathOrHotheyBtn.UseVisualStyleBackColor = true;
-            // 
             // actionLabel
             // 
             this.actionLabel.AutoSize = true;
-            this.actionLabel.Location = new System.Drawing.Point(523, 150);
+            this.actionLabel.Location = new System.Drawing.Point(473, 105);
             this.actionLabel.Name = "actionLabel";
             this.actionLabel.Size = new System.Drawing.Size(47, 17);
             this.actionLabel.TabIndex = 5;
@@ -125,7 +97,7 @@ namespace SpeachHelper
             // wordLabel
             // 
             this.wordLabel.AutoSize = true;
-            this.wordLabel.Location = new System.Drawing.Point(523, 39);
+            this.wordLabel.Location = new System.Drawing.Point(473, 42);
             this.wordLabel.Name = "wordLabel";
             this.wordLabel.Size = new System.Drawing.Size(42, 17);
             this.wordLabel.TabIndex = 4;
@@ -133,6 +105,7 @@ namespace SpeachHelper
             // 
             // commandsBox
             // 
+            this.commandsBox.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.commandsBox.Dock = System.Windows.Forms.DockStyle.Left;
             this.commandsBox.FormattingEnabled = true;
             this.commandsBox.ItemHeight = 16;
@@ -140,20 +113,6 @@ namespace SpeachHelper
             this.commandsBox.Name = "commandsBox";
             this.commandsBox.Size = new System.Drawing.Size(311, 445);
             this.commandsBox.TabIndex = 3;
-            // 
-            // actionTextBox
-            // 
-            this.actionTextBox.Location = new System.Drawing.Point(526, 184);
-            this.actionTextBox.Name = "actionTextBox";
-            this.actionTextBox.Size = new System.Drawing.Size(228, 22);
-            this.actionTextBox.TabIndex = 2;
-            // 
-            // wordsTextBox
-            // 
-            this.wordsTextBox.Location = new System.Drawing.Point(526, 59);
-            this.wordsTextBox.Name = "wordsTextBox";
-            this.wordsTextBox.Size = new System.Drawing.Size(228, 22);
-            this.wordsTextBox.TabIndex = 1;
             // 
             // editCommandBtn
             // 
@@ -178,6 +137,7 @@ namespace SpeachHelper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(802, 480);
             this.Controls.Add(this.mainWindowContainer);
             this.Name = "MainPage";
@@ -195,13 +155,9 @@ namespace SpeachHelper
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button deleteCommandBtn;
         private System.Windows.Forms.Button addCommandBtn;
-        private System.Windows.Forms.ComboBox keys;
-        private System.Windows.Forms.RadioButton pathOrHotheyBtn;
         private System.Windows.Forms.Label actionLabel;
         private System.Windows.Forms.Label wordLabel;
         private System.Windows.Forms.ListBox commandsBox;
-        private System.Windows.Forms.TextBox actionTextBox;
-        private System.Windows.Forms.TextBox wordsTextBox;
         private System.Windows.Forms.Button editCommandBtn;
         private System.Windows.Forms.TabControl mainWindowContainer;
     }

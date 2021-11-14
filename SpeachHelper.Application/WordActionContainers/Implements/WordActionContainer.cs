@@ -56,5 +56,24 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
                 }
             }
         }
+
+        public void AddCommand(Command command)
+        {
+            commands.Add(command);
+        }
+
+        public void DeleteCommand(int commandId)
+        {
+            var removeCommand = commands.Where(c => c.ID == commandId).FirstOrDefault();
+            commands.Remove(removeCommand);
+        }
+
+        public void EditCommand(int commandId, Command editedCommand)
+        {
+            var command = commands.Where(c => c.ID == commandId).FirstOrDefault();
+            commands.Remove(command);
+            editedCommand.SetId(commandId);
+            commands.Add(editedCommand);
+        }
     }
 }
