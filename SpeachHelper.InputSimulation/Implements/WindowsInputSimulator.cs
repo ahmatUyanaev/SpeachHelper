@@ -14,15 +14,8 @@ namespace SpeachHelper.InputSimulation.Implements
             inputSimulator = new InputSimulator();
         }
 
-        public void test(int codeOne, int codeTwo)
-        {
-            // test how can save custome actions in db
-            VirtualKeyCode valOne = (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), codeOne.ToString());
-        }
-
         public Action ChangeLanguage()
         {
-            test(16, 11);
             return () => inputSimulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.SHIFT, VirtualKeyCode.MENU);
         }
 

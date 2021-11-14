@@ -39,10 +39,10 @@ namespace SpeachHelper
             deleteCommandBtn.Click += (o, s) =>
             {
                 view.DeleteCommand((string)commandsBox.SelectedItem);
-                FillCombobox();
+                view.FillCombobox(commandsBox);
             };
 
-            FillCombobox();
+            view.FillCombobox(commandsBox);
 
             recognizer.RecognizeAsync();
         }
