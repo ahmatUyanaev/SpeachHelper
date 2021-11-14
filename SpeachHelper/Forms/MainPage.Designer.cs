@@ -140,8 +140,9 @@ namespace SpeachHelper
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(802, 480);
             this.Controls.Add(this.mainWindowContainer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainPage";
-            this.Text = "Form1";
+            this.Text = "SpeachHelper";
             this.SizeChanged += new System.EventHandler(this.MainPage_SizeChanged);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
