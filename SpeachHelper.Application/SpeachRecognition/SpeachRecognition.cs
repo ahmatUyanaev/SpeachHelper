@@ -19,7 +19,7 @@ namespace SpeachHelper.Application.SpeachRecognition
 
         public GrammarBuilder grammarBuilder { get; set; }
 
-        public SpeachRecognizer()
+        public SpeachRecognizer(IWordActionContainer wordActionContainer)
         {
             wordActionContainer = ServiceLocator.GetService<IWordActionContainer>(); ;
 

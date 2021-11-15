@@ -11,11 +11,11 @@ namespace SpeachHelper
         private ISpeachRecognizer recognizer;
         private IView view;
 
-        public MainPage()
+        public MainPage(ISpeachRecognizer recognizer)
         {
             InitializeComponent();
 
-            recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
+            this.recognizer = recognizer;
 
             view = new View(this);
 
