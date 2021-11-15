@@ -10,12 +10,12 @@ namespace SpeachHelper.Forms
     public partial class AddCommandForm : Form
     {
         private ICommandsBizRules commandsBizRules;
-        private MainPage mainPage;
+        private Action fillComboBox;
 
-        public AddCommandForm(MainPage mainPage)
+        public AddCommandForm(Action fillComboBox)
         {
             InitializeComponent();
-            this.mainPage = mainPage;
+            this.fillComboBox = fillComboBox;
 
             commandsBizRules = ServiceLocator.GetService<ICommandsBizRules>();
         }
@@ -25,7 +25,7 @@ namespace SpeachHelper.Forms
             return string.IsNullOrEmpty(commandName.Text) && string.IsNullOrEmpty(argumentName.Text);
         }
 
-        private void addCommandBtn_Click(object sender, EventArgs e)
+        private async void addCommandBtn_Click(object sender, EventArgs e)
         {
             if (CheckOfNull())
             {
@@ -35,18 +35,18 @@ namespace SpeachHelper.Forms
 
             if (argumentName.Text.Contains("https"))
             {
-                commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.BrowserSite));
+                await commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.BrowserSite));
             }
             else if (argumentName.Text.Contains(".exe"))
             {
-                commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.WindowsProgram));
+                await commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.WindowsProgram));
             }
             else
             {
-                commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.Empty));
+                await commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.Empty));
             }
-
-            mainPage.FillCombobox();
+            //при добовлений нужно обновить форму и показать новую команду сразу
+            fillComboBox.Invoke();
             this.Close();
         }
     }

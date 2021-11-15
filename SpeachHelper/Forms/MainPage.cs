@@ -30,15 +30,14 @@ namespace SpeachHelper
 
             commandsBox.SelectedIndexChanged += (o, s) =>
             {
-                view.Init(selectedItem: commandsBox.SelectedItem);
-                view.SelectedItemChange();
+                view.SelectedItemChange(commandsBox.SelectedItem);
                 wordLabel.Text = "Имя команды: " + view.WordsTextBox;
                 actionLabel.Text = "Действие: " + view.ActionTextBox;
             };
 
-            deleteCommandBtn.Click += (o, s) =>
+            deleteCommandBtn.Click += async (o, s) =>
             {
-                view.DeleteCommand((string)commandsBox.SelectedItem);
+                await view.DeleteCommandAsync((string)commandsBox.SelectedItem);
                 view.FillCombobox(commandsBox);
             };
 

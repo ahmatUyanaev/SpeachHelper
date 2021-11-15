@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpeachHelper.Presentation
@@ -9,15 +10,13 @@ namespace SpeachHelper.Presentation
 
         string ActionTextBox { get; set; }
 
-        void Init(string wordsTextBox = null, string actionTextBox = null, object selectedItem = null);
-
         void EditCommand(string commandName);
 
         void AddCommand();
 
-        void DeleteCommand(string commandName);
+        Task DeleteCommandAsync(string commandName);
 
-        void SelectedItemChange();
+        void SelectedItemChange(object selectedItem);
 
         List<string> GetAllCommandNames();
 

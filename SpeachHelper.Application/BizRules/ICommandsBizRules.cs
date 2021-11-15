@@ -15,5 +15,7 @@ namespace SpeachHelper.Application.BizRules
         Task<IEnumerable<Command>> GetCommandsAsync();
 
         IEnumerable<Command> GetCommands();
+
+        Command GetCommandById(int commandId);
     }
 }

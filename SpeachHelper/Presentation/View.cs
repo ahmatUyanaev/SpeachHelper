@@ -5,6 +5,7 @@ using SpeachHelper.Forms;
 using SpeachHelper.Infrastructure.DI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpeachHelper.Presentation
@@ -16,11 +17,8 @@ namespace SpeachHelper.Presentation
         private IWordActionContainer wordActionContainer;
         private MainPage mainPage;
 
-        public List<string> filtredCommandNames { get; set; }
-
         public string WordsTextBox { get; set; }
         public string ActionTextBox { get; set; }
-        private object selectedItem;
 
         public View(MainPage mainPage)
         {
@@ -30,22 +28,32 @@ namespace SpeachHelper.Presentation
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
         }
 
-        public void Init(string wordsTextBox = null, string actionTextBox = null, object selectedItem = null)
+        public void AddCommand()
         {
-            this.ActionTextBox = actionTextBox;
-            this.WordsTextBox = wordsTextBox;
-            this.selectedItem = selectedItem;
+            var addCommandForm = new AddCommandForm(mainPage.FillCombobox);
+            addCommandForm.Show();
+        }
+
+        public async Task DeleteCommandAsync(string commandName)
+        {
+            var commandId = GetCommandIdByName(commandName);
+            await commandsBizRules.DeleteCommandAsync(commandId);
         }
 
         public void EditCommand(string commandName)
         {
+            if (string.IsNullOrEmpty(commandName))
+            {
+                return;
+            }
+
             var commandId = GetCommandIdByName(commandName);
-            var addCommandForm = new EditCommandForm(commandId);
+            var addCommandForm = new EditCommandForm(commandId, mainPage.FillCombobox);
             addCommandForm.Show();
             recognizer.LoadGrammar(commandName);
         }
 
-        public void SelectedItemChange()
+        public void SelectedItemChange(object selectedItem)
         {
             var dic = wordActionContainer.GetActions().ToDictionary(key => key.CommandName, value => value.Argument);
 
@@ -64,18 +72,6 @@ namespace SpeachHelper.Presentation
         public List<string> GetAllCommandNames()
         {
             return commandsBizRules.GetCommands().Select(c => c.CommandName).ToList();
-        }
-
-        public void AddCommand()
-        {
-            var addCommandForm = new AddCommandForm(mainPage);
-            addCommandForm.Show();
-        }
-
-        public void DeleteCommand(string commandName)
-        {
-            var commandId = GetCommandIdByName(commandName);
-            commandsBizRules.DeleteCommandAsync(commandId);
         }
 
         private int GetCommandIdByName(string commandName)

@@ -20,7 +20,6 @@ namespace SpeachHelper.Application.BizRules
 
         public async Task AddCommandAsync(Command command)
         {
-            //переписать все!!!!
             await commandsRepository.AddCommandAsync(command);
             var commands = await commandsRepository.GetCommandsAsync();
             var id = commands.Where(c => c.CommandName == command.CommandName).FirstOrDefault().ID;
@@ -49,5 +48,12 @@ namespace SpeachHelper.Application.BizRules
         {
             return await commandsRepository.GetCommandsAsync();
         }
+
+        public Command GetCommandById(int commandId)
+        {
+            return commandsRepository.GetCommandById(commandId);
+        }
+
+
     }
 }
