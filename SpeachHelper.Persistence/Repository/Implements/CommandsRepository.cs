@@ -16,7 +16,11 @@ namespace SpeachHelper.Persistence.Repository.Implements
         {
             sessionFactory = ServiceLocator.GetService<ISessionFactory>();
         }
-
+        /// <summary>
+        /// Метод добавляет новую команду в бд, и возвращает ее id
+        /// </summary>
+        /// <param name="command">Команда которую нужно добавить</param>
+        /// <returns></returns>
         public async Task<int> AddCommandAsync(Command command)
         {
             using (var session = sessionFactory.CreateSession())
@@ -31,12 +35,16 @@ namespace SpeachHelper.Persistence.Repository.Implements
                 string insert = @"
 INSERT INTO Commands
     (CommandName, Argument, CommandType)
+OUTPUT INSERTED.ID
 VALUES
     (@commandName, @argument, @commandType)
 ";
-                return await session.ExecuteAsync(insert, parametrs);
+                var res = await session.ExecuteScalarAsync(insert, parametrs);
+                return (int)res;
             }
         }
+
+
 
         public async Task<List<Command>> GetCommandsAsync()
         {

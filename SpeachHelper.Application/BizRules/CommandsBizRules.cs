@@ -20,10 +20,8 @@ namespace SpeachHelper.Application.BizRules
 
         public async Task AddCommandAsync(Command command)
         {
-            await commandsRepository.AddCommandAsync(command);
-            var commands = await commandsRepository.GetCommandsAsync();
-            var id = commands.Where(c => c.CommandName == command.CommandName).FirstOrDefault().ID;
-            command.SetId(id);
+            var insertedId = await commandsRepository.AddCommandAsync(command);
+            command.SetId(insertedId);
             wordActionContainer.AddCommand(command);
         }
 

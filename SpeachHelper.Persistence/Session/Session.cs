@@ -44,6 +44,11 @@ namespace SpeachHelper.Persistance.Session
             return connection.ExecuteAsync(query, parametrs);
         }
 
+        public Task<object> ExecuteScalarAsync(string query, object parametrs)
+        {
+            return connection.ExecuteScalarAsync(query, parametrs);
+        }
+
         public void Dispose()
         {
             connection.Close();
