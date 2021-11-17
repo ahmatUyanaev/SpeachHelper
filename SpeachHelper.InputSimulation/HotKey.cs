@@ -17,7 +17,8 @@ namespace SpeachHelper.InputSimulation
 
         public static Action MapToInputSimulator(string argument)
         {
-            var keys = argument.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries);
+            var keys = argument.Split(new string[] { "+" }, StringSplitOptions.RemoveEmptyEntries)
+                .Where(k => !string.IsNullOrWhiteSpace(k));
 
             var listOfKeys = new List<VirtualKeyCode>();
 
@@ -39,7 +40,7 @@ namespace SpeachHelper.InputSimulation
                 };
             }
 
-            return () => { };
+            throw new Exception("Exception in MapToInputSimulator");
         }
     }
 }

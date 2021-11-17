@@ -34,6 +34,10 @@ namespace SpeachHelper.Forms
             this.argumentName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.hotkeyCheckBox = new System.Windows.Forms.CheckBox();
+            this.keyComboBox = new System.Windows.Forms.ComboBox();
+            this.keyComboBoxTwo = new System.Windows.Forms.ComboBox();
+            this.keyComboBoxThree = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // addCommandBtn
@@ -78,11 +82,50 @@ namespace SpeachHelper.Forms
             this.label2.TabIndex = 4;
             this.label2.Text = "Аргумент";
             // 
+            // hotkeyCheckBox
+            // 
+            this.hotkeyCheckBox.AutoSize = true;
+            this.hotkeyCheckBox.Location = new System.Drawing.Point(272, 19);
+            this.hotkeyCheckBox.Name = "hotkeyCheckBox";
+            this.hotkeyCheckBox.Size = new System.Drawing.Size(104, 21);
+            this.hotkeyCheckBox.TabIndex = 5;
+            this.hotkeyCheckBox.Text = "Это HotKey";
+            this.hotkeyCheckBox.UseVisualStyleBackColor = true;
+            this.hotkeyCheckBox.CheckedChanged += new System.EventHandler(this.hotkeyCheckBox_CheckedChanged);
+            // 
+            // keyComboBox
+            // 
+            this.keyComboBox.FormattingEnabled = true;
+            this.keyComboBox.Location = new System.Drawing.Point(12, 95);
+            this.keyComboBox.Name = "keyComboBox";
+            this.keyComboBox.Size = new System.Drawing.Size(105, 24);
+            this.keyComboBox.TabIndex = 6;
+            // 
+            // keyComboBoxTwo
+            // 
+            this.keyComboBoxTwo.FormattingEnabled = true;
+            this.keyComboBoxTwo.Location = new System.Drawing.Point(123, 95);
+            this.keyComboBoxTwo.Name = "keyComboBoxTwo";
+            this.keyComboBoxTwo.Size = new System.Drawing.Size(105, 24);
+            this.keyComboBoxTwo.TabIndex = 7;
+            // 
+            // keyComboBoxThree
+            // 
+            this.keyComboBoxThree.FormattingEnabled = true;
+            this.keyComboBoxThree.Location = new System.Drawing.Point(233, 95);
+            this.keyComboBoxThree.Name = "keyComboBoxThree";
+            this.keyComboBoxThree.Size = new System.Drawing.Size(105, 24);
+            this.keyComboBoxThree.TabIndex = 8;
+            // 
             // AddCommandForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 229);
+            this.Controls.Add(this.keyComboBoxThree);
+            this.Controls.Add(this.keyComboBoxTwo);
+            this.Controls.Add(this.keyComboBox);
+            this.Controls.Add(this.hotkeyCheckBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.argumentName);
@@ -104,5 +147,9 @@ namespace SpeachHelper.Forms
         private System.Windows.Forms.TextBox argumentName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox hotkeyCheckBox;
+        private System.Windows.Forms.ComboBox keyComboBox;
+        private System.Windows.Forms.ComboBox keyComboBoxTwo;
+        private System.Windows.Forms.ComboBox keyComboBoxThree;
     }
 }

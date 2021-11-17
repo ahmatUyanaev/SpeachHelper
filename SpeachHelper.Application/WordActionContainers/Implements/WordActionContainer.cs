@@ -1,5 +1,6 @@
 ﻿using SpeachHelper.Application.WordActionContainers.Contacts;
 using SpeachHelper.Domain.Entitys;
+using SpeachHelper.Domain.Enums;
 using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.InputSimulation;
 using SpeachHelper.Persistence.Repository.Contracts;
@@ -46,11 +47,15 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
         {
             foreach (var command in commands)
             {
-                if (command.CommandType == Domain.Enums.CommandType.Hotkey)
+                if (command.CommandType == CommandType.Hotkey)
                 {
                     command.Action = HotKey.MapToInputSimulator(command.Argument);
                 }
-                if (command.CommandType == Domain.Enums.CommandType.BrowserSite)
+                if (command.CommandType == CommandType.BrowserSite)
+                {
+                    command.Action = () => { Process.Start(command.Argument); };
+                }
+                if (command.CommandType == CommandType.WindowsProgram)
                 {
                     command.Action = () => { Process.Start(command.Argument); };
                 }
