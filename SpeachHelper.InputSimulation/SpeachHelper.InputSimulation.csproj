@@ -44,10 +44,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IBrowserInputSimulation.cs" />
-    <Compile Include="Contracts\IWindowsInputSimulator.cs" />
-    <Compile Include="Implements\EdgeInputSimulator.cs" />
-    <Compile Include="Implements\WindowsInputSimulator.cs" />
     <Compile Include="HotKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
