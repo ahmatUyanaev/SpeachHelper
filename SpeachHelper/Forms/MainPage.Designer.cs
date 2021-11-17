@@ -40,6 +40,7 @@ namespace SpeachHelper
             this.commandsBox = new System.Windows.Forms.ListBox();
             this.editCommandBtn = new System.Windows.Forms.Button();
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
+            this.categories_tab = new System.Windows.Forms.TabPage();
             this.tabPage2.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
             this.SuspendLayout();
@@ -126,12 +127,23 @@ namespace SpeachHelper
             // mainWindowContainer
             // 
             this.mainWindowContainer.Controls.Add(this.tabPage2);
+            this.mainWindowContainer.Controls.Add(this.categories_tab);
             this.mainWindowContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainWindowContainer.Location = new System.Drawing.Point(0, 0);
             this.mainWindowContainer.Name = "mainWindowContainer";
             this.mainWindowContainer.SelectedIndex = 0;
             this.mainWindowContainer.Size = new System.Drawing.Size(802, 480);
             this.mainWindowContainer.TabIndex = 3;
+            // 
+            // categories_tab
+            // 
+            this.categories_tab.Location = new System.Drawing.Point(4, 25);
+            this.categories_tab.Name = "categories_tab";
+            this.categories_tab.Padding = new System.Windows.Forms.Padding(3);
+            this.categories_tab.Size = new System.Drawing.Size(794, 451);
+            this.categories_tab.TabIndex = 2;
+            this.categories_tab.Text = "Категорий";
+            this.categories_tab.UseVisualStyleBackColor = true;
             // 
             // MainPage
             // 
@@ -161,6 +173,7 @@ namespace SpeachHelper
         private System.Windows.Forms.ListBox commandsBox;
         private System.Windows.Forms.Button editCommandBtn;
         private System.Windows.Forms.TabControl mainWindowContainer;
+        private System.Windows.Forms.TabPage categories_tab;
     }
 }
 

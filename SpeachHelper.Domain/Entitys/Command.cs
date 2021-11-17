@@ -37,6 +37,8 @@ namespace SpeachHelper.Domain.Entitys
 
         public string CommandName { get; private set; }
 
+        public int CategoryId { get; set; }
+
         public Action Action { get; set; }
 
         public string Argument { get; private set; }
