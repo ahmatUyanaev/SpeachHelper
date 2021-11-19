@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\Contracts\ICategoryRepository.cs" />
     <Compile Include="Repository\Contracts\ICommandsRepository.cs" />
+    <Compile Include="Repository\Implements\CategoryRepository.cs" />
     <Compile Include="Repository\Implements\CommandsRepository.cs" />
     <Compile Include="Session\ISession.cs" />
     <Compile Include="Session\ISessionFactory.cs" />

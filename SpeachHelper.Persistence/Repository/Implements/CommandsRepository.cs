@@ -44,8 +44,6 @@ VALUES
             }
         }
 
-
-
         public async Task<List<Command>> GetCommandsAsync()
         {
             using (var session = sessionFactory.CreateSession())
