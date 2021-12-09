@@ -13,10 +13,9 @@ namespace SpeachHelper.Application.SpeachSyntesis
         private string defaultVoice = "Microsoft Irina Desktop";
         public Speaker()
         {
-            speaker.Volume = 100;// от 0 до 100
-            speaker.Rate = 0;//от -10 до 10
+            speaker.Volume = 100;
+            speaker.Rate = 0;
             speaker.SelectVoice(defaultVoice);
-            var res = speaker.GetInstalledVoices();
         }
         public void Say(string word)
         {
