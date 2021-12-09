@@ -69,13 +69,13 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
 
         public void DeleteCommand(int commandId)
         {
-            var removeCommand = commands.Where(c => c.ID == commandId).FirstOrDefault();
+            var removeCommand = commands.FirstOrDefault(c => c.ID == commandId);
             commands.Remove(removeCommand);
         }
 
         public void EditCommand(int commandId, Command editedCommand)
         {
-            var command = commands.Where(c => c.ID == commandId).FirstOrDefault();
+            var command = commands.FirstOrDefault(c => c.ID == commandId);
             commands.Remove(command);
             editedCommand.SetId(commandId);
             commands.Add(editedCommand);

@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# S2259: Null pointers should not be dereferenced
+dotnet_diagnostic.S2259.severity = none
