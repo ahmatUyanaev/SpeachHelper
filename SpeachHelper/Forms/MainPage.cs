@@ -1,4 +1,5 @@
 ﻿using SpeachHelper.Application.SpeachRecognition;
+using SpeachHelper.Application.SpeachSyntesis;
 using SpeachHelper.Infrastructure.DI;
 using SpeachHelper.Presentation;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace SpeachHelper
         public MainPage()
         {
             InitializeComponent();
+            Speaker speaker = new Speaker();
 
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
 
