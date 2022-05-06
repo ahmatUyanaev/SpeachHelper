@@ -29,15 +29,16 @@ namespace SpeachHelper.Persistence.Repository.Implements
                 {
                     commandName = command.CommandName,
                     argument = command.Argument,
-                    commandType = command.CommandType
+                    commandType = command.CommandType,
+                    categoryId = command.CategoryId
                 };
 
                 string insert = @"
 INSERT INTO Commands
-    (CommandName, Argument, CommandType)
+    (CommandName, Argument, CommandType, CategoryId)
 OUTPUT INSERTED.ID
 VALUES
-    (@commandName, @argument, @commandType)
+    (@commandName, @argument, @commandType, @categoryId)
 ";
                 var res = await session.ExecuteScalarAsync(insert, parametrs);
                 return (int)res;

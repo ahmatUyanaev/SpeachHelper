@@ -15,6 +15,7 @@ namespace SpeachHelper.Application.WordActionContainers.Implements
     {
         private List<Command> commands;
         private ICommandsRepository commandsRepository;
+
         public WordActionContainer()
         {
             commandsRepository = ServiceLocator.GetService<ICommandsRepository>();

@@ -21,11 +21,12 @@ namespace SpeachHelper.Domain.Entitys
             Argument = argument;
         }
 
-        public Command(string command, string argument, CommandType type)
+        public Command(string command, string argument, CommandType type, int categoryId)
         {
             CommandName = command;
             Argument = argument;
             CommandType = type;
+            CategoryId = categoryId;
         }
 
         public void SetId(int id)

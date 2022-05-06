@@ -15,7 +15,6 @@ namespace SpeachHelper
         public MainPage()
         {
             InitializeComponent();
-            Speaker speaker = new Speaker();
 
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
 

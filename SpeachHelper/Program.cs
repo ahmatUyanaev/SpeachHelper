@@ -28,9 +28,12 @@ namespace SpeachHelper
         {
             ServiceLocator.Register<ISessionFactory>(new SessionFactory());
             ServiceLocator.Register<ICommandsRepository>(new CommandsRepository());
+            ServiceLocator.Register<ICategoryRepository>(new CategoryRepository());
             ServiceLocator.Register<IWordActionContainer>(new WordActionContainer());
             ServiceLocator.Register<ISpeachRecognizer>(new SpeachRecognizer());
             ServiceLocator.Register<ICommandsBizRules>(new CommandsBizRules());
+
+            ServiceLocator.Register<ICategoryBizRules>(new CategoryBizRules());
         }
     }
 }

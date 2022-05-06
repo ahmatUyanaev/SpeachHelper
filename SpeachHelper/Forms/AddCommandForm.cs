@@ -6,11 +6,14 @@ using SpeachHelper.InputSimulation;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace SpeachHelper.Forms
 {
     public partial class AddCommandForm : Form
     {
+        private readonly ICategoryBizRules _categoryBizRules;
         private ICommandsBizRules commandsBizRules;
         private Action fillComboBox;
         private List<ComboBox> comboBoxes = new List<ComboBox>();
@@ -19,8 +22,9 @@ namespace SpeachHelper.Forms
         {
             InitializeComponent();
             this.fillComboBox = fillComboBox;
-            Init();
             commandsBizRules = ServiceLocator.GetService<ICommandsBizRules>();
+            _categoryBizRules = ServiceLocator.GetService<ICategoryBizRules>();
+            Init();
         }
 
         public bool CheckOfNull()
@@ -36,18 +40,28 @@ namespace SpeachHelper.Forms
                 return;
             }
 
-            if (argumentName.Text.Contains("https"))
+            var catId = categoryList.SelectedIndex + 1;
+
+            if (argumentName.Text.Contains("http"))
             {
-                await commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.BrowserSite));
+                await commandsBizRules.AddCommandAsync(
+                    new Command(commandName.Text, argumentName.Text, CommandType.BrowserSite, catId));
             }
             else if (argumentName.Text.Contains(".exe"))
             {
-                await commandsBizRules.AddCommandAsync(new Command(commandName.Text, argumentName.Text, CommandType.WindowsProgram));
+                await commandsBizRules.AddCommandAsync(
+                    new Command(commandName.Text, argumentName.Text, CommandType.WindowsProgram, catId));
             }
             else if (hotkeyCheckBox.Checked)
             {
                 var keys = GetHotKeys();
-                await commandsBizRules.AddCommandAsync(new Command(commandName.Text, keys, CommandType.Hotkey));
+                await commandsBizRules.AddCommandAsync(
+                    new Command(commandName.Text, keys, CommandType.Hotkey, catId));
+            }
+            else
+            {
+                await commandsBizRules.AddCommandAsync(
+                    new Command(commandName.Text, argumentName.Text, CommandType.Empty, catId));
             }
             //при добовлений нужно обновить форму и показать новую команду сразу
             fillComboBox.Invoke();
@@ -81,6 +95,9 @@ namespace SpeachHelper.Forms
             keyComboBox.Items.AddRange(HotKey.GetAllKeyBoardButtons().ToArray());
             keyComboBoxTwo.Items.AddRange(HotKey.GetAllKeyBoardButtons().ToArray());
             keyComboBoxThree.Items.AddRange(HotKey.GetAllKeyBoardButtons().ToArray());
+
+            var catNames = Task.Run(async () => await _categoryBizRules.GetAllCategoryNames()).Result;
+            categoryList.Items.AddRange(catNames.ToArray());
         }
 
         private string GetHotKeys()

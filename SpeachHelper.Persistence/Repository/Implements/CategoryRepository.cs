@@ -1,6 +1,7 @@
 ﻿using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Persistance.Session;
 using SpeachHelper.Persistence.Repository.Contracts;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SpeachHelper.Persistence.Repository.Implements
@@ -15,12 +16,19 @@ namespace SpeachHelper.Persistence.Repository.Implements
             };
 
             string insert = @"
-INSERT INTO Commands
-    (Name)
-VALUES
-    (@name)
-";
+                INSERT INTO Commands
+                    (Name)
+                VALUES
+                    (@name)
+                ";
             await session.ExecuteAsync(insert, parametrs);
+        }
+
+        public async Task<IEnumerable<Category>> GetAllGategoryes(ISession session)
+        {
+            var query = "select * from Сategories";
+
+            return await session.QueryAsync<Category>(query);
         }
     }
 }

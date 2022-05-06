@@ -38,6 +38,7 @@ namespace SpeachHelper.Forms
             this.keyComboBox = new System.Windows.Forms.ComboBox();
             this.keyComboBoxTwo = new System.Windows.Forms.ComboBox();
             this.keyComboBoxThree = new System.Windows.Forms.ComboBox();
+            this.categoryList = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // addCommandBtn
@@ -117,11 +118,20 @@ namespace SpeachHelper.Forms
             this.keyComboBoxThree.Size = new System.Drawing.Size(105, 24);
             this.keyComboBoxThree.TabIndex = 8;
             // 
+            // categoryList
+            // 
+            this.categoryList.FormattingEnabled = true;
+            this.categoryList.Location = new System.Drawing.Point(12, 142);
+            this.categoryList.Name = "categoryList";
+            this.categoryList.Size = new System.Drawing.Size(176, 24);
+            this.categoryList.TabIndex = 9;
+            // 
             // AddCommandForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(423, 229);
+            this.Controls.Add(this.categoryList);
             this.Controls.Add(this.keyComboBoxThree);
             this.Controls.Add(this.keyComboBoxTwo);
             this.Controls.Add(this.keyComboBox);
@@ -151,5 +161,6 @@ namespace SpeachHelper.Forms
         private System.Windows.Forms.ComboBox keyComboBox;
         private System.Windows.Forms.ComboBox keyComboBoxTwo;
         private System.Windows.Forms.ComboBox keyComboBoxThree;
+        private System.Windows.Forms.ComboBox categoryList;
     }
 }

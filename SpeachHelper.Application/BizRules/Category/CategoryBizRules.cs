@@ -42,5 +42,13 @@ namespace SpeachHelper.Application.BizRules
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<string>> GetAllCategoryNames()
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                return (await categoryRepository.GetAllGategoryes(session)).Select(c => c.Name).ToList();
+            }
+        }
     }
 }

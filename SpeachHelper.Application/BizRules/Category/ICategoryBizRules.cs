@@ -16,5 +16,7 @@ namespace SpeachHelper.Application.BizRules
         Task AddCommandInCategory(int commandId, int categoryId);
 
         Task DeleteCommandInCategory(int commandId, int categoryId);
+
+        Task<List<string>> GetAllCategoryNames();
     }
 }

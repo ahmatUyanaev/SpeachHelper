@@ -76,7 +76,7 @@ namespace SpeachHelper.Presentation
 
         private int GetCommandIdByName(string commandName)
         {
-            return commandsBizRules.GetCommands().Where(c => c.CommandName == commandName).FirstOrDefault().ID;
+            return commandsBizRules.GetCommands().FirstOrDefault(c => c.CommandName == commandName).ID;
         }
 
         public void FillCombobox(ListBox ListBox)
