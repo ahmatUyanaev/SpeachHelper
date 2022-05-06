@@ -42,8 +42,10 @@ namespace SpeachHelper
             this.mainWindowContainer = new System.Windows.Forms.TabControl();
             this.categories_tab = new System.Windows.Forms.TabPage();
             this.settingsPage = new System.Windows.Forms.TabPage();
+            this.categotiesTree = new System.Windows.Forms.TreeView();
             this.tabPage2.SuspendLayout();
             this.mainWindowContainer.SuspendLayout();
+            this.categories_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // trey
@@ -139,6 +141,7 @@ namespace SpeachHelper
             // 
             // categories_tab
             // 
+            this.categories_tab.Controls.Add(this.categotiesTree);
             this.categories_tab.Location = new System.Drawing.Point(4, 25);
             this.categories_tab.Name = "categories_tab";
             this.categories_tab.Padding = new System.Windows.Forms.Padding(3);
@@ -157,6 +160,13 @@ namespace SpeachHelper
             this.settingsPage.Text = "Насройки";
             this.settingsPage.UseVisualStyleBackColor = true;
             // 
+            // categotiesTree
+            // 
+            this.categotiesTree.Location = new System.Drawing.Point(8, 6);
+            this.categotiesTree.Name = "categotiesTree";
+            this.categotiesTree.Size = new System.Drawing.Size(324, 439);
+            this.categotiesTree.TabIndex = 0;
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -171,6 +181,7 @@ namespace SpeachHelper
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.mainWindowContainer.ResumeLayout(false);
+            this.categories_tab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -187,6 +198,7 @@ namespace SpeachHelper
         private System.Windows.Forms.TabControl mainWindowContainer;
         private System.Windows.Forms.TabPage categories_tab;
         private System.Windows.Forms.TabPage settingsPage;
+        private System.Windows.Forms.TreeView categotiesTree;
     }
 }
 

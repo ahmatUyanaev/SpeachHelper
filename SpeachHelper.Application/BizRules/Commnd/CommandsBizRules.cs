@@ -52,6 +52,9 @@ namespace SpeachHelper.Application.BizRules
             return commandsRepository.GetCommandById(commandId);
         }
 
-
+        public async Task<IEnumerable<Command>> GetCommandsByCategoryId(int categoryId)
+        {
+            return await commandsRepository.GetCommandsByCategoryId(categoryId);
+        }
     }
 }

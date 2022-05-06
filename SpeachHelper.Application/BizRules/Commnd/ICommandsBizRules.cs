@@ -17,5 +17,7 @@ namespace SpeachHelper.Application.BizRules
         IEnumerable<Command> GetCommands();
 
         Command GetCommandById(int commandId);
+
+        Task<IEnumerable<Command>> GetCommandsByCategoryId(int categoryId);
     }
 }

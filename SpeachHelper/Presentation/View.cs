@@ -14,6 +14,7 @@ namespace SpeachHelper.Presentation
     {
         private ISpeachRecognizer recognizer;
         private ICommandsBizRules commandsBizRules;
+        private readonly ICategoryBizRules _categoryBizRules; 
         private IWordActionContainer wordActionContainer;
         private MainPage mainPage;
 
@@ -26,6 +27,7 @@ namespace SpeachHelper.Presentation
             commandsBizRules = ServiceLocator.GetService<ICommandsBizRules>();
             wordActionContainer = ServiceLocator.GetService<IWordActionContainer>();
             recognizer = ServiceLocator.GetService<ISpeachRecognizer>();
+            _categoryBizRules = ServiceLocator.GetService<ICategoryBizRules>();
         }
 
         public void AddCommand()
@@ -79,12 +81,28 @@ namespace SpeachHelper.Presentation
             return commandsBizRules.GetCommands().FirstOrDefault(c => c.CommandName == commandName).ID;
         }
 
-        public void FillCombobox(ListBox ListBox)
+        public void FillCombobox(ListBox ListBox, TreeView treeView)
         {
+            var categoryes = Task.Run(async () => await _categoryBizRules.GetAllCategories()).Result;
             ListBox.Items.Clear();
+            treeView.Nodes.Clear();
+
             foreach (string name in GetAllCommandNames())
             {
                 ListBox.Items.Add(name);
+            }
+
+            foreach(var category in categoryes)
+            {
+                TreeNode treeNode = new TreeNode(category.Name);
+                var commands = Task.Run(async () => await commandsBizRules.GetCommandsByCategoryId(category.Id)).Result;
+
+                foreach (var command in commands)
+                {
+                    treeNode.Nodes.Add(command.CommandName);
+                }
+
+                treeView.Nodes.Add(treeNode);
             }
         }
     }

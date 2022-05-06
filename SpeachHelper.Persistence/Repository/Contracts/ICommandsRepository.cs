@@ -17,6 +17,9 @@ namespace SpeachHelper.Persistence.Repository.Contracts
         Task<Command> GetCommandByIdAsync(int commandId);
 
         Command GetCommandById(int commandId);
+
         IEnumerable<Command> GetCommands();
+
+        Task<IEnumerable<Command>> GetCommandsByCategoryId(int categoryId);
     }
 }

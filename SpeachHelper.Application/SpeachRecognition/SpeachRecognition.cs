@@ -26,7 +26,7 @@ namespace SpeachHelper.Application.SpeachRecognition
             commands = wordActionContainer.GetActions();
 
             actions = commands.ToDictionary(x => x.CommandName, y => y.Action);
-
+            var rr = SpeechRecognitionEngine.InstalledRecognizers();
             Init();
         }
 

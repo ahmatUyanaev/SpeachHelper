@@ -111,5 +111,16 @@ WHERE ID = {commandId}";
                 return session.Query<Command>(query);
             }
         }
+
+        public async Task<IEnumerable<Command>> GetCommandsByCategoryId(int categoryId)
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                var query = $@"
+SELECT * FROM Commands
+WHERE CategoryId = {categoryId}";
+                return await session.QueryAsync<Command>(query);
+            }
+        }
     }
 }

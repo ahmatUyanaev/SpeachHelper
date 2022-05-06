@@ -39,21 +39,17 @@ namespace SpeachHelper
             deleteCommandBtn.Click += async (o, s) =>
             {
                 await view.DeleteCommandAsync((string)commandsBox.SelectedItem);
-                view.FillCombobox(commandsBox);
+                view.FillCombobox(commandsBox, categotiesTree);
             };
 
-            view.FillCombobox(commandsBox);
+            view.FillCombobox(commandsBox, categotiesTree);
 
             recognizer.RecognizeAsync();
         }
 
         public void FillCombobox()
         {
-            commandsBox.Items.Clear();
-            foreach (string name in view.GetAllCommandNames())
-            {
-                commandsBox.Items.Add(name);
-            }
+            view.FillCombobox(commandsBox, categotiesTree);
         }
 
         #region trey

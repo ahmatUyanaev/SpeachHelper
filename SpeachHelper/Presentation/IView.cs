@@ -20,6 +20,6 @@ namespace SpeachHelper.Presentation
 
         List<string> GetAllCommandNames();
 
-        void FillCombobox(ListBox listBox);
+        void FillCombobox(ListBox listBox, TreeView treeView);
     }
 }

@@ -50,5 +50,13 @@ namespace SpeachHelper.Application.BizRules
                 return (await categoryRepository.GetAllGategoryes(session)).Select(c => c.Name).ToList();
             }
         }
+
+        public async Task<IEnumerable<Category>> GetAllCategories()
+        {
+            using (var session = sessionFactory.CreateSession())
+            {
+                return await categoryRepository.GetAllGategoryes(session);
+            }
+        }
     }
 }
