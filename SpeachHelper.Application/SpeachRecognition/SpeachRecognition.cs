@@ -4,6 +4,7 @@ using SpeachHelper.Domain.Entitys;
 using SpeachHelper.Infrastructure.DI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace SpeachHelper.Application.SpeachRecognition
@@ -11,13 +12,15 @@ namespace SpeachHelper.Application.SpeachRecognition
     public class SpeachRecognizer : ISpeachRecognizer, IDisposable
     {
         private SpeechRecognitionEngine speachRecognition;
-
         private IWordActionContainer wordActionContainer;
+        public GrammarBuilder grammarBuilder { get; set; }
+
 
         private Dictionary<string, Action> actions;
         private List<Command> commands;
+        private List<string> _history;
+        private Stopwatch _stopwatch;
 
-        public GrammarBuilder grammarBuilder { get; set; }
 
         public SpeachRecognizer()
         {
@@ -26,13 +29,42 @@ namespace SpeachHelper.Application.SpeachRecognition
             commands = wordActionContainer.GetActions();
 
             actions = commands.ToDictionary(x => x.CommandName, y => y.Action);
-            var rr = SpeechRecognitionEngine.InstalledRecognizers();
+
+            _history = new List<string>();
+            _history.Add("Алиса");
+
+            _stopwatch = new Stopwatch();
+
             Init();
         }
 
         private void SpeechRecognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             string text = e.Result.Text;
+
+            if (text == "Алиса")
+            {
+                _stopwatch.Start();
+            }
+            else if(_history.Last() == "Алиса")
+            {
+                _stopwatch.Stop();
+                var timeFilter = _stopwatch.Elapsed.TotalSeconds > 7;
+                _stopwatch.Reset();
+                if (timeFilter) 
+                {
+                    return;
+                }
+            }
+
+            if (_history.Last() != "Алиса")
+            {
+                _history.Add(text);
+                return;
+            }
+
+            _history.Add(text);
+
             if (actions.TryGetValue(text, out Action action))
             {
                 action.Invoke();
